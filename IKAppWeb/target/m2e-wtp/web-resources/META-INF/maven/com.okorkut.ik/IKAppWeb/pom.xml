@@ -1,0 +1,278 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.okorkut.ik</groupId>
+    <artifactId>IKApp</artifactId>
+    <version>v1.0</version>
+  </parent>
+  <artifactId>IKAppWeb</artifactId>
+  <version>v1.0</version>
+  <packaging>war</packaging>
+  
+  
+  
+  <build>
+	 	<defaultGoal>tomcat7:undeploy generate-sources install compile package tomcat7:deploy</defaultGoal>
+	   <finalName>IKWebApp</finalName>
+	   
+	   <resources>
+			<resource>
+				<directory>${global.configuration.dir}</directory>
+				<targetPath>${basedir}/target/classes/Configuration</targetPath>
+				<!-- Process files (for example inject ${params} while copying -->
+				<filtering>true</filtering>
+			</resource>
+			
+			<resource>
+				<directory>${version.configuration.dir}</directory>
+				<targetPath>${basedir}/target/classes</targetPath>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>${configuration.dir}</directory>
+				<targetPath>${basedir}/target/classes/Configuration</targetPath>
+				<filtering>true</filtering>
+			</resource>
+			
+			<resource>
+				<directory>${spring.configuration.dir}</directory>
+				<targetPath>${basedir}/target/classes/Spring</targetPath>
+				<filtering>true</filtering>
+			</resource>
+			
+			<resource>
+				<directory>${spring.IKAppCommon.configuration.dir}</directory>
+				<targetPath>${basedir}/target/classes/Spring</targetPath>
+				<filtering>true</filtering>
+			</resource>
+			
+			<resource>
+				<directory>${spring.IKAppWeb.configuration.dir}</directory>
+				<targetPath>${basedir}/target/classes/Spring</targetPath>
+				<filtering>true</filtering>
+			</resource>
+			
+			
+		</resources>
+		
+		
+		<!-- <plugins>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>${tomcat.deploy.context.path}</path>
+					<update>true</update>
+					<url>${tomcat.manager.url}</url>
+					<username>${tomcat.username}</username>
+					<password>${tomcat.password}</password>
+					<systemProperties>
+						<JAVA_OPTS>-Xmx1024m -Xms256m -XX:MaxPermSize=256m -Xnoagent
+							-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000</JAVA_OPTS>
+					</systemProperties>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+		</plugins> -->
+		
+   </build>
+   
+   <dependencies>
+   
+   		 <dependency>
+	  		<groupId>com.okorkut.ik.common</groupId>
+	  		<artifactId>IKAppCommon</artifactId>
+	  		<version>v1.1</version>
+	  	</dependency> 
+	  	
+	  	<!--<dependency>
+	  		<groupId>com.okorkut.ik.jpa</groupId>
+	  		<artifactId>IKAppJPA</artifactId>
+	  		<version>v1.0</version>
+	  	</dependency>-->
+	  	
+	  	
+	  	
+	  	<!-- <dependency>
+	  		<groupId>com.okorkut.ik.configuration</groupId>
+	  		<artifactId>IKAppConfiguration</artifactId>
+	  		<version>v1.0</version>
+	  	</dependency> -->
+  			
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+		    <version>3.1.8</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-transports-http</artifactId>
+		    <version>3.1.8</version>
+		</dependency>
+		
+		
+		<dependency>
+		   <groupId>org.apache.cxf</groupId>
+		   <artifactId>cxf-bundle-jaxrs</artifactId>
+		   <version>2.7.18</version>
+		   <exclusions>
+		       <exclusion>
+		         <groupId>org.eclipse.jetty</groupId>
+		         <artifactId>jetty-server</artifactId>
+		       </exclusion>
+		   </exclusions> 
+		</dependency>
+		
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.jaxrs</groupId>
+		    <artifactId>jackson-jaxrs-json-provider</artifactId>
+		    <version>2.8.4</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.sun.jersey.samples</groupId>
+		    <artifactId>jacksonjsonprovider</artifactId>
+		    <version>1.19.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.neethi</groupId>
+		    <artifactId>neethi</artifactId>
+		    <version>3.0.3</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpasyncclient</artifactId>
+		    <version>4.0.2</version>
+		</dependency>
+				
+		<dependency>
+		    <groupId>javax.ws.rs</groupId>
+		    <artifactId>javax.ws.rs-api</artifactId>
+		    <version>2.0-m10</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-support</artifactId>
+			<version>2.0.8</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-core</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-context</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<!-- <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency> -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-spring</artifactId>
+			<version>3.8</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.3</version>
+		</dependency>
+   	
+       <dependency>
+           <groupId>junit</groupId>
+           <artifactId>junit</artifactId>
+           <version>3.8.1</version>
+           <scope>test</scope>
+       </dependency>
+ 
+       <!-- Servlet Library -->
+       <dependency>
+           <groupId>javax.servlet</groupId>
+           <artifactId>javax.servlet-api</artifactId>
+           <version>3.1.0</version>
+           <scope>provided</scope>
+       </dependency>
+		
+   		<dependency>
+		    <groupId>org.owasp.esapi</groupId>
+		    <artifactId>esapi</artifactId>
+		    <version>2.1.0.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>xalan</groupId>
+		    <artifactId>xalan</artifactId>
+		    <version>2.7.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>xerces</groupId>
+		    <artifactId>xercesImpl</artifactId>
+		    <version>2.11.0</version>
+		</dependency>
+   </dependencies>
+</project>

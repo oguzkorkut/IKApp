@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<!-- <bean id="propertyMailConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+				<value>classpath:Configuration/IKSMTPAppender.properties</value>
+            </list>
+        </property> 
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>	 -->
+    
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<property name="host" value="${smtp.host}" />
+	<property name="port" value="${smtp.port}" />
+	<property name="username" value="${smtp.username}" />
+	<property name="password" value="${smtp.password}" />
+	<property name="defaultEncoding" value="UTF-8"/>
+	<property name="javaMailProperties">
+	   <props>
+       	      <prop key="mail.smtp.auth">false</prop>
+       	      <prop key="mail.smtp.starttls.enable">false</prop>
+       	   </props>
+	</property>
+</bean>
+	
+<bean id="mailService" class="com.okorkut.ik.service.MailServiceImpl">
+	<property name="mailSender">
+			<ref bean="mailSender" />
+		</property>
+		<property name="velocityEngine" ref="velocityEngine"/>
+		<property name="from">
+			<value>${smtp.from}</value>
+		</property>
+		<property name="encoding">
+			<value>${smtp.encoding}</value>
+		</property>
+		<property name="context">
+			<value>${smtp.context}</value>
+		</property>
+</bean>
+
+ <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
+        <property name="velocityPropertiesMap">
+            <map>
+                <entry key="input.encoding" value="UTF-8" />
+                <entry key="output.encoding" value="UTF-8" />
+            </map>
+        </property>
+    </bean>
+
+	<!-- <bean id="mailService" class="com.okorkut.ik.common.service.MailServiceImpl">
+		<property name="mailSender">
+			<ref bean="mailSender" />
+		</property>
+		<property name="from">
+			<value>${smtp.from}</value>
+		</property>
+		<property name="encoding">
+			<value>${smtp.encoding}</value>
+		</property>
+		<property name="context">
+			<value>${smtp.context}</value>
+		</property>
+	</bean> -->
+
+	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>${smtp.host}</value>
+		</property>
+		<property name="username">
+			<value>${smtp.username}</value>
+		</property>
+		<property name="password">
+			<value>${smtp.password}</value>
+		</property>
+	</bean>
+ -->
+		
+</beans>
