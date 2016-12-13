@@ -33,6 +33,9 @@
     <import resource="classpath:Spring/cxf-beans.xml" />
     <import resource="classpath:Spring/ApplicationContext-datasource.xml" />
     <import resource="classpath:Spring/Spring-Mail.xml" />
-     <import resource="classpath:Spring/ApplicationBeans.xml" />
+    <import resource="classpath:Spring/ApplicationBeans.xml" />
+   <!--  <import resource="classpath:Spring/spring-security.xml" /> -->
+     
+     
     
 </beans>

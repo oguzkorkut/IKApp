@@ -2,39 +2,40 @@ package com.okorkut.ik.dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "userDto")
 public class UserDto implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private int id;
-
 	private byte active;
-
 	private Timestamp createdAt;
-
 	private String createdBy;
-
 	private String email;
-
 	private String lastname;
-
 	private String name;
-
 	private String password;
-
 	private Timestamp updatedAt;
-
 	private String updatedBy;
-
 	private String userName;
-
-	private RoleDto role;
+//	private List<Application> applications;
+//	private List<Education> educations;
+//	private List<Experience> experiences;
+//	private List<Language> languages;
+//	private List<Profile> profiles;
+//	private List<Reference> references;
+	private List<String> userRoles;
+	
+//	private List<Role> roles;
 
 	public int getId() {
 		return id;
@@ -124,14 +125,27 @@ public class UserDto implements Serializable{
 		this.userName = userName;
 	}
 
-	public RoleDto getRole() {
-		return role;
+	
+	public List<String> getUserRoles() {
+		if (userRoles == null) {
+			userRoles = new ArrayList<String>();
+		}
+		return userRoles;
 	}
 
-	public void setRole(RoleDto role) {
-		this.role = role;
+	public void setUserRoles(List<String> userRoles) {
+		this.userRoles = userRoles;
 	}
 	
+//
+//	public List<Role> getRoles() {
+//		return roles;
+//	}
+//
+//	public void setRoles(List<Role> roles) {
+//		this.roles = roles;
+//	}
+
 	@Override
 	public String toString() {
 
@@ -147,8 +161,7 @@ public class UserDto implements Serializable{
 			append("password:" + password).append("\n").
 			append("updatedAt:" + updatedAt).append("\n").
 			append("updatedBy:" + updatedBy).append("\n").
-			append("userName:" + userName).append("\n").
-			append("role:" + role);
+			append("userName:" + userName).append("\n");
 		
 		return str.toString();
 	}

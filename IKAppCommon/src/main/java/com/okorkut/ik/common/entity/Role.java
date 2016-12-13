@@ -10,20 +10,23 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="role")
 @NamedQuery(name="Role.findAll", query="SELECT r FROM Role r")
-@Table(name="Role")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
 	private int id;
 
-	@Column(name="ROLE_NAME")
+	@Column(name="ROLE_NAME", nullable=false, length=30)
 	private String roleName;
 
-	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="role")
-	private List<User> users;
+	//bi-directional many-to-one association to RoleGroup
+//	@OneToOne(fetch = FetchType.LAZY,mappedBy="role")
+//	private RoleGroup roleGroup;
+	
 
 	public Role() {
 	}
@@ -44,26 +47,12 @@ public class Role implements Serializable {
 		this.roleName = roleName;
 	}
 
-	public List<User> getUsers() {
-		return this.users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
-	public User addUser(User user) {
-		getUsers().add(user);
-		user.setRole(this);
-
-		return user;
-	}
-
-	public User removeUser(User user) {
-		getUsers().remove(user);
-		user.setRole(null);
-
-		return user;
-	}
+//	public RoleGroup getRoleGroup() {
+//		return roleGroup;
+//	}
+//
+//	public void setRoleGroup(RoleGroup roleGroup) {
+//		this.roleGroup = roleGroup;
+//	}
 
 }
