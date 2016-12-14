@@ -22,7 +22,7 @@
     }
 </style>
 </head>
-<body ng-app="MainApp"  >
+<body ng-app="app"  >
 
  <div class="bs-example">
 	<div id="custom-bootstrap-menu" class="navbar navbar-default navbar-fixed-top bg-faded ikFooter" role="navigation">

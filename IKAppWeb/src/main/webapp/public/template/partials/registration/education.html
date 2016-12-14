@@ -1,0 +1,55 @@
+<div class="panel" id="educationInf">
+	<table class="table table-responsive">
+		<tr>
+			<td>Eğitim Seviyesi</td>
+			<td>Başlangıç</td>
+			<td>Bitiş</td>
+			<td>Diploma Notu</td>
+			<td>Not Sistemi</td>
+			<td>Bölüm</td>
+			<td>Okul Adı</td>
+		</tr>
+		<tr class="mycontainer" id="mainrowEdu">
+			<td>
+				<select id="egtSev" name="egtSev" class="product form-control">
+					<option value="0">Seçiniz</option>
+					<option value="1">Lise</option>
+					<option value="2">Lisans</option>
+					<option value="3">Yüksek Lisans</option>
+					<option value="4">Doktora</option>
+				</select>
+			</td>
+			<td>
+				<input type="text" id="basTar" class="basTar form-control"/>
+			</td>
+			<td>
+				<input type="text" id="bitTar" class="bitTar form-control" />
+			</td>
+			<td>
+				<input type="text" id="diplomaNotu" class="diplomaNotu form-control" />
+			</td>
+			<td>
+				<select id="notSis" name="notSis" class="product form-control">
+					<option value="0">Seçiniz</option>
+					<option value="1">4</option>
+					<option value="2">5</option>
+					<option value="3">10</option>
+					<option value="4">100</option>
+				</select>
+			</td>
+			<td>
+				<input type="text" id="bolum" class="bolum form-control" />
+			</td>
+			<td>
+				<input type="text" id="okul" class="okul form-control" />
+			</td>
+			<td>
+				<input type="button" id="addEdu" value="Ekle" style="width:80px;" class="btn btn success" />
+			</td>
+		</tr>
+	</table>
+	<table class="table table-responsive" id="educatonItems">
+		<tbody>
+		</tbody>
+	</table>
+</div>

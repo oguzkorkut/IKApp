@@ -8,7 +8,7 @@
   	<module>IKAppConfiguration</module>
   	<module>IKAppWeb</module>
   	<module>IKAppCommon</module>
-  	<module>IKAppClient</module>
+  	
   </modules>
   
     <properties>
