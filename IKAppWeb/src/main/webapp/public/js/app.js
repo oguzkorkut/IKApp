@@ -1,4 +1,4 @@
-var app = angular.module('app',['ui.router','ngMaterial','ngResource','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+var app = angular.module('app',['ui.router','ngMaterial','ngResource','ngAnimate', 'ngSanitize', 'ui.bootstrap','ngMessages']);
 
 app.run(function($rootScope,$state,$http){
 	$rootScope.$state = $state;

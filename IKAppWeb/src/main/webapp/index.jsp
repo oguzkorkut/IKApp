@@ -48,7 +48,7 @@
 <script type="text/javascript" src="public/js/lib/ui-bootstrap-tpls-2.3.1/ui-bootstrap-tpls.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-aria.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-material.min.js"></script>
-<script type="text/javascript" src="public/js/lib/angular-messages.min.js"></script>
+<script type="text/javascript" src="public/js/lib/angular-messages-1.5.8/angular-messages.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-resource-1.5.8.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-cookies.js"></script>
 <script type="text/javascript" src="public/js/lib/jquery-3.1.1.min.js"></script>
