@@ -1,0 +1,17 @@
+{
+  "ecmaVersion": 5,
+  "plugins": {
+    "outline": {
+      
+    },
+    "angular1": {
+      
+    },
+    "bootstrap": {
+      
+    }
+  },
+  "libs": [
+    "jquery"
+  ]
+}

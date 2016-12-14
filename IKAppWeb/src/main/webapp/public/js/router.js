@@ -10,10 +10,10 @@ app.config(function($stateProvider,$urlRouterProvider){
 			templateUrl:'public/template/home.html',
 			controller:'MainController'
 		})
-		.state('/applications',{
-			url:'/applications',
-			templateUrl:'public/template/applications.html',
-			controller:'ApplicationController'
+		.state('/kayit',{
+			url:'/kayit',
+			templateUrl:'public/template/registration.html',
+			controller:'RegistrationController'
 		})
 		.state('profil',{
 			url:'/profil',

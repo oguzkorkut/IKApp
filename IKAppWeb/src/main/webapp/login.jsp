@@ -8,10 +8,10 @@
 		<title>Giriş</title>
 		
 		<link href="public/css/bootstrap-3.3.7/bootstrap.css" rel="stylesheet" />
-		<link rel="stylesheet" href="public/css/login2.css">
-		<link rel="stylesheet" type="text/css" href="public/css/font-awesome-4.2.0.css" />
+		<link rel="stylesheet" href="public/css/custom.css">
+		<link rel="stylesheet" type="text/css" href="public/css/font-awesome/font-awesome-4.2.0.css" />
 		<!-- http://localhost:8090/appik/public/css/fonts/fontawesome-webfont.woff?v=4.2.0 --> 
-		
+		 
 		<script data-main="public/js/Main" src="public/js/lib/jquery-3.1.1.min.js"></script>
 		<script data-main="public/js/Main" src="public/js/lib/jquery.cookie-1.4.1.js"></script>
 		<script data-main="public/js/Main" src="public/js/lib/login.js"></script>
@@ -32,11 +32,18 @@
 				return true;
 			}
 		
+			function doOnLoad() {
+				$('#registrationBtn').on('click',function(){
+					window.location.href= '<%=request.getContextPath()%>/#kayit';
+				});
+			}
+			
+		
 		</script>
 	</head>
 
-	<body>
-		<div id="mainWrapper">
+	<body onLoad="doOnLoad()">
+		<div id="mainContainer">
 			<div class="login-container">
 				<div class="login-card">
 					<div class="login-form">
@@ -74,7 +81,7 @@
 										class="btn btn-block btn-primary btn-default" value="Log in"> -->
 									<div class="input-group input-sm">
 										<button type="submit" id="loginBtn" class="btn btn-primary login-btn loginBtn">GİRİŞ YAP</button>
-										<button type="button" class="btn btn-primary login-btn registrationBtn">KAYIT OL</button>
+										<button type="button" id="registrationBtn" class="btn btn-primary login-btn registrationBtn">KAYIT OL</button>
 												&nbsp;<a id='loginForgotPassword' href="<%=request.getContextPath()%>/#sifremiUnuttum" class="user-link">Şifremi Unuttum</a>
 		                          	</div>
 	                          	

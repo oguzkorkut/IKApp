@@ -1,0 +1,312 @@
+<div class="generic-container">
+	<div class="well lead">Kayıt Formu</div>
+ 	<div class="center-block">
+ 	   <div class="form-group col-md-12">
+			<div class="row">
+				<div class="form-group col-md-12">
+					<uib-accordion close-others="oneAtATime">
+					   <div uib-accordion-group class="panel-default" heading="Kişisel Bilgileri" is-open="true" is-disabled="false">
+					      	<div class="panel"><br/>
+								<div class="row">				
+									<div class="form-group col-md-6">
+										<div class="col-md-8">
+											<input name="name" id="name" value="" class="form-control" placeholder="Ad" maxlength="50" required/>
+										</div>
+									</div>							
+									
+									<div class="form-group col-md-6">
+										<div class="col-md-8">
+											<input name="tcNo" id="tcNo" value="" class="form-control" placeholder="Tc No" maxlength="11"/>
+										</div>
+									</div>	
+									
+									<div class="form-group col-md-6">
+										<div class="col-md-8">
+											<input name="surname" id="surname" value="" class="form-control" placeholder="Soyad" maxlength="50" required/>
+										</div>
+									</div>		
+					
+									<div class="form-group col-md-6">
+										<div class="col-md-8">		
+											<input name="dogumYeri" id="dogumYeri" value="" class="form-control" placeholder="dogumYeri" maxlength="50" required/>
+										</div>
+									</div>				
+									
+								</div>
+								
+								<div class="row">
+									
+									<div class="form-group col-md-6">
+										<div class="col-md-8">	
+											<input name="askerlik" id="askerlik" value="" class="form-control" placeholder="Askerlik Durumu" />	
+										</div>
+									</div>
+													
+									<div class="form-group col-md-6">
+										<div class="col-md-8">	
+											<input type="date" name="dogumTarihi" id="dogumTarihi" value="" class="form-control" placeholder="Doğum Tarihi" />
+										</div>
+									</div>				
+									
+									<div class="form-group col-md-6">
+										<div class="col-md-8">
+											<label>Cinsiyet:<label>
+											<label class="radio-inline"><input type="radio" name="optradio">Erkek</label>
+											<label class="radio-inline"><input type="radio" name="optradio">Kadın</label><br/>				
+										</div>
+									</div>					
+									
+									<div class="form-group col-md-6">
+										<div class="col-md-8">
+											<label>Ehliyet:<label>
+											<label class="radio-inline"><input type="radio" name="optradio">Var</label>
+											<label class="radio-inline"><input type="radio" name="optradio">Yok</label><br/>				
+										</div>
+									</div>	
+									
+								</div>
+								<input type="button" id="addKİsi" value="Ekle" style="width:80px;float:right" class="btn btn success" />
+							</div>
+					    </div>
+					    <div uib-accordion-group class="panel-default" heading="İletişim Bilgileri">
+						      <div class="panel"><br/>
+								  <div class="row">				
+										<div class="form-group col-md-6">
+											<div class="col-md-8">
+												<textarea class="form-control" rows="5" id="adress" placeholder="Adres"></textarea>
+											</div>
+										</div>							
+										
+										<div class="form-group col-md-6">
+											<div class="col-md-8">
+												<input name="tel" id="tel" value="" class="form-control" placeholder="Telefon Numarası" />
+											</div>
+										</div>	
+										
+										<div class="form-group col-md-6">
+											<div class="col-md-8">
+												<input name="email" id="email" value="" class="form-control" placeholder="Email" />
+											</div>
+										</div>		
+										
+									</div>
+									<input type="button" id="addIletisim" value="Ekle" style="width:80px;float:right;" class="btn btn success" />
+								</div>
+					    </div>
+					    <div uib-accordion-group class="panel-default" heading="Eğitim Bilgileri">
+						     	<div class="panel">
+									<table class="table table-responsive">
+										<tr>
+											<td>Eğitim Seviyesi</td>
+											<td>Başlangıç</td>
+											<td>Bitiş</td>
+											<td>Diploma Notu</td>
+											<td>Not Sistemi</td>
+											<td>Bölüm</td>
+											<td>Okul Adı</td>
+										</tr>
+										<tr class="mycontainer" id="mainrowEdu">
+											<td>
+												<select id="egtSev" name="egtSev" class="product form-control">
+													<option value="0">Seçiniz</option>
+													<option value="1">Lise</option>
+													<option value="2">Lisans</option>
+													<option value="3">Yüksek Lisans</option>
+													<option value="4">Doktora</option>
+												</select>
+											</td>
+											<td>
+												<input type="text" id="basTar" class="basTar form-control"/>
+											</td>
+											<td>
+												<input type="text" id="bitTar" class="bitTar form-control" />
+											</td>
+											<td>
+												<input type="text" id="diplomaNotu" class="diplomaNotu form-control" />
+											</td>
+											<td>
+												<select id="notSis" name="notSis" class="product form-control">
+													<option value="0">Seçiniz</option>
+													<option value="1">4</option>
+													<option value="2">5</option>
+													<option value="3">10</option>
+													<option value="4">100</option>
+												</select>
+											</td>
+											<td>
+												<input type="text" id="bolum" class="bolum form-control" />
+											</td>
+											<td>
+												<input type="text" id="okul" class="okul form-control" />
+											</td>
+											<td>
+												<input type="button" id="addEdu" value="Ekle" style="width:80px;" class="btn btn success" />
+											</td>
+										</tr>
+									</table>
+									<table class="table table-responsive" id="educatonItems">
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+					    </div>
+					    <div uib-accordion-group class="panel-default" heading="Yabancı Bilgileri">
+						      <div class="panel">
+								  <table class="table table-responsive">
+										<tr>
+											<td>Yabancı Dil</td>
+											<td>Okuma</td>
+											<td>Yazma</td>
+											<td>Konuşma</td>
+										</tr>
+										<tr class="mycontainer" id="mainrowLang">
+											<td>
+												<input type="text" id="lang" class="lang form-control"/>
+											</td>
+											<td>
+												<input type="text" id="okuma" class="okuma form-control" />
+											</td>
+											<td>
+												<input type="text" id="yazma" class="yazma form-control" />
+											</td>
+											<td>
+												<input type="text" id="konusma" class="konusma form-control" />
+											</td>
+											<td>
+												<input type="button" id="addLang" value="Ekle" style="width:80px;" class="btn btn success" />
+											</td>
+										</tr>
+									</table>
+									<table class="table table-responsive" id="langItems">
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+
+					    </div>
+					    <div uib-accordion-group class="panel-default">
+					      <uib-accordion-heading>
+					        İş Deneyimi
+					      </uib-accordion-heading>
+					      
+						      <div class="panel">
+								  <table class="table table-responsive">
+										<tr>
+											<td>Firma</td>
+											<td>Başlangıç</td>
+											<td>Bitiş</td>
+											<td>Pozisyon</td>
+										</tr>
+										<tr class="mycontainer" id="mainrowIs">
+											<td>
+												<input type="text" id="firma" class="firma form-control"/>
+											</td>
+											<td>
+												<input type="text" id="bas" class="bas form-control" />
+											</td>
+											<td>
+												<input type="text" id="bit" class="bit form-control" />
+											</td>
+											<td>
+												<input type="text" id="poz" class="poz form-control" />
+											</td>
+											<td>
+												<input type="button" id="addIs" value="Ekle" style="width:80px;" class="btn btn success" />
+											</td>
+										</tr>
+									</table>
+									<table class="table table-responsive" id="IsItems">
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+					      
+					      
+					    </div>
+					    <div uib-accordion-group class="panel-default">
+					      <uib-accordion-heading>
+					        Sertifikalar
+					      </uib-accordion-heading>
+					      
+						      <div class="panel">
+								  <table class="table table-responsive">
+										<tr>
+											<td>Eğitim Adı</td>
+											<td>Eğitim Kurumu</td>
+											<td>Başlangıç</td>
+											<td>Bitiş</td>
+										</tr>
+										<tr class="mycontainer" id="mainrowSer">
+											<td>
+												<input type="text" id="egAdi" class="egAdi form-control"/>
+											</td>
+											<td>
+												<input type="text" id="egKurum" class="okuma form-control" />
+											</td>
+											<td>
+												<input type="text" id="bas" class="yazma form-control" />
+											</td>
+											<td>
+												<input type="text" id="bit" class="konusma form-control" />
+											</td>
+											<td>
+												<input type="button" id="addSer" value="Ekle" style="width:80px;" class="btn btn success" />
+											</td>
+										</tr>
+									</table>
+									<table class="table table-responsive" id="SerItems">
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+					      
+					    </div>
+					    <div uib-accordion-group class="panel-default" >
+					      <uib-accordion-heading>
+					        Referanslar
+					      </uib-accordion-heading>
+					      
+					      	<div class="panel">
+								<table class="table table-responsive">
+									<tr>
+										<td>Referans Adı</td>
+										<td>Referans Soyadı</td>
+										<td>Pozisyon</td>
+										<td>Telefon</td>
+										<td>Email</td>
+									</tr>
+									<tr class="mycontainer" id="mainrowRef">
+										<td>
+											<input type="text" id="refAdi" class="refAdi form-control"/>
+										</td>
+										<td>
+											<input type="text" id="refSoyad" class="refSoyad form-control" />
+										</td>
+										<td>
+											<input type="text" id="poz" class="poz form-control" />
+										</td>
+										<td>
+											<input type="text" id="tel" class="tel form-control" />
+										</td>
+										<td>
+											<input type="text" id="email" class="email form-control" />
+										</td>
+										<td>
+											<input type="button" id="addRef" value="Ekle" style="width:80px;" class="btn btn success" />
+										</td>
+									</tr>
+								</table>
+								<table class="table table-responsive" id="RefItems">
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+					      
+				  </uib-accordion>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- https://plnkr.co/edit/E2eHZeWh7IhBfLKBphok?p=preview -->
