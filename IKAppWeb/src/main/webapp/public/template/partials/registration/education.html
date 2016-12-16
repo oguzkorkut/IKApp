@@ -1,55 +1,53 @@
 <div class="panel" id="educationInf">
-	<table class="table table-responsive">
-		<tr>
-			<td>Eğitim Seviyesi</td>
-			<td>Başlangıç</td>
-			<td>Bitiş</td>
-			<td>Diploma Notu</td>
-			<td>Not Sistemi</td>
-			<td>Bölüm</td>
-			<td>Okul Adı</td>
-		</tr>
-		<tr class="mycontainer" id="mainrowEdu">
-			<td>
-				<select id="egtSev" name="egtSev" class="product form-control">
-					<option value="0">Seçiniz</option>
-					<option value="1">Lise</option>
-					<option value="2">Lisans</option>
-					<option value="3">Yüksek Lisans</option>
-					<option value="4">Doktora</option>
-				</select>
-			</td>
-			<td>
-				<input type="text" id="basTar" class="basTar form-control"/>
-			</td>
-			<td>
-				<input type="text" id="bitTar" class="bitTar form-control" />
-			</td>
-			<td>
-				<input type="text" id="diplomaNotu" class="diplomaNotu form-control" />
-			</td>
-			<td>
-				<select id="notSis" name="notSis" class="product form-control">
-					<option value="0">Seçiniz</option>
-					<option value="1">4</option>
-					<option value="2">5</option>
-					<option value="3">10</option>
-					<option value="4">100</option>
-				</select>
-			</td>
-			<td>
-				<input type="text" id="bolum" class="bolum form-control" />
-			</td>
-			<td>
-				<input type="text" id="okul" class="okul form-control" />
-			</td>
-			<td>
-				<input type="button" id="addEdu" value="Ekle" style="width:80px;" class="btn btn success" />
-			</td>
-		</tr>
-	</table>
-	<table class="table table-responsive" id="educatonItems">
-		<tbody>
-		</tbody>
-	</table>
+
+	 	 <div layout="row" >
+		 	 <md-input-container class="md-block" flex-gt-sm="">
+	          <label>Eğitim Seviyesi</label>
+	          <md-select name="educationLevel" ng-model="user.educations.educationLevel" required="">
+				<md-option value="0">Lise</md-option>
+				<md-option value="1">Lisans</md-option>
+				<md-option value="2">Yüksek Lisans</md-option>
+				<md-option value="3">Doktora</md-option>	
+	          </md-select>
+	        </md-input-container>
+	        
+	         <md-input-container class="md-block" flex-gt-sm="">
+	           <label>Başlangıç</label>
+	           <md-datepicker id="educationBeginDate" name="educationBeginDate" ng-model="user.educations.beginDate" required></md-datepicker>
+	        </md-input-container>
+	        
+	         <md-input-container class="md-block" flex-gt-sm="">
+	           <label>Bitiş</label>
+	           <md-datepicker id="educationEndDate" name="educationEndDate" ng-model="user.educations.endDate" required></md-datepicker>
+	        </md-input-container>
+	        
+	        <md-input-container class="md-block" flex-gt-sm="">
+	             <label>Diploma Notu</label>
+		         <input type="text" name="educationGrade" id="educationGrade" ng-model="user.educations.grade"  maxlength="50" required>
+	         </md-input-container>
+	         
+	         <md-input-container class="md-block" flex-gt-sm="">
+	          <label>Note Sistemi</label>
+	          <md-select name="educationGradeSystem" ng-model="user.educations.gradeSystem" required="">
+				<md-option value="4">4</md-option>
+				<md-option value="5">5</md-option>
+				<md-option value="10">10</md-option>
+				<md-option value="100">100</md-option>	
+	          </md-select>
+	        </md-input-container>
+	        
+	        <md-input-container class="md-block" flex-gt-sm="">
+	             <label>Bölüm</label>
+		         <input type="text" name="educationBranch" id="educationBranch" ng-model="user.educations.branch"  maxlength="50" required>
+	         </md-input-container>
+	         
+	         <md-input-container class="md-block" flex-gt-sm="">
+	             <label>Okul</label>
+		         <input type="text" name="educationSchoolName" id="educationSchoolName" ng-model="user.educations.schoolName"  maxlength="50" required>
+	         </md-input-container>
+	         
+	         <div layout="column">
+	        	<md-button class="add-tab md-primary md-raised" ng-disabled="!tTitle || !tContent" type="submit" style="margin-right: 0;">Ekle</md-button>
+	        </div>
+        </div>
 </div>

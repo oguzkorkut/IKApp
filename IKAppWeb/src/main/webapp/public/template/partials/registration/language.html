@@ -1,31 +1,44 @@
 <div class="panel" id="languageInf">
-  <table class="table table-responsive">
-		<tr>
-			<td>Yabancı Dil</td>
-			<td>Okuma</td>
-			<td>Yazma</td>
-			<td>Konuşma</td>
-		</tr>
-		<tr class="mycontainer" id="mainrowLang">
-			<td>
-				<input type="text" id="lang" class="lang form-control"/>
-			</td>
-			<td>
-				<input type="text" id="okuma" class="okuma form-control" />
-			</td>
-			<td>
-				<input type="text" id="yazma" class="yazma form-control" />
-			</td>
-			<td>
-				<input type="text" id="konusma" class="konusma form-control" />
-			</td>
-			<td>
-				<input type="button" id="addLang" value="Ekle" style="width:80px;" class="btn btn success" />
-			</td>
-		</tr>
-	</table>
-	<table class="table table-responsive" id="langItems">
-		<tbody>
-		</tbody>
-	</table>
+
+	<div layout="row" >
+		<md-input-container class="md-block" flex-gt-sm="">
+	       <label>Yabancı Dil</label>
+	       <input type="text" name="languageName" id="languageName" ng-model="user.languages.language"  maxlength="50" required>
+	    </md-input-container>
+	      
+	    <md-input-container class="md-block" flex-gt-sm="">
+	        <label>Okuma</label>
+	        <md-select name="languageReading" ng-model="user.languages.reading" required="">
+				<md-option value="0">Başlangıç</md-option>
+				<md-option value="1">Orta</md-option>
+				<md-option value="2">İyi</md-option>
+	        </md-select>
+	    </md-input-container>
+	      
+	    <md-input-container class="md-block" flex-gt-sm="">
+	        <label>Yazma</label>
+	        <md-select name="languageWriting"  ng-model="user.languages.writing" required="">
+				<md-option value="0">Başlangıç</md-option>
+				<md-option value="1">Orta</md-option>
+				<md-option value="2">İyi</md-option>
+	        </md-select>
+	    </md-input-container> 
+	       
+	      <md-input-container class="md-block" flex-gt-sm="">
+	        <label>Konuşma</label>
+	        <md-select name="languageSpeaking" ng-model="user.languages.speaking" required="">
+				<md-option value="0">Başlangıç</md-option>
+				<md-option value="1">Orta</md-option>
+				<md-option value="2">İyi</md-option>
+	        </md-select>
+	      </md-input-container>
+	       
+	      
+	      <div layout="column">
+	     		<md-button class="add-tab md-primary md-raised" ng-disabled="!languageName || !languageReading || !languageWriting || !languageSpeaking" type="submit" style="margin-right: 0;">Ekle</md-button>
+	   	  </div>
+	 </div>
+
+
+  
 </div>

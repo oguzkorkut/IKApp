@@ -52,9 +52,19 @@ public class Experience implements Serializable {
 //	public void setId(ExperiencePK id) {
 //		this.id = id;
 //	}
+	
+	
 
 	public byte getActive() {
 		return this.active;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setActive(byte active) {

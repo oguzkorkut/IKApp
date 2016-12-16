@@ -44,6 +44,7 @@ public class Language implements Serializable {
 	public Language() {
 	}
 
+	
 //	public LanguagePK getId() {
 //		return this.id;
 //	}
@@ -51,6 +52,16 @@ public class Language implements Serializable {
 //	public void setId(LanguagePK id) {
 //		this.id = id;
 //	}
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public byte getActive() {
 		return this.active;

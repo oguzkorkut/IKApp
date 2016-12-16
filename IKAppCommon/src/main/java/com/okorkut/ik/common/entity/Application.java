@@ -71,6 +71,14 @@ public class Application implements Serializable {
 		return this.active;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public void setActive(byte active) {
 		this.active = active;
 	}

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Haber Sitesi</title>
+<title>App</title>
 
 <link href="public/css/bootstrap-3.3.7/bootstrap.css" rel="stylesheet" />
 <link href="public/css/bootstrap-3.3.7/bootstrap-responsive.css" rel="stylesheet" />
@@ -53,9 +53,9 @@
 <script type="text/javascript" src="public/js/lib/angular-cookies.js"></script>
 <script type="text/javascript" src="public/js/lib/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-1.5.8/i18n/angular-locale_tr.js"></script>
+<script type="text/javascript" src="public/js/lib/svg-assets-cache-114/svg-assets-cache.js"></script>
 
 <script type="text/javascript" src="public/js/lib/bootstrap-3.3.7/bootstrap.js"></script>
-
 
 <!-- app -->
 <script type="text/javascript" src="public/js/app.js"></script>

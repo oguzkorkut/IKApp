@@ -1,0 +1,102 @@
+<div class="panel md-inline-form" id="personalInf"><br/>
+
+	<md-content layout-padding="">
+		<div>
+			 <div layout-gt-sm="row">
+	          <md-input-container class="md-block" flex-gt-sm="">
+	            <label>First name</label>
+	            <input ng-model="user.firstName">
+	          </md-input-container>
+	
+	          <md-input-container class="md-block" flex-gt-sm="">
+	            <label>Long Last Name That Will Be Truncated And 3 Dots (Ellipsis) Will Appear At The End</label>
+	            <input ng-model="theMax">
+	          </md-input-container>
+	        </div>
+		</div>
+	</md-content>
+
+	<div class="row">				
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.name.$touched && registrationForm.name.$invalid }">
+			<div class="col-md-8" >
+				<input name="name" id="name" ng-model="user.name" class="form-control name" placeholder="Ad" maxlength="50" ng-maxlength="50" required/>
+			    <div class="help-block" ng-messages="registrationForm.name.$error" ng-if="registrationForm.name.$touched">
+					<!-- <p ng-message="maxlength">Maksimum 50 karakter girilebillir.</p> -->
+					<p ng-message="required">Adınızı giriniz</p>
+				</div>
+			</div>
+		</div>							
+		
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.tcNo.$touched && registrationForm.tcNo.$invalid }">
+			<div class="col-md-8" >
+				<input type="text" name="tcNo" id="tcNo" ng-model="user.profileDto.tcNo" class="form-control tcNo" placeholder="Tc No" maxlength="11" ng-minlength="11"  ng-maxlength="11" required/>
+				
+				 <div class="help-block" ng-messages="registrationForm.tcNo.$error" ng-if="registrationForm.tcNo.$touched">
+				 	<p ng-message="minlength">T.C. kimlik numarası minimum 11 karakter olmalıdır.</p>
+					<!-- <p ng-message="maxlength">T.C. kimlik numarası maksimum 11 karakter olmalıdır.</p> -->
+					<p ng-message="required">T.C. kimlik numarası alanı zorunlu alandır.</p>
+				</div>
+			</div>
+		</div>	
+		
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.surname.$touched && registrationForm.surname.$invalid }">
+			<div class="col-md-8">
+				<md-input-container>
+		          <label>Street Name</label>
+		          <input>
+		        </md-input-container>
+				<input type="text" name="surname" id="surname" ng-model="user.surname" class="form-control" placeholder="Soyad" maxlength="50" required/>
+				<div class="help-block" ng-messages="registrationForm.surname.$error" ng-if="registrationForm.surname.$touched">
+					<!-- <p ng-message="maxlength">Soyad alanı maksimum 50 karakter olabilir.</p> -->
+					<p ng-message="required">Soyadınızı giriniz.</p>
+				</div>
+			</div>
+		</div>		
+
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.birthDate.$touched && registrationForm.birthDate.$invalid }">
+			<div class="col-md-8">		
+				<input type="date" name="birthDate" id="birthDate" ng-model="user.profileDto.birthDate" class="form-control" placeholder="Doğum Tarihi" required/>
+			    <div class="help-block" ng-messages="registrationForm.birthDate.$error" ng-if="registrationForm.birthDate.$touched">
+					<p ng-message="required">Doğum tarihinizi giriniz.</p>
+				</div>
+			</div>
+		</div>				
+		
+	</div>
+	
+	<div class="row">
+		
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.password.$touched && registrationForm.password.$invalid }">
+			<div class="col-md-8">	
+				<input type="password" name="password" id="password" ng-model="user.password" value="" class="form-control" placeholder="Şifre" required/>
+				 <div class="help-block" ng-messages="registrationForm.password.$error" ng-if="registrationForm.password.$touched">
+					<p ng-message="required">Şifre giriniz.</p>
+				</div>
+			</div>
+		</div>
+						
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.email.$touched && registrationForm.email.$invalid }">
+			<div class="col-md-8">	
+				<input type="email" name="email" id="email" value="" class="form-control" placeholder="E-Posta" />
+			</div>
+		</div>				
+		
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.name.$touched && registrationForm.name.$invalid }">
+			<div class="col-md-8">
+				<label>Cinsiyet:<label>
+				<label class="radio-inline"><input type="radio" name="optradio">Erkek</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Kadın</label><br/>				
+			</div>
+		</div>					
+		
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.name.$touched && registrationForm.name.$invalid }">
+			<div class="col-md-8">
+				<label>Ehliyet:<label>
+				<label class="radio-inline"><input type="radio" name="optradio">Var</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Yok</label><br/>				
+			</div>
+		</div>	
+		
+	</div>
+	<!-- <input type="button" id="addKÄ°si" value="Ekle" style="width:80px;float:right" class="btn btn success" /> -->
+</div>

@@ -50,6 +50,14 @@ public class RoleGroup implements Serializable {
 	public RoleGroup() {
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public byte getActive() {
 		return this.active;
 	}

@@ -62,9 +62,19 @@ public class Education implements Serializable {
 //	public void setId(EducationPK id) {
 //		this.id = id;
 //	}
+	
+	
 
 	public Timestamp getBeginDate() {
 		return this.beginDate;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setBeginDate(Timestamp beginDate) {

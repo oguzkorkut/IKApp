@@ -1,35 +1,46 @@
 <div class="panel">
-	<table class="table table-responsive">
-		<tr>
-			<td>Referans Adı</td>
-			<td>Referans Soyadı</td>
-			<td>Pozisyon</td>
-			<td>Telefon</td>
-			<td>Email</td>
-		</tr>
-		<tr class="mycontainer" id="mainrowRef">
-			<td>
-				<input type="text" id="refAdi" class="refAdi form-control"/>
-			</td>
-			<td>
-				<input type="text" id="refSoyad" class="refSoyad form-control" />
-			</td>
-			<td>
-				<input type="text" id="poz" class="poz form-control" />
-			</td>
-			<td>
-				<input type="text" id="tel" class="tel form-control" />
-			</td>
-			<td>
-				<input type="text" id="email" class="email form-control" />
-			</td>
-			<td>
-				<input type="button" id="addRef" value="Ekle" style="width:80px;" class="btn btn success" />
-			</td>
-		</tr>
-	</table>
-	<table class="table table-responsive" id="RefItems">
-		<tbody>
-		</tbody>
-	</table>
+
+<div layout="row" >
+		<md-input-container class="md-block" flex-gt-sm="80">
+	       <label>Ad</label>
+	       <input type="text" name="referenceName" id="referenceName" ng-model="user.references.name"  maxlength="50" required>
+	    </md-input-container>
+	    
+	    <md-input-container class="md-block" flex-gt-sm="80">
+	       <label>Soyad</label>
+	       <input type="text" name="referenceLastname" id="referenceLastname" ng-model="user.references.lastname"  maxlength="50" required>
+	    </md-input-container>
+	      
+	     <md-input-container class="md-block" flex-gt-sm="80">
+	       <label>Pozisyon</label>
+	       <input type="text" name="referencePosition" id="referencePosition" ng-model="user.references.position"  maxlength="50" required>
+	    </md-input-container>
+	    
+	    <md-input-container class="md-block" flex-gt-sm="80">
+	       <label>Telefon</label>
+	       <input name="referenceMobilePhone"   id="referenceMobilePhone" ng-model="user.references.mobilePhone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/"  required/>
+	       <div class="hint">(###) ###-####</div>
+
+           <div ng-messages="registrationForm.referenceMobilePhone.$error" >
+            <div ng-message="pattern">(###) ###-#### - Formata uygun telefon numarası giriniz.</div>
+           </div>
+	    </md-input-container>
+	    
+	    <md-input-container class="md-block" flex-gt-sm="80">
+	        <label>E-Posta</label>
+	        <input  type="email" name="referenceEmail"  id="referenceEmail" ng-model="project.clientEmail"  maxlength="50" ng-pattern="/^.+@.+\..+$/" required="">
+	
+	        <div ng-messages="registrationForm.referenceEmail.$error" role="alert">
+	          <!-- <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> -->
+	          <div ng-message-exp="['required',  'maxlength', 'pattern']">
+	             E-Posta adresi(xxxx@xxx.com) zorunludur.
+	          </div>
+	        </div>
+       </md-input-container>
+	      
+       <div layout="column">
+       		<!-- <md-button ng-disabled="true" class="md-primary">Disabled</md-button> -->
+     		<md-button class="add-tab md-primary md-raised" ng-disabled="!referenceName || !referenceLastname || !referencePosition || !referenceMobilePhone || !referenceEmail" type="submit" style="margin-right: 0;">Ekle</md-button>
+   	   </div>
+	 </div>
 </div>

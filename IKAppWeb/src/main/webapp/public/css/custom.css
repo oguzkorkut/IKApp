@@ -84,3 +84,6 @@ body, #mainContainer, .form-control{
 .authbar{
 	margin-bottom:15px;
 }
+
+.selectdemoBasicUsage md-input-container {
+  margin-right: 10px; }

@@ -1,31 +1,29 @@
 <div class="panel">
-  <table class="table table-responsive">
-		<tr>
-			<td>Firma</td>
-			<td>Başlangıç</td>
-			<td>Bitiş</td>
-			<td>Pozisyon</td>
-		</tr>
-		<tr class="mycontainer" id="mainrowIs">
-			<td>
-				<input type="text" id="firma" class="firma form-control"/>
-			</td>
-			<td>
-				<input type="text" id="bas" class="bas form-control" />
-			</td>
-			<td>
-				<input type="text" id="bit" class="bit form-control" />
-			</td>
-			<td>
-				<input type="text" id="poz" class="poz form-control" />
-			</td>
-			<td>
-				<input type="button" id="addIs" value="Ekle" style="width:80px;" class="btn btn success" />
-			</td>
-		</tr>
-	</table>
-	<table class="table table-responsive" id="IsItems">
-		<tbody>
-		</tbody>
-	</table>
+
+	<div layout="row" >
+		<md-input-container class="md-block" flex-gt-sm="">
+	       <label>Firma</label>
+	       <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
+	    </md-input-container>
+	      
+	     <md-input-container class="md-block" flex-gt-sm="">
+           <label>Başlangıç</label>
+           <md-datepicker id="startDate" name="startDate" ng-model="user.startDate" required></md-datepicker>
+        </md-input-container>
+	      
+	     <md-input-container class="md-block" flex-gt-sm="">
+           <label>Bitiş</label>
+           <md-datepicker id="startDate" name="startDate" ng-model="user.startDate" required></md-datepicker>
+        </md-input-container>
+	       
+	   <md-input-container class="md-block" flex-gt-sm="">
+          <label>Firma</label>
+      	  <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
+       </md-input-container>
+	      
+       <div layout="column">
+     		<md-button class="add-tab md-primary md-raised" ng-disabled="!tTitle || !tContent" type="submit" style="margin-right: 0;">Ekle</md-button>
+   	   </div>
+	 </div>
+	 
 </div>

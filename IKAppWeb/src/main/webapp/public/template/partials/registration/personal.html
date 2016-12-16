@@ -1,77 +1,65 @@
-<div class="panel" id="personalInf"><br/>
-	<div class="row">				
-		<div class="form-group col-md-6">
-			<div class="col-md-8">
-				<input name="name" id="name" ng-model="name" class="form-control name" placeholder="Ad" maxlength="50" ng-maxlength="50" required/>
-			    <div class="help-block" ng-messages="registrationForm.name.$error" ng-if="registrationForm.name.$touched">
-					<p ng-message="maxlength">Maksimum 50 karakter girilebillir.</p>
-					<p ng-message="required">Adınızı giriniz.</p>
-				</div>
-			</div>
-		</div>							
+<div class="panel md-inline-form" id="personalInf"><br/>
+	<md-content layout-padding="">
+		<div>
 		
-		<div class="form-group col-md-6">
-			<div class="col-md-8">
-				<input name="tcNo" id="tcNo" ng-model="tcNo" class="form-control tcNo" placeholder="Tc No" maxlength="11" ng-minlength="11"  ng-maxlength="11" required/>
-				
-				 <div class="help-block" ng-messages="registrationForm.name.$error" ng-if="registrationForm.name.$touched">
-				 	<p ng-message="minlength">T.C. kimlik numarası minimum 11 karakter olmalıdır.</p>
-					<p ng-message="maxlength">T.C. kimlik numarası maksimum 11 karakter olmalıdır.</p>
-					<p ng-message="required">T.C. kimlik numarası alanı zorunlu alandır.</p>
-				</div>
-			</div>
-		</div>	
-		
-		<div class="form-group col-md-6">
-			<div class="col-md-8">
-				<input name="surname" id="surname" ng-model="surname" class="form-control" placeholder="Soyad" maxlength="50" required/>
-				<div class="help-block" ng-messages="registrationForm.surname.$error" ng-if="registrationForm.surname.$touched">
-				 	<p ng-message="minlength">T.C. kimlik numarası minimum 11 karakter olmalıdır.</p>
-					<p ng-message="maxlength">Soyad alanı maksimum 50 karakter olabilir.</p>
-					<p ng-message="required">Soyadınızı giriniz.</p>
-				</div>
-			</div>
-		</div>		
-
-		<div class="form-group col-md-6">
-			<div class="col-md-8">		
-				<input name="dogumYeri" id="dogumYeri" value="" class="form-control" placeholder="dogumYeri" required/>
-			    <p ng-show="registrationForm.surname.$error.required">Soyadınızı giriniz.</p>
-			</div>
-		</div>				
-		
-	</div>
+			<div layout-gt-sm="row">
+	          <md-input-container class="md-block" flex-gt-sm="">
+	             <label>Ad</label>
+		         <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
+	          </md-input-container>
 	
-	<div class="row">
+	          <md-input-container class="md-block" flex-gt-sm="">
+	           <label>Soyad</label>
+	            <input  type="text" name="surname" id="surname" ng-model="user.surname"  maxlength="50" required>
+	          </md-input-container>
+	        </div>
+	        
+	        <div layout-gt-sm="row">
+	          <md-input-container class="md-block" flex-gt-sm="">
+	            <label>T.C. Kimlik Numarası</label>
+	            <input type="number" name="tcNo" ng-model="user.profileDto.tcNo"  required=""  ng-pattern="/^[0-9]{11}$/"  md-maxlength="11" md-minlength="11">
 		
-		<div class="form-group col-md-6">
-			<div class="col-md-8">	
-				<input name="askerlik" id="askerlik" value="" class="form-control" placeholder="Askerlik Durumu" />	
-			</div>
+		            <div ng-messages="userForm.tcNo.$error" role="alert" multiple="">
+		              <div ng-message="required" class="my-message">T.C. kimlik numaranızı giriniz.</div>
+		              <!-- <div ng-message="pattern" class="my-message">Girilen değer formata uygun değil.
+		              </div> -->
+		              <div ng-message="md-maxlength" class="my-message">
+		                ...
+		              </div>
+		              <div ng-message="md-minlength" class="my-message">
+		                T.C. kimlik numarası minimum 11 karakter olmalıdır.
+		              </div>
+		            </div>
+	          </md-input-container>
+	
+	          <md-input-container class="md-block" flex-gt-sm="">
+	            <label>Cinsiyet</label>
+	            <md-select ng-model="user.profileDto.gender">
+	              <md-option ng-repeat="gender in genderList" value="{{gender.value}}">
+	                {{gender.value}}
+	              </md-option>
+	            </md-select>
+	          </md-input-container>
+	
+	          <md-input-container class="md-block" flex-gt-sm="">
+	           <label>Doğum Tarihi</label>
+	           <md-datepicker id="birthDate" name="birthDate" ng-model="user.birthDate" required></md-datepicker>
+	          </md-input-container>
+	        </div>
+	        
+	        <div layout-gt-sm="row">
+	          <md-input-container class="md-block" flex-gt-sm="">
+	             <label>E-Posta</label>
+		         <input type="email" name="email" id="emial" ng-model="user.email"  maxlength="50" required>
+	          </md-input-container>
+	
+	          <md-input-container class="md-block" flex-gt-sm="">
+	           <label>Şifre</label>
+	            <input  type="password" name="password" id="password" ng-model="user.password"  maxlength="50" required>
+	          </md-input-container>
+	        </div>
 		</div>
-						
-		<div class="form-group col-md-6">
-			<div class="col-md-8">	
-				<input type="date" name="dogumTarihi" id="dogumTarihi" value="" class="form-control" placeholder="Doğum Tarihi" />
-			</div>
-		</div>				
-		
-		<div class="form-group col-md-6">
-			<div class="col-md-8">
-				<label>Cinsiyet:<label>
-				<label class="radio-inline"><input type="radio" name="optradio">Erkek</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Kadın</label><br/>				
-			</div>
-		</div>					
-		
-		<div class="form-group col-md-6">
-			<div class="col-md-8">
-				<label>Ehliyet:<label>
-				<label class="radio-inline"><input type="radio" name="optradio">Var</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Yok</label><br/>				
-			</div>
-		</div>	
-		
-	</div>
-	<!-- <input type="button" id="addKİsi" value="Ekle" style="width:80px;float:right" class="btn btn success" /> -->
+	</md-content>
+
+	<!-- <input type="button" id="addKÄ°si" value="Ekle" style="width:80px;float:right" class="btn btn success" /> -->
 </div>
