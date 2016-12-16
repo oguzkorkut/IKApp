@@ -6,21 +6,14 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.okorkut.ik.common.entity.Application</class>
-		<class>com.okorkut.ik.common.entity.ApplicationPK</class>
 		<class>com.okorkut.ik.common.entity.Education</class>
-		<class>com.okorkut.ik.common.entity.EducationPK</class>
 		<class>com.okorkut.ik.common.entity.Experience</class>
-		<class>com.okorkut.ik.common.entity.ExperiencePK</class>
 		<class>com.okorkut.ik.common.entity.Language</class>
-		<class>com.okorkut.ik.common.entity.LanguagePK</class>
 		<class>com.okorkut.ik.common.entity.Position</class>
 		<class>com.okorkut.ik.common.entity.Profile</class>
-		<class>com.okorkut.ik.common.entity.ProfilePK</class>
 		<class>com.okorkut.ik.common.entity.Reference</class>
-		<class>com.okorkut.ik.common.entity.ReferencePK</class>
 		<class>com.okorkut.ik.common.entity.Role</class>
 		<class>com.okorkut.ik.common.entity.RoleGroup</class>
-		<class>com.okorkut.ik.common.entity.RoleGroupPK</class>
 		<class>com.okorkut.ik.common.entity.User</class>
 		<properties>
         	<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />

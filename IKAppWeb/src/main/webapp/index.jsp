@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -21,11 +21,22 @@
 .main-dive{
     	margin: 20px;
     }
+    html {
+            overflow: scroll;
+            height: 100%;
+             overflow-y: scroll;
+  width: 100%;
+        }
+        
+       body {
+            overflow: scroll;
+             overflow-y: scroll;
+        }
 </style>
 </head>
-<body ng-app="app"  >
+<body ng-app="app" >
 
- <div class="main-dive">
+ <div class="main-dive" style="overflow: auto !important;">
 
 	<!-- header -->
 	<header-detail></header-detail>
@@ -39,7 +50,6 @@
 	<footer-detail></footer-detail>
 </div>
      
-
 
 <script type="text/javascript" src="public/js/lib/angular.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-ui-router-0.3.1.js"></script>
@@ -64,11 +74,20 @@
 <script type="text/javascript" src="public/js/controller/controllers.js"></script>
 <script type="text/javascript" src="public/js/controller/registrationController.js"></script>
 
+
+<script type="text/javascript" src="public/js/controller/toast.js"></script>
+
 <!-- Router -->
 <script type="text/javascript" src="public/js/router.js"></script>
 
 <!-- Directive -->
 <script type="text/javascript" src="public/js/directive/footer.js"></script>
 <script type="text/javascript" src="public/js/directive/header.js"></script>
+
+<!-- Service -->
+<script type="text/javascript" src="public/js/service/constantService.js"></script>
+<script type="text/javascript" src="public/js/service/userService.js"></script>
+
+
 </body>
 </html>

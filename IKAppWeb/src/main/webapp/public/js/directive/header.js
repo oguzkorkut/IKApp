@@ -2,6 +2,6 @@ app.directive("headerDetail", function(){
 	return {
 		scope: {},
 		restrict: "E",
-		templateUrl: "public/template/header.html"
+		templateUrl: "public/template/header.jsp"
 	}
 })

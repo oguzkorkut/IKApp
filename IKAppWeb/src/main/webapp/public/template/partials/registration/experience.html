@@ -1,29 +1,30 @@
-<div class="panel">
-
-	<div layout="row" >
-		<md-input-container class="md-block" flex-gt-sm="">
-	       <label>Firma</label>
-	       <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
-	    </md-input-container>
-	      
-	     <md-input-container class="md-block" flex-gt-sm="">
-           <label>Başlangıç</label>
-           <md-datepicker id="startDate" name="startDate" ng-model="user.startDate" required></md-datepicker>
-        </md-input-container>
-	      
-	     <md-input-container class="md-block" flex-gt-sm="">
-           <label>Bitiş</label>
-           <md-datepicker id="startDate" name="startDate" ng-model="user.startDate" required></md-datepicker>
-        </md-input-container>
-	       
-	   <md-input-container class="md-block" flex-gt-sm="">
-          <label>Firma</label>
-      	  <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
-       </md-input-container>
-	      
-       <div layout="column">
-     		<md-button class="add-tab md-primary md-raised" ng-disabled="!tTitle || !tContent" type="submit" style="margin-right: 0;">Ekle</md-button>
-   	   </div>
-	 </div>
-	 
-</div>
+<ng-form name="registrationFormExperience">
+	<div class="panel md-inline-form uib-accordion-group-panel-registration">
+	
+		<div layout="row" >
+			<md-input-container class="md-block" flex-gt-sm="">
+		       <label>Firma</label>
+		       <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
+		    </md-input-container>
+		      
+		     <md-input-container class="md-block" flex-gt-sm="">
+	           <label>Başlangıç</label>
+	           <md-datepicker id="startDate" name="startDate" ng-model="user.startDate" required></md-datepicker>
+	        </md-input-container>
+		      
+		     <md-input-container class="md-block" flex-gt-sm="">
+	           <label>Bitiş</label>
+	           <md-datepicker id="startDate" name="startDate" ng-model="user.startDate" required></md-datepicker>
+	        </md-input-container>
+		       
+		   <md-input-container class="md-block" flex-gt-sm="">
+	          <label>Firma</label>
+	      	  <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
+	       </md-input-container>
+		      
+	       <div layout="column">
+	     		<md-button class="add-tab md-primary md-raised" ng-disabled="!tTitle || !tContent" type="submit" style="margin-right: 0;">Ekle</md-button>
+	   	   </div>
+		 </div>
+	</div>
+</ng-form>

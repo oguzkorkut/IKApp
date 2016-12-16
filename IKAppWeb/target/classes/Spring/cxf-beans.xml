@@ -8,6 +8,7 @@
 	
 	<bean id="mainResourceClass" class="com.okorkut.ik.resource.MainResource" />
 	<bean id="menuResourceClass" class="com.okorkut.ik.resource.MenuResource" />
+	<bean id="userResourceClass" class="com.okorkut.ik.resource.UserResource" />
 	
 	<!-- <cxf:bus>
         <cxf:features>
@@ -35,6 +36,20 @@
 		</jaxrs:providers>
 		<jaxrs:serviceBeans>
 			<ref bean="menuResourceClass" />
+		</jaxrs:serviceBeans>
+		
+		<jaxrs:extensionMappings>
+			<entry key="xml" value="application/xml" />
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+	</jaxrs:server>
+	
+	<jaxrs:server id="userResource" address="/user">
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<ref bean="userResourceClass" />
 		</jaxrs:serviceBeans>
 		
 		<jaxrs:extensionMappings>

@@ -79,21 +79,14 @@
         <property name="annotatedClasses">
             <list>
                <value>com.okorkut.ik.common.entity.Application</value>
-				<value>com.okorkut.ik.common.entity.ApplicationPK</value>
 				<value>com.okorkut.ik.common.entity.Education</value>
-				<value>com.okorkut.ik.common.entity.EducationPK</value>
 				<value>com.okorkut.ik.common.entity.Experience</value>
-				<value>com.okorkut.ik.common.entity.ExperiencePK</value>
 				<value>com.okorkut.ik.common.entity.Language</value>
-				<value>com.okorkut.ik.common.entity.LanguagePK</value>
 				<value>com.okorkut.ik.common.entity.Position</value>
 				<value>com.okorkut.ik.common.entity.Profile</value>
-				<value>com.okorkut.ik.common.entity.ProfilePK</value>
 				<value>com.okorkut.ik.common.entity.Reference</value>
-				<value>com.okorkut.ik.common.entity.ReferencePK</value>
 				<value>com.okorkut.ik.common.entity.Role</value>
 				<value>com.okorkut.ik.common.entity.RoleGroup</value>
-				<value>com.okorkut.ik.common.entity.RoleGroupPK</value>
 				<value>com.okorkut.ik.common.entity.User</value>
             </list>
         </property>
