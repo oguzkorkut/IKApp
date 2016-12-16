@@ -1,13 +1,11 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-
-
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "experienceDto")
@@ -15,12 +13,14 @@ public class ExperienceDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-	private byte active;
-	private Date beginDate;
+	private boolean active;
+	private Timestamp beginDate;
 	private String company;
-	private Date endDate;
+	private Timestamp endDate;
 	private String position;
 
+	public ExperienceDto() {
+	}
 
 	public int getId() {
 		return id;
@@ -30,40 +30,40 @@ public class ExperienceDto implements Serializable {
 		this.id = id;
 	}
 
-	public byte getActive() {
-		return this.active;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setActive(byte active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
-	public Date getBeginDate() {
-		return this.beginDate;
+	public Timestamp getBeginDate() {
+		return beginDate;
 	}
 
-	public void setBeginDate(Date beginDate) {
+	public void setBeginDate(Timestamp beginDate) {
 		this.beginDate = beginDate;
 	}
 
 	public String getCompany() {
-		return this.company;
+		return company;
 	}
 
 	public void setCompany(String company) {
 		this.company = company;
 	}
 
-	public Date getEndDate() {
-		return this.endDate;
+	public Timestamp getEndDate() {
+		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(Timestamp endDate) {
 		this.endDate = endDate;
 	}
 
 	public String getPosition() {
-		return this.position;
+		return position;
 	}
 
 	public void setPosition(String position) {

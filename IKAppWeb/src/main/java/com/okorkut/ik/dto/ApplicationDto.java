@@ -1,12 +1,11 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import java.util.Date;
-
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "applicationDto")
@@ -14,8 +13,8 @@ public class ApplicationDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-	private byte active;
-	private Date applicationDate;
+	private boolean active;
+	private Timestamp applicationDate;
 	private String result;
 	private PositionDto positionDto;
 
@@ -30,26 +29,24 @@ public class ApplicationDto implements Serializable {
 		this.id = id;
 	}
 
-
-
-	public byte getActive() {
-		return this.active;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setActive(byte active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
-	public Date getApplicationDate() {
-		return this.applicationDate;
+	public Timestamp getApplicationDate() {
+		return applicationDate;
 	}
 
-	public void setApplicationDate(Date applicationDate) {
+	public void setApplicationDate(Timestamp applicationDate) {
 		this.applicationDate = applicationDate;
 	}
 
 	public String getResult() {
-		return this.result;
+		return result;
 	}
 
 	public void setResult(String result) {
@@ -57,12 +54,11 @@ public class ApplicationDto implements Serializable {
 	}
 
 	public PositionDto getPositionDto() {
-		return this.positionDto;
+		return positionDto;
 	}
 
 	public void setPositionDto(PositionDto positionDto) {
 		this.positionDto = positionDto;
 	}
-
 
 }

@@ -1,43 +1,38 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.okorkut.ik.common.entity.RoleGroup;
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "userDto")
 public class UserDto implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
 	private int id;
-	private byte active;
-	private Date createdAt;
+	private boolean active;
+	private Timestamp createdAt;
 	private String createdBy;
 	private String email;
 	private String lastname;
 	private String name;
 	private String password;
-	private Date updatedAt;
+	private Timestamp updatedAt;
 	private String updatedBy;
 	private String userName;
-	private String address;
 
-	private List<ApplicationDto> applications;
-	private List<EducationDto> educations;
-	private List<ExperienceDto> experiences;
-	private List<LanguageDto> languages;
-	private ProfileDto profileDto;
-	private List<ReferenceDto> references;
-	private List<RoleGroup> roleGroups;
+	private List<ApplicationDto> applicationDtos;
+	private List<EducationDto> educationDtos;
+	private List<ExperienceDto> experienceDtos;
 	private List<CertificateDto> certificateDtos;
+	private List<LanguageDto> languageDtos;
+	private ProfileDto profileDto;
+	private List<ReferenceDto> referenceDtos;
+	private List<RoleGroupDto> roleGroupDtos;
 
 	public UserDto() {
 	}
@@ -50,19 +45,19 @@ public class UserDto implements Serializable {
 		this.id = id;
 	}
 
-	public byte getActive() {
+	public boolean isActive() {
 		return active;
 	}
 
-	public void setActive(byte active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 
@@ -106,11 +101,11 @@ public class UserDto implements Serializable {
 		this.password = password;
 	}
 
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
@@ -130,36 +125,44 @@ public class UserDto implements Serializable {
 		this.userName = userName;
 	}
 
-	public List<ApplicationDto> getApplications() {
-		return applications;
+	public List<ApplicationDto> getApplicationDtos() {
+		return applicationDtos;
 	}
 
-	public void setApplications(List<ApplicationDto> applications) {
-		this.applications = applications;
+	public void setApplicationDtos(List<ApplicationDto> applicationDtos) {
+		this.applicationDtos = applicationDtos;
 	}
 
-	public List<EducationDto> getEducations() {
-		return educations;
+	public List<EducationDto> getEducationDtos() {
+		return educationDtos;
 	}
 
-	public void setEducations(List<EducationDto> educations) {
-		this.educations = educations;
+	public void setEducationDtos(List<EducationDto> educationDtos) {
+		this.educationDtos = educationDtos;
 	}
 
-	public List<ExperienceDto> getExperiences() {
-		return experiences;
+	public List<ExperienceDto> getExperienceDtos() {
+		return experienceDtos;
 	}
 
-	public void setExperiences(List<ExperienceDto> experiences) {
-		this.experiences = experiences;
+	public void setExperienceDtos(List<ExperienceDto> experienceDtos) {
+		this.experienceDtos = experienceDtos;
 	}
 
-	public List<LanguageDto> getLanguages() {
-		return languages;
+	public List<CertificateDto> getCertificateDtos() {
+		return certificateDtos;
 	}
 
-	public void setLanguages(List<LanguageDto> languages) {
-		this.languages = languages;
+	public void setCertificateDtos(List<CertificateDto> certificateDtos) {
+		this.certificateDtos = certificateDtos;
+	}
+
+	public List<LanguageDto> getLanguageDtos() {
+		return languageDtos;
+	}
+
+	public void setLanguageDtos(List<LanguageDto> languageDtos) {
+		this.languageDtos = languageDtos;
 	}
 
 	public ProfileDto getProfileDto() {
@@ -170,36 +173,20 @@ public class UserDto implements Serializable {
 		this.profileDto = profileDto;
 	}
 
-	public List<ReferenceDto> getReferences() {
-		return references;
+	public List<ReferenceDto> getReferenceDtos() {
+		return referenceDtos;
 	}
 
-	public void setReferences(List<ReferenceDto> references) {
-		this.references = references;
+	public void setReferenceDtos(List<ReferenceDto> referenceDtos) {
+		this.referenceDtos = referenceDtos;
 	}
 
-	public List<RoleGroup> getRoleGroups() {
-		return roleGroups;
+	public List<RoleGroupDto> getRoleGroupDtos() {
+		return roleGroupDtos;
 	}
 
-	public void setRoleGroups(List<RoleGroup> roleGroups) {
-		this.roleGroups = roleGroups;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public List<CertificateDto> getCertificateDtos() {
-		return certificateDtos;
-	}
-
-	public void setCertificateDtos(List<CertificateDto> certificateDtos) {
-		this.certificateDtos = certificateDtos;
+	public void setRoleGroupDtos(List<RoleGroupDto> roleGroupDtos) {
+		this.roleGroupDtos = roleGroupDtos;
 	}
 
 }

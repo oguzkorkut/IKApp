@@ -22,13 +22,12 @@ public class Role implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(unique = true, nullable = false)
+	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
 
-	@Column(name = "ROLE_NAME", nullable = false, length = 30)
+	@Column(name = "ROLE_NAME", length = 30)
 	private String roleName;
 
-	// bi-directional many-to-one association to RoleGroup
 	// @OneToOne(fetch = FetchType.LAZY,mappedBy="role")
 	// private RoleGroup roleGroup;
 
@@ -50,13 +49,5 @@ public class Role implements Serializable {
 	public void setRoleName(final String roleName) {
 		this.roleName = roleName;
 	}
-
-	// public RoleGroup getRoleGroup() {
-	// return roleGroup;
-	// }
-	//
-	// public void setRoleGroup(RoleGroup roleGroup) {
-	// this.roleGroup = roleGroup;
-	// }
 
 }

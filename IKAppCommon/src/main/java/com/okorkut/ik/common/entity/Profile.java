@@ -1,67 +1,64 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the profile database table.
  * 
  */
 @Entity
-@Table(name="profile")
-@NamedQuery(name="Profile.findAll", query="SELECT p FROM Profile p")
+@Table(name = "profile")
+@NamedQuery(name = "Profile.findAll", query = "SELECT p FROM Profile p")
 public class Profile implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-//	@EmbeddedId
-//	private ProfilePK id;
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
 
-	@Column(length=250)
+	@Column(name = "ADDRESS", length = 250)
 	private String address;
 
-	@Column(name="BIRTH_DATE", nullable=false)
+	@Column(name = "BIRTH_DATE")
 	private Timestamp birthDate;
 
-	@Column(name="BIRTH_PLACE", nullable=false, length=50)
+	@Column(name = "BIRTH_PLACE", length = 50)
 	private String birthPlace;
 
-	@Column(name="DRIVING_LICENSE", length=2)
+	@Column(name = "DRIVING_LICENSE", length = 2)
 	private String drivingLicense;
 
-	@Column(length=250)
+	@Column(name = "EXPLANATION", length = 250)
 	private String explanation;
 
-	@Column(nullable=false, length=1)
-	private String gender;
+	@Column(name = "GENDER", length = 1)
+	private int gender;
 
-	@Column(name="PASSPORT_NUMBER", length=50)
+	@Column(name = "PASSPORT_NUMBER", length = 50)
 	private String passportNumber;
 
-	@Column(length=11)
+	@Column(name = "TC", length = 11)
 	private String tc;
 
-	//bi-directional many-to-one association to User
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="USER_ID", nullable=false, insertable=false, updatable=false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	private User user;
 
 	public Profile() {
 	}
-
-//	public ProfilePK getId() {
-//		return this.id;
-//	}
-//
-//	public void setId(ProfilePK id) {
-//		this.id = id;
-//	}
 
 	public int getId() {
 		return id;
@@ -72,7 +69,7 @@ public class Profile implements Serializable {
 	}
 
 	public String getAddress() {
-		return this.address;
+		return address;
 	}
 
 	public void setAddress(String address) {
@@ -80,7 +77,7 @@ public class Profile implements Serializable {
 	}
 
 	public Timestamp getBirthDate() {
-		return this.birthDate;
+		return birthDate;
 	}
 
 	public void setBirthDate(Timestamp birthDate) {
@@ -88,7 +85,7 @@ public class Profile implements Serializable {
 	}
 
 	public String getBirthPlace() {
-		return this.birthPlace;
+		return birthPlace;
 	}
 
 	public void setBirthPlace(String birthPlace) {
@@ -96,7 +93,7 @@ public class Profile implements Serializable {
 	}
 
 	public String getDrivingLicense() {
-		return this.drivingLicense;
+		return drivingLicense;
 	}
 
 	public void setDrivingLicense(String drivingLicense) {
@@ -104,23 +101,23 @@ public class Profile implements Serializable {
 	}
 
 	public String getExplanation() {
-		return this.explanation;
+		return explanation;
 	}
 
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
 	}
 
-	public String getGender() {
-		return this.gender;
+	public int getGender() {
+		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 
 	public String getPassportNumber() {
-		return this.passportNumber;
+		return passportNumber;
 	}
 
 	public void setPassportNumber(String passportNumber) {
@@ -128,7 +125,7 @@ public class Profile implements Serializable {
 	}
 
 	public String getTc() {
-		return this.tc;
+		return tc;
 	}
 
 	public void setTc(String tc) {
@@ -136,7 +133,7 @@ public class Profile implements Serializable {
 	}
 
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
 	public void setUser(User user) {

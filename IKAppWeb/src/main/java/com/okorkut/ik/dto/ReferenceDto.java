@@ -12,7 +12,7 @@ public class ReferenceDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-	private byte active;
+	private boolean active;
 	private String email;
 	private String lastname;
 	private String mobilePhone;
@@ -26,15 +26,15 @@ public class ReferenceDto implements Serializable {
 		return id;
 	}
 
-	public void setId(final int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public byte getActive() {
+	public boolean isActive() {
 		return active;
 	}
 
-	public void setActive(final byte active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
@@ -42,7 +42,7 @@ public class ReferenceDto implements Serializable {
 		return email;
 	}
 
-	public void setEmail(final String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -50,7 +50,7 @@ public class ReferenceDto implements Serializable {
 		return lastname;
 	}
 
-	public void setLastname(final String lastname) {
+	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 
@@ -58,7 +58,7 @@ public class ReferenceDto implements Serializable {
 		return mobilePhone;
 	}
 
-	public void setMobilePhone(final String mobilePhone) {
+	public void setMobilePhone(String mobilePhone) {
 		this.mobilePhone = mobilePhone;
 	}
 
@@ -66,7 +66,7 @@ public class ReferenceDto implements Serializable {
 		return name;
 	}
 
-	public void setName(final String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -74,7 +74,7 @@ public class ReferenceDto implements Serializable {
 		return position;
 	}
 
-	public void setPosition(final String position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 

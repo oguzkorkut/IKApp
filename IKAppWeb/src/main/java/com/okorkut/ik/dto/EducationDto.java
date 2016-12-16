@@ -1,13 +1,11 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-
-
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "educationDto")
@@ -15,13 +13,15 @@ public class EducationDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-	private Date beginDate;
-	private String branch;
 	private String educationLevel;
-	private Date endDate;
+	private Timestamp beginDate;
+	private Timestamp endDate;
+	private String branch;
 	private String grade;
 	private String gradeSystem;
+	private String phoneNumber;
 	private String schoolName;
+	private boolean active;
 
 	public EducationDto() {
 	}
@@ -30,18 +30,32 @@ public class EducationDto implements Serializable {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-	public Date getBeginDate() {
-		return this.beginDate;
+	public String getEducationLevel() {
+		return educationLevel;
 	}
 
-	public void setBeginDate(Date beginDate) {
+	public void setEducationLevel(String educationLevel) {
+		this.educationLevel = educationLevel;
+	}
+
+	public Timestamp getBeginDate() {
+		return beginDate;
+	}
+
+	public void setBeginDate(Timestamp beginDate) {
 		this.beginDate = beginDate;
+	}
+
+	public Timestamp getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Timestamp endDate) {
+		this.endDate = endDate;
 	}
 
 	public String getBranch() {
@@ -52,24 +66,8 @@ public class EducationDto implements Serializable {
 		this.branch = branch;
 	}
 
-	public String getEducationLevel() {
-		return this.educationLevel;
-	}
-
-	public void setEducationLevel(String educationLevel) {
-		this.educationLevel = educationLevel;
-	}
-
-	public Date getEndDate() {
-		return this.endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
 	public String getGrade() {
-		return this.grade;
+		return grade;
 	}
 
 	public void setGrade(String grade) {
@@ -77,19 +75,35 @@ public class EducationDto implements Serializable {
 	}
 
 	public String getGradeSystem() {
-		return this.gradeSystem;
+		return gradeSystem;
 	}
 
 	public void setGradeSystem(String gradeSystem) {
 		this.gradeSystem = gradeSystem;
 	}
 
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 	public String getSchoolName() {
-		return this.schoolName;
+		return schoolName;
 	}
 
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 }

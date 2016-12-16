@@ -29,10 +29,11 @@ public class RoleGroup implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(unique = true, nullable = false)
+	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
 
-	private byte active;
+	@Column(name = "ACTIVE")
+	private boolean active;
 
 	// bi-directional many-to-one association to Role
 	// @OneToOne(fetch=FetchType.LAZY)
@@ -54,7 +55,7 @@ public class RoleGroup implements Serializable {
 
 	// bi-directional many-to-one association to User
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_ID", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	private User user;
 
 	public RoleGroup() {
@@ -68,11 +69,11 @@ public class RoleGroup implements Serializable {
 		this.id = id;
 	}
 
-	public byte getActive() {
+	public boolean isActive() {
 		return active;
 	}
 
-	public void setActive(final byte active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 

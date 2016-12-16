@@ -23,22 +23,21 @@ public class Position implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(unique = true, nullable = false)
+	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
 
-	@Column(nullable = false)
-	private byte active;
+	@Column(name = "ACTIVE")
+	private boolean active;
 
-	@Column(name = "BEGIN_DATE", nullable = false)
+	@Column(name = "BEGIN_DATE")
 	private Timestamp beginDate;
 
-	@Column(name = "END_DATE", nullable = false)
+	@Column(name = "END_DATE")
 	private Timestamp endDate;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "NAME", length = 50)
 	private String name;
 
-	// bi-directional many-to-one association to Application
 	// @OneToOne(mappedBy="position", cascade={CascadeType.ALL})
 	// private Application application;
 
@@ -53,11 +52,11 @@ public class Position implements Serializable {
 		this.id = id;
 	}
 
-	public byte getActive() {
+	public boolean isActive() {
 		return active;
 	}
 
-	public void setActive(final byte active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
@@ -84,35 +83,4 @@ public class Position implements Serializable {
 	public void setName(final String name) {
 		this.name = name;
 	}
-
-	// public Application getApplication() {
-	// return application;
-	// }
-	//
-	// public void setApplication(Application application) {
-	// this.application = application;
-	// }
-
-	// public List<Application> getApplications() {
-	// return this.applications;
-	// }
-	//
-	// public void setApplications(List<Application> applications) {
-	// this.applications = applications;
-	// }
-	//
-	// public Application addApplication(Application application) {
-	// getApplications().add(application);
-	// application.setPosition(this);
-	//
-	// return application;
-	// }
-	//
-	// public Application removeApplication(Application application) {
-	// getApplications().remove(application);
-	// application.setPosition(null);
-	//
-	// return application;
-	// }
-
 }

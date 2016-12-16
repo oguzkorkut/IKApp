@@ -1,111 +1,115 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the user database table.
  * 
  */
 @Entity
-@Table(name="user")
-//@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-@NamedQueries({ @NamedQuery(name = "User.findAll", query="SELECT u FROM User u"),
-	@NamedQuery(name = "User.findGetUserByEmailAndPassword", query = "SELECT u FROM User u where u.email = :email and u.password=:password"),
- })
+@Table(name = "user")
+// @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+		@NamedQuery(name = "User.findGetUserByEmailAndPassword", query = "SELECT u FROM User u where u.email = :email and u.password=:password"), })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
 
-	@Column(nullable=false)
-	private byte active;
+	@Column(name = "ACTIVE")
+	private boolean active;
 
-	@Column(name="CREATED_AT")
+	@Column(name = "CREATED_AT")
 	private Timestamp createdAt;
 
-	@Column(name="CREATED_BY", length=50)
+	@Column(name = "CREATED_BY", length = 50)
 	private String createdBy;
 
-	@Column(nullable=false, length=50)
+	@Column(name = "EMAIL", length = 50)
 	private String email;
 
-	@Column(nullable=false, length=50)
+	@Column(name = "LASTNAME", length = 50)
 	private String lastname;
 
-	@Column(nullable=false, length=50)
+	@Column(name = "NAME", length = 50)
 	private String name;
 
-	@Column(nullable=false, length=50)
+	@Column(name = "PASSWORD", length = 50)
 	private String password;
 
-	@Column(name="UPDATED_AT")
+	@Column(name = "UPDATED_AT")
 	private Timestamp updatedAt;
 
-	@Column(name="UPDATED_BY", length=50)
+	@Column(name = "UPDATED_BY", length = 50)
 	private String updatedBy;
 
-	@Column(name="USER_NAME", nullable=false, length=50)
+	@Column(name = "USER_NAME", length = 50)
 	private String userName;
 
-	//bi-directional many-to-one association to Application
-//	@OneToMany(mappedBy="user")
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-//	@JoinColumn(name="USER_ID", nullable=false)
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	// @OneToMany(mappedBy="user")
+	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	// @JoinColumn(name="USER_ID", nullable=false)
+	@OneToMany(mappedBy = "user")
 	private List<Application> applications;
 
-	//bi-directional many-to-one association to Education
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
 	private List<Education> educations;
 
-	//bi-directional many-to-one association to Experience
-	@OneToMany(mappedBy="user", cascade={CascadeType.ALL})
+	@OneToMany(mappedBy = "user")
 	private List<Experience> experiences;
 
-	//bi-directional many-to-one association to Language
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
+	private List<Certificate> certificates;
+
+	@OneToMany(mappedBy = "user")
 	private List<Language> languages;
 
-	//bi-directional many-to-one association to Profile
-	@OneToOne(mappedBy="user")
+	@OneToOne(mappedBy = "user")
 	private Profile profile;
 
-	//bi-directional many-to-one association to Reference
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
 	private List<Reference> references;
 
-	//bi-directional many-to-one association to RoleGroup
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
 	private List<RoleGroup> roleGroups;
 
 	public User() {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public byte getActive() {
-		return this.active;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setActive(byte active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
 	public Timestamp getCreatedAt() {
-		return this.createdAt;
+		return createdAt;
 	}
 
 	public void setCreatedAt(Timestamp createdAt) {
@@ -113,7 +117,7 @@ public class User implements Serializable {
 	}
 
 	public String getCreatedBy() {
-		return this.createdBy;
+		return createdBy;
 	}
 
 	public void setCreatedBy(String createdBy) {
@@ -121,7 +125,7 @@ public class User implements Serializable {
 	}
 
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
 
 	public void setEmail(String email) {
@@ -129,7 +133,7 @@ public class User implements Serializable {
 	}
 
 	public String getLastname() {
-		return this.lastname;
+		return lastname;
 	}
 
 	public void setLastname(String lastname) {
@@ -137,7 +141,7 @@ public class User implements Serializable {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -145,7 +149,7 @@ public class User implements Serializable {
 	}
 
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public void setPassword(String password) {
@@ -153,7 +157,7 @@ public class User implements Serializable {
 	}
 
 	public Timestamp getUpdatedAt() {
-		return this.updatedAt;
+		return updatedAt;
 	}
 
 	public void setUpdatedAt(Timestamp updatedAt) {
@@ -161,7 +165,7 @@ public class User implements Serializable {
 	}
 
 	public String getUpdatedBy() {
-		return this.updatedBy;
+		return updatedBy;
 	}
 
 	public void setUpdatedBy(String updatedBy) {
@@ -169,7 +173,7 @@ public class User implements Serializable {
 	}
 
 	public String getUserName() {
-		return this.userName;
+		return userName;
 	}
 
 	public void setUserName(String userName) {
@@ -177,7 +181,7 @@ public class User implements Serializable {
 	}
 
 	public List<Application> getApplications() {
-		return this.applications;
+		return applications;
 	}
 
 	public void setApplications(List<Application> applications) {
@@ -199,7 +203,7 @@ public class User implements Serializable {
 	}
 
 	public List<Education> getEducations() {
-		return this.educations;
+		return educations;
 	}
 
 	public void setEducations(List<Education> educations) {
@@ -221,7 +225,7 @@ public class User implements Serializable {
 	}
 
 	public List<Experience> getExperiences() {
-		return this.experiences;
+		return experiences;
 	}
 
 	public void setExperiences(List<Experience> experiences) {
@@ -243,7 +247,7 @@ public class User implements Serializable {
 	}
 
 	public List<Language> getLanguages() {
-		return this.languages;
+		return languages;
 	}
 
 	public void setLanguages(List<Language> languages) {
@@ -263,32 +267,39 @@ public class User implements Serializable {
 
 		return language;
 	}
-	
 
-//	public List<Profile> getProfiles() {
-//		return this.profiles;
-//	}
-//
-//	public void setProfiles(List<Profile> profiles) {
-//		this.profiles = profiles;
-//	}
-//
-//	public Profile addProfile(Profile profile) {
-//		getProfiles().add(profile);
-//		profile.setUser(this);
-//
-//		return profile;
-//	}
-//
-//	public Profile removeProfile(Profile profile) {
-//		getProfiles().remove(profile);
-//		profile.setUser(null);
-//
-//		return profile;
-//	}
+	// public List<Profile> getProfiles() {
+	// return this.profiles;
+	// }
+	//
+	// public void setProfiles(List<Profile> profiles) {
+	// this.profiles = profiles;
+	// }
+	//
+	// public Profile addProfile(Profile profile) {
+	// getProfiles().add(profile);
+	// profile.setUser(this);
+	//
+	// return profile;
+	// }
+	//
+	// public Profile removeProfile(Profile profile) {
+	// getProfiles().remove(profile);
+	// profile.setUser(null);
+	//
+	// return profile;
+	// }
 
 	public Profile getProfile() {
 		return profile;
+	}
+
+	public List<Certificate> getCertificates() {
+		return certificates;
+	}
+
+	public void setCertificates(List<Certificate> certificates) {
+		this.certificates = certificates;
 	}
 
 	public void setProfile(Profile profile) {
@@ -296,7 +307,7 @@ public class User implements Serializable {
 	}
 
 	public List<Reference> getReferences() {
-		return this.references;
+		return references;
 	}
 
 	public void setReferences(List<Reference> references) {
@@ -318,7 +329,7 @@ public class User implements Serializable {
 	}
 
 	public List<RoleGroup> getRoleGroups() {
-		return this.roleGroups;
+		return roleGroups;
 	}
 
 	public void setRoleGroups(List<RoleGroup> roleGroups) {

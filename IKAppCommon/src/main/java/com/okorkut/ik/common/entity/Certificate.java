@@ -1,6 +1,7 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,13 +15,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * The persistent class for the references database table.
+ * The persistent class for the experience database table.
  * 
  */
 @Entity
-@Table(name = "references")
-@NamedQuery(name = "Reference.findAll", query = "SELECT r FROM Reference r")
-public class Reference implements Serializable {
+@Table(name = "certificate")
+@NamedQuery(name = "Certificate.findAll", query = "SELECT e FROM Certificate e")
+public class Certificate implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -31,17 +32,11 @@ public class Reference implements Serializable {
 	@Column(name = "ACTIVE")
 	private boolean active;
 
-	@Column(name = "EMAIL", length = 50)
-	private String email;
-
-	@Column(name = "LASTNAME", length = 50)
-	private String lastname;
-
-	@Column(name = "MOBILE_PHONE", length = 20)
-	private String mobilePhone;
-
 	@Column(name = "NAME", length = 50)
-	private String name;
+	private String anme;
+
+	@Column(name = "APPLICATION_DATE")
+	private Timestamp applicationDate;
 
 	@Column(name = "POSITION", length = 50)
 	private String position;
@@ -49,9 +44,6 @@ public class Reference implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	private User user;
-
-	public Reference() {
-	}
 
 	public int getId() {
 		return id;
@@ -69,36 +61,20 @@ public class Reference implements Serializable {
 		this.active = active;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getAnme() {
+		return anme;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAnme(String anme) {
+		this.anme = anme;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public Timestamp getApplicationDate() {
+		return applicationDate;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public String getMobilePhone() {
-		return mobilePhone;
-	}
-
-	public void setMobilePhone(String mobilePhone) {
-		this.mobilePhone = mobilePhone;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setApplicationDate(Timestamp applicationDate) {
+		this.applicationDate = applicationDate;
 	}
 
 	public String getPosition() {

@@ -33,10 +33,10 @@
     
     
     <!-- Transaction Manager -->
-    <bean id="transactionManager2"
+   <!--  <bean id="transactionManager2"
         class="org.springframework.orm.hibernate4.HibernateTransactionManager">
        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+    </bean> -->
     
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
       <property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -65,15 +65,22 @@
              	 <prop key="hibernate.generate_statistics" >true</prop>
             	 <prop key="hibernate.show_sql">true</prop>
 				 <prop key="hibernate.default_schema">${db.schema}</prop>
+				 <!-- <property name="hbm2ddl.auto" value="create"/> -->
+				 <prop key="hibernate.hbm2ddl.auto">update</prop>
                  <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
             
          </props>
       </property>
    </bean>
+   
+   <!-- create: create database tables and indexes at startup
+   create-drop: create database tables and indexes at startup and drop at shutdown
+   update: when the application starts, check the database schema and update as needed adding missing tables and columns
+   validate: when the application starts, check the database schema and fails if there is some missing table or column. -->
     
  
     <!-- Session Factory -->
-   <bean id="sessionFactory"
+   <!-- <bean id="sessionFactory"
         class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
@@ -88,16 +95,17 @@
 				<value>com.okorkut.ik.common.entity.Role</value>
 				<value>com.okorkut.ik.common.entity.RoleGroup</value>
 				<value>com.okorkut.ik.common.entity.User</value>
+				<value>com.okorkut.ik.common.entity.Certificate</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
-    </bean>
+    </bean> -->
     
     
     <bean id="daoFactory" class="com.okorkut.ik.common.dao.BaseDao"
@@ -111,7 +119,7 @@
 	</bean>
     
     <bean id="userDao" class="com.okorkut.ik.common.dao.UserDaoImpl" autowire="byName" parent="baseDao">
-		<property name="sessionFactory" ref="sessionFactory" />
+		<!-- <property name="sessionFactory" ref="sessionFactory" /> -->
 	</bean>
 	
 </beans>

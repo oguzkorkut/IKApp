@@ -1,72 +1,70 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the education database table.
  * 
  */
 @Entity
-@Table(name="education")
-@NamedQuery(name="Education.findAll", query="SELECT e FROM Education e")
+@Table(name = "education")
+@NamedQuery(name = "Education.findAll", query = "SELECT e FROM Education e")
 public class Education implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-//	@EmbeddedId
-//	private EducationPK id;
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
 
-	@Column(name="BEGIN_DATE")
-	private Timestamp beginDate;
-
-	@Column(length=50)
-	private String department;
-
-	@Column(name="EDUCATION_LEVEL", length=20)
+	@Column(name = "EDUCATION_LEVEL", length = 20)
 	private String educationLevel;
 
-	@Column(name="END_DATE")
+	@Column(name = "BEGIN_DATE")
+	private Timestamp beginDate;
+
+	@Column(name = "END_DATE")
 	private Timestamp endDate;
 
-	@Column(length=10)
+	@Column(name = "BRANCH", length = 50)
+	private String branch;
+
+	@Column(name = "GRADE", length = 10)
 	private String grade;
 
-	@Column(name="GRADE_SYSTEM", length=10)
+	@Column(name = "GRADE_SYSTEM", length = 10)
 	private String gradeSystem;
 
-	@Column(name="PHONE_NUMBER", length=20)
+	@Column(name = "PHONE_NUMBER", length = 20)
 	private String phoneNumber;
 
-	@Column(name="SCHOOL_NAME", length=50)
+	@Column(name = "SCHOOL_NAME", length = 50)
 	private String schoolName;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="USER_ID", nullable=false, insertable=false, updatable=false)
+	@Column(name = "ACTIVE")
+	private boolean active;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	private User user;
 
 	public Education() {
 	}
 
-//	public EducationPK getId() {
-//		return this.id;
-//	}
-//
-//	public void setId(EducationPK id) {
-//		this.id = id;
-//	}
-	
-	
-
 	public Timestamp getBeginDate() {
-		return this.beginDate;
+		return beginDate;
 	}
 
 	public int getId() {
@@ -81,16 +79,16 @@ public class Education implements Serializable {
 		this.beginDate = beginDate;
 	}
 
-	public String getDepartment() {
-		return this.department;
+	public String getBranch() {
+		return branch;
 	}
 
-	public void setDepartment(String department) {
-		this.department = department;
+	public void setBranch(String branch) {
+		this.branch = branch;
 	}
 
 	public String getEducationLevel() {
-		return this.educationLevel;
+		return educationLevel;
 	}
 
 	public void setEducationLevel(String educationLevel) {
@@ -98,7 +96,7 @@ public class Education implements Serializable {
 	}
 
 	public Timestamp getEndDate() {
-		return this.endDate;
+		return endDate;
 	}
 
 	public void setEndDate(Timestamp endDate) {
@@ -106,7 +104,7 @@ public class Education implements Serializable {
 	}
 
 	public String getGrade() {
-		return this.grade;
+		return grade;
 	}
 
 	public void setGrade(String grade) {
@@ -114,7 +112,7 @@ public class Education implements Serializable {
 	}
 
 	public String getGradeSystem() {
-		return this.gradeSystem;
+		return gradeSystem;
 	}
 
 	public void setGradeSystem(String gradeSystem) {
@@ -122,7 +120,7 @@ public class Education implements Serializable {
 	}
 
 	public String getPhoneNumber() {
-		return this.phoneNumber;
+		return phoneNumber;
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
@@ -130,15 +128,23 @@ public class Education implements Serializable {
 	}
 
 	public String getSchoolName() {
-		return this.schoolName;
+		return schoolName;
 	}
 
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
 	public void setUser(User user) {

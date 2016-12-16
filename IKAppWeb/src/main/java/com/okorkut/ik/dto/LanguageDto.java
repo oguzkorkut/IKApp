@@ -12,11 +12,11 @@ public class LanguageDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-	private byte active;
+	private boolean active;
 	private String language;
-	private String reading;
-	private String speaking;
-	private String writing;
+	private int reading;
+	private int speaking;
+	private int writing;
 
 	public LanguageDto() {
 	}
@@ -29,11 +29,11 @@ public class LanguageDto implements Serializable {
 		this.id = id;
 	}
 
-	public byte getActive() {
+	public boolean isActive() {
 		return active;
 	}
 
-	public void setActive(byte active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
@@ -45,27 +45,28 @@ public class LanguageDto implements Serializable {
 		this.language = language;
 	}
 
-	public String getReading() {
+	public int getReading() {
 		return reading;
 	}
 
-	public void setReading(String reading) {
+	public void setReading(int reading) {
 		this.reading = reading;
 	}
 
-	public String getSpeaking() {
+	public int getSpeaking() {
 		return speaking;
 	}
 
-	public void setSpeaking(String speaking) {
+	public void setSpeaking(int speaking) {
 		this.speaking = speaking;
 	}
 
-	public String getWriting() {
+	public int getWriting() {
 		return writing;
 	}
 
-	public void setWriting(String writing) {
+	public void setWriting(int writing) {
 		this.writing = writing;
 	}
+
 }
