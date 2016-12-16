@@ -1,11 +1,10 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "languageDto")
@@ -31,7 +30,7 @@ public class LanguageDto implements Serializable {
 	}
 
 	public byte getActive() {
-		return this.active;
+		return active;
 	}
 
 	public void setActive(byte active) {
@@ -39,7 +38,7 @@ public class LanguageDto implements Serializable {
 	}
 
 	public String getLanguage() {
-		return this.language;
+		return language;
 	}
 
 	public void setLanguage(String language) {
@@ -47,7 +46,7 @@ public class LanguageDto implements Serializable {
 	}
 
 	public String getReading() {
-		return this.reading;
+		return reading;
 	}
 
 	public void setReading(String reading) {
@@ -55,7 +54,7 @@ public class LanguageDto implements Serializable {
 	}
 
 	public String getSpeaking() {
-		return this.speaking;
+		return speaking;
 	}
 
 	public void setSpeaking(String speaking) {
@@ -63,7 +62,7 @@ public class LanguageDto implements Serializable {
 	}
 
 	public String getWriting() {
-		return this.writing;
+		return writing;
 	}
 
 	public void setWriting(String writing) {

@@ -1,19 +1,22 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.okorkut.ik.common.entity.RoleGroup;
 
-import java.util.Date;
-import java.util.List;
-
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "userDto")
 public class UserDto implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private byte active;
 	private Date createdAt;
@@ -29,7 +32,7 @@ public class UserDto implements Serializable {
 
 	private List<ApplicationDto> applications;
 	private List<EducationDto> educations;
-	private List<Experience> experiences;
+	private List<ExperienceDto> experiences;
 	private List<LanguageDto> languages;
 	private ProfileDto profileDto;
 	private List<ReferenceDto> references;
@@ -143,11 +146,11 @@ public class UserDto implements Serializable {
 		this.educations = educations;
 	}
 
-	public List<Experience> getExperiences() {
+	public List<ExperienceDto> getExperiences() {
 		return experiences;
 	}
 
-	public void setExperiences(List<Experience> experiences) {
+	public void setExperiences(List<ExperienceDto> experiences) {
 		this.experiences = experiences;
 	}
 
@@ -198,7 +201,5 @@ public class UserDto implements Serializable {
 	public void setCertificateDtos(List<CertificateDto> certificateDtos) {
 		this.certificateDtos = certificateDtos;
 	}
-	
-	
 
 }

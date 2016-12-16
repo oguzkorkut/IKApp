@@ -8,7 +8,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,7 +16,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import org.apache.log4j.Logger;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,16 +29,17 @@ import org.springframework.stereotype.Component;
 public class MenuResource {
 
 	private static final Logger logger = Logger.getLogger(MenuResource.class);
-//	private static final Logger logger = LogManager.getLogger(MenuResource.class.getName());
+	// private static final Logger logger =
+	// LogManager.getLogger(MenuResource.class.getName());
 
 	@GET
 	@Path("/getstrs")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getStr(@Context HttpServletRequest request) {
+	public Response getStr(@Context final HttpServletRequest request) {
 
 		logger.info("test");
-		
-		List<String> strs = new ArrayList<String>();
+
+		final List<String> strs = new ArrayList<String>();
 
 		strs.add("dssd");
 		strs.add("dssdfdd");
@@ -48,7 +47,6 @@ public class MenuResource {
 		strs.add("dsswd");
 
 		logger.fatal("sds");
-
 
 		return Response.ok(strs).build();
 	}

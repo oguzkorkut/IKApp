@@ -12,51 +12,54 @@ import org.apache.log4j.Logger;
 
 import com.okorkut.ik.common.utils.IKConstants;
 
-
-
 public class ContextHandler implements ServletContextListener, HttpSessionListener {
 
 	private static Logger logger = Logger.getLogger(ContextHandler.class);
-//	private static final Logger logger = LogManager.getLogger(ContextHandler.class.getName());
+	// private static final Logger logger =
+	// LogManager.getLogger(ContextHandler.class.getName());
 
-	public void contextInitialized(ServletContextEvent event) {
+	@Override
+	public void contextInitialized(final ServletContextEvent event) {
 		try {
 			logger.info("ContextHandler initiliaze...");
 			logger.fatal("IK Web Applicaiton Acildi.");
 
-			InetAddress ip = InetAddress.getLocalHost();
+			final InetAddress ip = InetAddress.getLocalHost();
 			IKConstants.serverIP = ip.getHostAddress();
 
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			logger.error(e, e);
 			logger.fatal("Unable to initialize IK. Error : " + e.getMessage());
 		}
 	}
 
-	public void sessionCreated(HttpSessionEvent event) {
+	@Override
+	public void sessionCreated(final HttpSessionEvent event) {
 		String ipStr = "";
 		try {
-			InetAddress ip = InetAddress.getLocalHost();
+			final InetAddress ip = InetAddress.getLocalHost();
 			ipStr = ip.getHostAddress();
-		} catch (UnknownHostException e) {
+		} catch (final UnknownHostException e) {
 			logger.error(e);
 		}
 		logger.debug(event.getSession().getId() + " Session Created: IP:" + ipStr);
 
 	}
 
-	public void sessionDestroyed(HttpSessionEvent event) {
+	@Override
+	public void sessionDestroyed(final HttpSessionEvent event) {
 
 		try {
-//			event.getSession().removeAttribute("userDto");
-		} catch (Exception e) {
+			// event.getSession().removeAttribute("userDto");
+		} catch (final Exception e) {
 			logger.error(e, e);
 		}
 
 		logger.debug(event.getSession().getId() + " Session Destroyed. IP" + IKConstants.serverIP);
 	}
 
-	public void contextDestroyed(ServletContextEvent event) {
+	@Override
+	public void contextDestroyed(final ServletContextEvent event) {
 		logger.fatal("IK Web Application Kapatildi.");
 	}
 

@@ -15,23 +15,19 @@ public class BaseDao implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-//	private static EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("IKAppCommon");
-	
-	private  EntityManagerFactory entityManagerFactory;
-	
-    @PersistenceUnit
-    public void setEntityManagerFactory(EntityManagerFactory emf) {
-        this.entityManagerFactory = emf;
-    }
-    
+	// private static EntityManagerFactory FACTORY =
+	// Persistence.createEntityManagerFactory("IKAppCommon");
 
+	private EntityManagerFactory entityManagerFactory;
+
+	@PersistenceUnit
+	public void setEntityManagerFactory(final EntityManagerFactory emf) {
+		entityManagerFactory = emf;
+	}
 
 	public EntityManagerFactory getEntityManagerFactory() {
 		return entityManagerFactory;
 	}
-
-
-
 
 	protected Logger logger = null;
 
@@ -45,27 +41,27 @@ public class BaseDao implements Serializable {
 					"The EntityManagerFactory is null.  This must be passed in to the constructor or set using the setEntityManagerFactory() method.");
 		}
 
-		EntityManager em = entityManagerFactory.createEntityManager();
+		final EntityManager em = entityManagerFactory.createEntityManager();
 		if (em != null) {
 			return em;
 		}
 		return null;
 	}
 
-	public void closeConnection(EntityManager em) {
+	public void closeConnection(final EntityManager em) {
 		try {
 			if (em != null && em.isOpen()) {
 				rollbackTransaction(em);
 				em.close();
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			logger.error(e, e);
 		}
 
 	}
 
 	public EntityManager openTransactionalConnection() {
-		EntityManager em = openConnection();
+		final EntityManager em = openConnection();
 		if (em != null && em.isOpen()) {
 			em.getTransaction().begin();
 			return em;
@@ -73,32 +69,33 @@ public class BaseDao implements Serializable {
 		return null;
 	}
 
-	public void startTransaction(EntityManager em) {
+	public void startTransaction(final EntityManager em) {
 		if (em != null && em.isOpen() && !em.getTransaction().isActive()) {
 			em.getTransaction().begin();
 		}
 	}
 
-	public void commitTransaction(EntityManager em) {
+	public void commitTransaction(final EntityManager em) {
 		if (em != null && em.isOpen() && em.getTransaction().isActive()) {
 			em.getTransaction().commit();
 		}
 
 	}
 
-	public void rollbackTransaction(EntityManager em) {
+	public void rollbackTransaction(final EntityManager em) {
 		try {
 			if (em != null && em.isOpen() && em.getTransaction().isActive()) {
 				em.getTransaction().rollback();
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			logger.error(e, e);
 		}
 	}
 
-	public String hibernateClobConverterToString(Object object) throws Exception {
+	public String hibernateClobConverterToString(final Object object) throws Exception {
 		/*
-		 * DB2 have some issue Solution : db2set DB2_RESTRICT_DDF=true http://www.ibm.com/developerworks/forums/thread.jspa?threadID=268395
+		 * DB2 have some issue Solution : db2set DB2_RESTRICT_DDF=true
+		 * http://www.ibm.com/developerworks/forums/thread.jspa?threadID=268395
 		 */
 		logger.debug("Treasury Service Bus DAO Base JPA - hibernateClobConverterToString start.");
 		if (object != null) {

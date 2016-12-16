@@ -1,6 +1,7 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -13,12 +14,11 @@ public class RoleDto implements Serializable {
 	private int id;
 	private String roleName;
 
-
 	public RoleDto() {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -26,12 +26,11 @@ public class RoleDto implements Serializable {
 	}
 
 	public String getRoleName() {
-		return this.roleName;
+		return roleName;
 	}
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-
 
 }
