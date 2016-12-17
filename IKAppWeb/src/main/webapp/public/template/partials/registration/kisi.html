@@ -29,7 +29,7 @@
 		
 		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.tcNo.$touched && registrationForm.tcNo.$invalid }">
 			<div class="col-md-8" >
-				<input type="text" name="tcNo" id="tcNo" ng-model="user.profileDto.tcNo" class="form-control tcNo" placeholder="Tc No" maxlength="11" ng-minlength="11"  ng-maxlength="11" required/>
+				<input type="text" name="tcNo" id="tcNo" ng-model="user.profileDto.tc" class="form-control tcNo" placeholder="Tc No" maxlength="11" ng-minlength="11"  ng-maxlength="11" required/>
 				
 				 <div class="help-block" ng-messages="registrationForm.tcNo.$error" ng-if="registrationForm.tcNo.$touched">
 				 	<p ng-message="minlength">T.C. kimlik numarası minimum 11 karakter olmalıdır.</p>
@@ -39,14 +39,14 @@
 			</div>
 		</div>	
 		
-		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.surname.$touched && registrationForm.surname.$invalid }">
+		<div class="form-group col-md-6" ng-class="{ 'has-error': registrationForm.lastname.$touched && registrationForm.lastname.$invalid }">
 			<div class="col-md-8">
 				<md-input-container>
 		          <label>Street Name</label>
 		          <input>
 		        </md-input-container>
-				<input type="text" name="surname" id="surname" ng-model="user.surname" class="form-control" placeholder="Soyad" maxlength="50" required/>
-				<div class="help-block" ng-messages="registrationForm.surname.$error" ng-if="registrationForm.surname.$touched">
+				<input type="text" name="lastname" id="lastname" ng-model="user.lastname" class="form-control" placeholder="Soyad" maxlength="50" required/>
+				<div class="help-block" ng-messages="registrationForm.lastname.$error" ng-if="registrationForm.lastname.$touched">
 					<!-- <p ng-message="maxlength">Soyad alanı maksimum 50 karakter olabilir.</p> -->
 					<p ng-message="required">Soyadınızı giriniz.</p>
 				</div>

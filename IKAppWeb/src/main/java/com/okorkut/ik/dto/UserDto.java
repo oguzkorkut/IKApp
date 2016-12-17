@@ -1,7 +1,7 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,13 +15,13 @@ public class UserDto implements Serializable {
 
 	private int id;
 	private boolean active;
-	private Timestamp createdAt;
+	private Date createdAt;
 	private String createdBy;
 	private String email;
 	private String lastname;
 	private String name;
 	private String password;
-	private Timestamp updatedAt;
+	private Date updatedAt;
 	private String updatedBy;
 	private String userName;
 
@@ -53,11 +53,11 @@ public class UserDto implements Serializable {
 		this.active = active;
 	}
 
-	public Timestamp getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
@@ -101,11 +101,11 @@ public class UserDto implements Serializable {
 		this.password = password;
 	}
 
-	public Timestamp getUpdatedAt() {
+	public Date getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

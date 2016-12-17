@@ -11,14 +11,14 @@
 		
 		          <md-input-container class="md-block" flex-gt-sm="">
 		           <label>Soyad</label>
-		            <input  type="text" name="registrationSurname" id="registrationSurname" ng-model="user.surname"  maxlength="50" required>
+		            <input  type="text" name="registrationLastname" id="registrationLastname" ng-model="user.lastname"  maxlength="50" required>
 		          </md-input-container>
 		        </div>
 		        
 		        <div layout-gt-sm="row">
 		          <md-input-container class="md-block" flex-gt-sm="">
 		            <label>T.C. Kimlik Numarası</label>
-			 		<input  name="registrationTCNo" ng-model="user.profileDto.tcNo" md-maxlength="11"   md-minlength="11" ng-pattern="/^[0-9]{11}$/" maxlength="11" required>
+			 		<input  name="registrationTCNo" ng-model="user.profileDto.tc" md-maxlength="11"   md-minlength="11" ng-pattern="/^[0-9]{11}$/" maxlength="11" required>
 			            <div ng-messages="registrationForm.registrationFormPersonal.registrationTCNo.$error" role="alert" multiple="">
 			              <div ng-message="required">T.C. kimlik numaranızı giriniz.</div>
 			              <!-- <div ng-message="pattern" class="my-message">Girilen değer formata uygun değil.
@@ -45,7 +45,7 @@
 		
 		          <md-input-container class="md-block" flex-gt-sm="">
 		           <label>Doğum Tarihi</label>
-		           <md-datepicker id="registrationBirthDate" name="registrationBirthDate" ng-model="user.birthDate"  required></md-datepicker>
+		           <md-datepicker id="registrationBirthDate" name="registrationBirthDate" ng-model="user.profileDto.birthDate"  required></md-datepicker>
 		          </md-input-container>
 		        </div>
 		        

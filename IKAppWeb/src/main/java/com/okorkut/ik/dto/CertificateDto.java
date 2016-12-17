@@ -1,7 +1,7 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,7 +15,7 @@ public class CertificateDto implements Serializable {
 	private int id;
 	private boolean active;
 	private String anme;
-	private Timestamp applicationDate;
+	private Date applicationDate;
 	private String position;
 
 	public int getId() {
@@ -42,11 +42,11 @@ public class CertificateDto implements Serializable {
 		this.anme = anme;
 	}
 
-	public Timestamp getApplicationDate() {
+	public Date getApplicationDate() {
 		return applicationDate;
 	}
 
-	public void setApplicationDate(Timestamp applicationDate) {
+	public void setApplicationDate(Date applicationDate) {
 		this.applicationDate = applicationDate;
 	}
 

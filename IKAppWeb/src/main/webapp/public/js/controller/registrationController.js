@@ -10,7 +10,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 	 $scope.gradingSystem = constantService.getGradingSystemList();
 	 
 	 
-	 $scope.save=function(e,userModel){
+	 $scope.save= function(e){
 		 
 		 var isValid = true;
 		 
@@ -24,7 +24,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 
 		 if (isValid) {
 			 
-			 var promise = userService.save(userModel);
+			 var promise = userService.save($scope.user);
 			 
 			 promise.then(function(data) {
 					console.log("success");

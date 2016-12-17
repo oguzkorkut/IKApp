@@ -1,7 +1,7 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,7 +14,7 @@ public class ProfileDto implements Serializable {
 
 	private int id;
 	private String address;
-	private Timestamp birthDate;
+	private Date birthDate;
 	private String birthPlace;
 	private String drivingLicense;
 	private String explanation;
@@ -41,11 +41,11 @@ public class ProfileDto implements Serializable {
 		this.address = address;
 	}
 
-	public Timestamp getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Timestamp birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 

@@ -1,7 +1,7 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,8 +14,8 @@ public class PositionDto implements Serializable {
 
 	private int id;
 	private boolean active;
-	private Timestamp beginDate;
-	private Timestamp endDate;
+	private Date beginDate;
+	private Date endDate;
 	private String name;
 
 	public PositionDto() {
@@ -37,19 +37,19 @@ public class PositionDto implements Serializable {
 		this.active = active;
 	}
 
-	public Timestamp getBeginDate() {
+	public Date getBeginDate() {
 		return beginDate;
 	}
 
-	public void setBeginDate(Timestamp beginDate) {
+	public void setBeginDate(Date beginDate) {
 		this.beginDate = beginDate;
 	}
 
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

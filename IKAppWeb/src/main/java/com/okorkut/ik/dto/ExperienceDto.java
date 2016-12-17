@@ -1,7 +1,7 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,9 +14,9 @@ public class ExperienceDto implements Serializable {
 
 	private int id;
 	private boolean active;
-	private Timestamp beginDate;
+	private Date beginDate;
 	private String company;
-	private Timestamp endDate;
+	private Date endDate;
 	private String position;
 
 	public ExperienceDto() {
@@ -38,11 +38,11 @@ public class ExperienceDto implements Serializable {
 		this.active = active;
 	}
 
-	public Timestamp getBeginDate() {
+	public Date getBeginDate() {
 		return beginDate;
 	}
 
-	public void setBeginDate(Timestamp beginDate) {
+	public void setBeginDate(Date beginDate) {
 		this.beginDate = beginDate;
 	}
 
@@ -54,11 +54,11 @@ public class ExperienceDto implements Serializable {
 		this.company = company;
 	}
 
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

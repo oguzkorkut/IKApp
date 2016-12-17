@@ -1,7 +1,7 @@
 package com.okorkut.ik.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,8 +14,8 @@ public class EducationDto implements Serializable {
 
 	private int id;
 	private String educationLevel;
-	private Timestamp beginDate;
-	private Timestamp endDate;
+	private Date beginDate;
+	private Date endDate;
 	private String branch;
 	private String grade;
 	private String gradeSystem;
@@ -42,19 +42,19 @@ public class EducationDto implements Serializable {
 		this.educationLevel = educationLevel;
 	}
 
-	public Timestamp getBeginDate() {
+	public Date getBeginDate() {
 		return beginDate;
 	}
 
-	public void setBeginDate(Timestamp beginDate) {
+	public void setBeginDate(Date beginDate) {
 		this.beginDate = beginDate;
 	}
 
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

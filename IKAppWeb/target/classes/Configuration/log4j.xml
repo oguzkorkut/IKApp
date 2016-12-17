@@ -14,26 +14,42 @@
 	
 	<!-- additivity="false" -->
 	<logger name="org.springframework" >
-		<level value="debug" />
+		<level value="trace" />
 		<appender-ref ref="stdout" /> 
 	</logger>
 
 	<logger name="com.okorkut" >
-		<level value="debug" />
+		<level value="trace" />
 		<appender-ref ref="stdout" /> 
 	</logger>
 	
 	<logger name="com.sun.jersey" >
-		<level value="debug" />
+		<level value="trace" />
 		<appender-ref ref="stdout" />
 	</logger>
 	
 	<logger name="cxf" >
-		<level value="debug" />
+		<level value="trace" />
 		<appender-ref ref="stdout" />
 	</logger>
 	
+	<logger name="org.apache">
+		<level value="trace" />
+	</logger>
+
+	<logger name="org.hibernate">
+		<level value="trace" />
+	</logger>
+
+	<logger name="net.sf.ehcache">
+		<level value="trace" />
+	</logger>
+	
+	<!-- <category name="org.quartz.impl.jdbcjobstore">
+    <priority value="OFF" />
+</category>
+	 -->
 	<root> 
-		<level value="debug"/> 
+		<level value="trace"/> 
  	</root> 
 </log4j:configuration>

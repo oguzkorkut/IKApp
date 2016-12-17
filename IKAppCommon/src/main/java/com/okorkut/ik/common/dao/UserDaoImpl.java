@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.okorkut.ik.common.entity.User;
 import com.okorkut.ik.common.utils.IKAppLoggerUtils;
@@ -31,36 +32,45 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		return sessionFactory;
 	}
 
-	public void setSessionFactory(final SessionFactory sessionFactory) {
+	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 	@Override
-	public User save(final User userDto) {
+	@Transactional
+	public User save(User user) {
+		logger.info("User save basladi.");
+
+		try {
+			manager.persist(user);
+		} catch (Exception e) {
+			logger.error(e, e);
+		}
+
+		logger.info("User save bitti.");
+		return user;
+	}
+
+	@Override
+	public User getUserDtoByEmail(String emial) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User getUserDtoByEmail(final String emial) {
+	public void save2(User userDto) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public User getUserDtoByEmail2(String emial) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void save2(final User userDto) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public User getUserDtoByEmail2(final String emial) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User getUserByEmailAndPassword(final String email, final String password) throws Exception {
+	public User getUserByEmailAndPassword(String email, String password) throws Exception {
 		logger.info("getUserByEmailAndPassword basladi. EMail:" + email);
 
 		User user = null;
@@ -79,9 +89,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 			// return em.createQuery("SELECT p FROM Product p").getResultList();
 
-		} catch (final NoResultException nre) {
+		} catch (NoResultException nre) {
 			logger.info("Sonuc bulunamadi. email:" + email + " Detay Mesaj:" + nre.getMessage());
-		} catch (final Exception e) {
+		} catch (Exception e) {
 			logger.error(e, e);
 		} finally {
 			closeConnection(em);
