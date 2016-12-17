@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="app" >
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>App</title>
@@ -34,7 +34,7 @@
         }
 </style>
 </head>
-<body ng-app="app" >
+<body >
 
  <div class="main-dive" style="overflow: auto !important;">
 
