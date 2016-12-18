@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -69,28 +70,28 @@ public class User implements Serializable {
 	// @OneToMany(mappedBy="user")
 	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	// @JoinColumn(name="USER_ID", nullable=false)
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Application> applications;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Education> educations;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Experience> experiences;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Certificate> certificates;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Language> languages;
 
-	@OneToOne(mappedBy = "user")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
 	private Profile profile;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Reference> references;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<RoleGroup> roleGroups;
 
 	public User() {

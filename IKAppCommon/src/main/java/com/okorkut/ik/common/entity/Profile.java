@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -53,9 +52,13 @@ public class Profile implements Serializable {
 	@Column(name = "TC", length = 11)
 	private String tc;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	// @OneToOne(fetch = FetchType.LAZY)
 	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
-	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
+	// @JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable =
+	// false, updatable = false, nullable = true)
+	@OneToOne
+	// (cascade = { CascadeType.ALL })
+	@JoinColumn(name = "USER_ID")
 	private User user;
 
 	public Profile() {

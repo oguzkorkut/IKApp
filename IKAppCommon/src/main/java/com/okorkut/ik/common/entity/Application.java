@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,9 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 /**
  * The persistent class for the application database table.
@@ -47,9 +43,9 @@ public class Application implements Serializable {
 	// updatable=false)
 	// private Position position;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SELECT)
-	@JoinColumn(name = "POSITION_ID", insertable = false, updatable = false)
+	@OneToOne
+	// @Fetch(value = FetchMode.SELECT)
+	@JoinColumn(name = "POSITION_ID", insertable = false, updatable = false, nullable = true)
 	private Position position;
 
 	// bi-directional many-to-one association to User
@@ -65,7 +61,10 @@ public class Application implements Serializable {
 	// @JoinColumns({ @JoinColumn(name = "USER_ID", referencedColumnName = "ID",
 	// insertable = false, updatable = false) })
 	// @JoinColumn(name = "USER_ID")
-	@ManyToOne(fetch = FetchType.LAZY)
+	// @ManyToOne(fetch = FetchType.LAZY)
+	// @JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable =
+	// false, updatable = false, nullable = true)
+	@ManyToOne
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 

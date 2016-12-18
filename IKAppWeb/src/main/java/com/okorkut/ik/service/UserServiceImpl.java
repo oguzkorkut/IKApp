@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
 			groups.add(groupDto);
 			// group end
 
-			user.setRoleGroups(getRoleGroupByRoleGroupDto(userDto.getRoleGroupDtos()));
+			user.setRoleGroups(getRoleGroupByRoleGroupDto(groups));
 
 			Integer id = userDao.save(user);
 
