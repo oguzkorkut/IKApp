@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.okorkut.ik.common.dao.RoleDao;
 import com.okorkut.ik.common.dao.UserDao;
 import com.okorkut.ik.common.entity.Application;
 import com.okorkut.ik.common.entity.Certificate;
@@ -17,6 +18,7 @@ import com.okorkut.ik.common.entity.Experience;
 import com.okorkut.ik.common.entity.Language;
 import com.okorkut.ik.common.entity.Profile;
 import com.okorkut.ik.common.entity.Reference;
+import com.okorkut.ik.common.entity.Role;
 import com.okorkut.ik.common.entity.RoleGroup;
 import com.okorkut.ik.common.entity.User;
 import com.okorkut.ik.dto.ApplicationDto;
@@ -26,6 +28,7 @@ import com.okorkut.ik.dto.ExperienceDto;
 import com.okorkut.ik.dto.LanguageDto;
 import com.okorkut.ik.dto.ProfileDto;
 import com.okorkut.ik.dto.ReferenceDto;
+import com.okorkut.ik.dto.RoleDto;
 import com.okorkut.ik.dto.RoleGroupDto;
 import com.okorkut.ik.dto.UserDto;
 
@@ -35,6 +38,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+
+	@Autowired
+	public RoleDao roleDao;
 
 	public UserServiceImpl() {
 	}
@@ -87,19 +93,35 @@ public class UserServiceImpl implements UserService {
 
 			RoleGroupDto groupDto = new RoleGroupDto();
 
-			groupDto.setActive(true);
-			groupDto.setId(3);
+			// Personel role cekiliyor
+			Role role = roleDao.getRoleById(3);
 
-			groups.add(groupDto);
-			// group end
+			RoleGroup roleGroup = new RoleGroup();
 
-			user.setRoleGroups(getRoleGroupByRoleGroupDto(groups));
+			roleGroup.setActive(true);
+			roleGroup.setRole(role);
+
+			user.addRoleGroup(roleGroup);
 
 			Integer id = userDao.save(user);
 
 			logger.info("Musteri kaydedildi. Id:" + id);
 		}
 
+	}
+
+	@Override
+	public RoleDto getRoleDtoById(Integer id) throws Exception {
+
+		RoleDto roleDto = null;
+
+		Role role = roleDao.getRoleById(id);
+
+		roleDto = new RoleDto();
+
+		BeanUtils.copyProperties(role, roleDto);
+
+		return roleDto;
 	}
 
 	private List<Application> getApplicationByApplicationDto(List<ApplicationDto> applicationDtos) throws Exception {

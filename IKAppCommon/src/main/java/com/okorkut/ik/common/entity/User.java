@@ -2,6 +2,7 @@ package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,6 +17,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.util.CollectionUtils;
 
 import com.okorkut.ik.common.entity.listener.UserListener;
 
@@ -342,6 +345,9 @@ public class User implements Serializable {
 	}
 
 	public RoleGroup addRoleGroup(RoleGroup roleGroup) {
+		if (CollectionUtils.isEmpty(roleGroups)) {
+			roleGroups = new ArrayList<RoleGroup>();
+		}
 		getRoleGroups().add(roleGroup);
 		roleGroup.setUser(this);
 
