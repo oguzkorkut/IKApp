@@ -6,7 +6,7 @@ public interface UserDao {
 
 	public User getUserByEmailAndPassword(String email, String password) throws Exception;
 
-	public User save(User user);
+	public Integer save(User user);
 
 	public User getUserDtoByEmail(String emial);
 

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,7 +24,7 @@ public class Role implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
-	private int id;
+	private Integer id;
 
 	@Column(name = "ROLE_NAME", length = 30)
 	private String roleName;
@@ -31,14 +32,17 @@ public class Role implements Serializable {
 	// @OneToOne(fetch = FetchType.LAZY,mappedBy="role")
 	// private RoleGroup roleGroup;
 
+	@OneToOne(mappedBy = "role")
+	private RoleGroup roleGroup;
+
 	public Role() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -46,8 +50,16 @@ public class Role implements Serializable {
 		return roleName;
 	}
 
-	public void setRoleName(final String roleName) {
+	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+	public RoleGroup getRoleGroup() {
+		return roleGroup;
+	}
+
+	public void setRoleGroup(RoleGroup roleGroup) {
+		this.roleGroup = roleGroup;
 	}
 
 }

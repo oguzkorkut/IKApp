@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ReferenceDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private Integer id;
 	private boolean active;
 	private String email;
 	private String lastname;
@@ -22,11 +22,11 @@ public class ReferenceDto implements Serializable {
 	public ReferenceDto() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

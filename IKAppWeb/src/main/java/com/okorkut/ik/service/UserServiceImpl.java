@@ -81,9 +81,23 @@ public class UserServiceImpl implements UserService {
 			user.setLanguages(getLanguageByLanguageDto(userDto.getLanguageDtos()));
 			user.setProfile(getProfileByProfileDto(userDto.getProfileDto()));
 			user.setReferences(getReferenceByReferenceDto(userDto.getReferenceDtos()));
+
+			// group begin
+			List<RoleGroupDto> groups = new ArrayList<RoleGroupDto>();
+
+			RoleGroupDto groupDto = new RoleGroupDto();
+
+			groupDto.setActive(true);
+			groupDto.setId(3);
+
+			groups.add(groupDto);
+			// group end
+
 			user.setRoleGroups(getRoleGroupByRoleGroupDto(userDto.getRoleGroupDtos()));
 
-			userDao.save(user);
+			Integer id = userDao.save(user);
+
+			logger.info("Musteri kaydedildi. Id:" + id);
 		}
 
 	}

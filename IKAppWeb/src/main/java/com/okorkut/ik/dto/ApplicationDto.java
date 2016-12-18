@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ApplicationDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private Integer id;
 	private boolean active;
 	private Date applicationDate;
 	private String result;
@@ -21,11 +21,11 @@ public class ApplicationDto implements Serializable {
 	public ApplicationDto() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

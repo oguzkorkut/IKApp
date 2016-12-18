@@ -11,17 +11,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class RoleDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private Integer id;
 	private String roleName;
+	private Integer roleId;
 
 	public RoleDto() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -31,6 +32,14 @@ public class RoleDto implements Serializable {
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 
 }

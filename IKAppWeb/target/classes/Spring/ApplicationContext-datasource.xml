@@ -65,9 +65,10 @@
              	 <prop key="hibernate.generate_statistics" >true</prop>
             	 <prop key="hibernate.show_sql">true</prop>
 				 <prop key="hibernate.default_schema">${db.schema}</prop>
-				 <!-- <property name="hbm2ddl.auto" value="create"/> -->
+				 <!-- <prop key="hbm2ddl.auto">create"</prop> -->
 				 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                 <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				 <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                 <!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
             
          </props>
       </property>

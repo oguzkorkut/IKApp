@@ -14,9 +14,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 /**
  * The persistent class for the role_group database table.
  * 
@@ -30,10 +27,13 @@ public class RoleGroup implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
-	private int id;
+	private Integer id;
 
 	@Column(name = "ACTIVE")
 	private boolean active;
+	
+	@Column(name = "ROLE_ID")
+	private Integer roleId;
 
 	// bi-directional many-to-one association to Role
 	// @OneToOne(fetch=FetchType.LAZY)
@@ -48,24 +48,26 @@ public class RoleGroup implements Serializable {
 	// @Fetch(value = FetchMode.SELECT)
 	// private Role role;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SELECT)
-	@JoinColumn(name = "ROLE_ID", insertable = false, updatable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	// @Fetch(value = FetchMode.SELECT)
+	// @JoinColumn(name = "ROLE_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private Role role;
 
 	// bi-directional many-to-one association to User
+	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
 	public RoleGroup() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -81,7 +83,7 @@ public class RoleGroup implements Serializable {
 		return role;
 	}
 
-	public void setRole(final Role role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 
@@ -89,8 +91,18 @@ public class RoleGroup implements Serializable {
 		return user;
 	}
 
-	public void setUser(final User user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+	
+	
 
 }

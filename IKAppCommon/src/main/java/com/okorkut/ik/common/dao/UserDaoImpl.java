@@ -38,17 +38,23 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	@Override
 	@Transactional
-	public User save(User user) {
+	public Integer save(User user) {
 		logger.info("User save basladi.");
 
 		try {
+
+			// user.setCreatedAt(new Timestamp(new Date().getTime()));
+			// user.setCreatedBy("SYSTEM");
+			// user.setUpdatedAt(new Timestamp(new Date().getTime()));
+			// user.setUpdatedBy("SYSTEM");
+
 			manager.persist(user);
 		} catch (Exception e) {
 			logger.error(e, e);
 		}
 
-		logger.info("User save bitti.");
-		return user;
+		logger.info("User save bitti. ID:" + user.getId());
+		return user.getId();
 	}
 
 	@Override
@@ -83,7 +89,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		// query.setParameter(1, id);
 
 		try {
-			em = openConnection();
+			em = openTransactionalConnection();
 			user = (User) manager.createNamedQuery("User.findGetUserByEmailAndPassword").setParameter("email", email)
 					.setParameter("password", password).getSingleResult();
 

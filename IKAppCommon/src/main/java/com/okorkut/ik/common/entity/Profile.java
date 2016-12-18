@@ -27,7 +27,7 @@ public class Profile implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
-	private int id;
+	private Integer id;
 
 	@Column(name = "ADDRESS", length = 250)
 	private String address;
@@ -54,17 +54,18 @@ public class Profile implements Serializable {
 	private String tc;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
 	public Profile() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

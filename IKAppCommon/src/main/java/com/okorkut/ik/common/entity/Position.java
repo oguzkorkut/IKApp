@@ -24,7 +24,7 @@ public class Position implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
-	private int id;
+	private Integer id;
 
 	@Column(name = "ACTIVE")
 	private boolean active;
@@ -44,11 +44,11 @@ public class Position implements Serializable {
 	public Position() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(final int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -64,7 +64,7 @@ public class Position implements Serializable {
 		return beginDate;
 	}
 
-	public void setBeginDate(final Timestamp beginDate) {
+	public void setBeginDate(Timestamp beginDate) {
 		this.beginDate = beginDate;
 	}
 
@@ -72,7 +72,7 @@ public class Position implements Serializable {
 		return endDate;
 	}
 
-	public void setEndDate(final Timestamp endDate) {
+	public void setEndDate(Timestamp endDate) {
 		this.endDate = endDate;
 	}
 
@@ -80,7 +80,7 @@ public class Position implements Serializable {
 		return name;
 	}
 
-	public void setName(final String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 }

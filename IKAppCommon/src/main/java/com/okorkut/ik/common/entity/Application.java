@@ -31,7 +31,7 @@ public class Application implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
-	private int id;
+	private Integer id;
 
 	@Column(name = "ACTIVE")
 	private boolean active;
@@ -61,18 +61,22 @@ public class Application implements Serializable {
 	// @ManyToOne(fetch=FetchType.LAZY,targetEntity = User.class)
 	// @JoinColumn(name="USER_ID", insertable=false, updatable=false,
 	// unique=true, nullable=false)
-	@ManyToOne
-	@JoinColumn(name = "USER_ID")
+	// @ManyToOne(fetch = FetchType.LAZY)
+	// @JoinColumns({ @JoinColumn(name = "USER_ID", referencedColumnName = "ID",
+	// insertable = false, updatable = false) })
+	// @JoinColumn(name = "USER_ID")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
 	public Application() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

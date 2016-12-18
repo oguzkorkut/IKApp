@@ -27,7 +27,7 @@ public class Education implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
-	private int id;
+	private Integer id;
 
 	@Column(name = "EDUCATION_LEVEL", length = 20)
 	private String educationLevel;
@@ -56,8 +56,10 @@ public class Education implements Serializable {
 	@Column(name = "ACTIVE")
 	private boolean active;
 
+	// @ManyToOne(fetch = FetchType.LAZY)
+	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
 	public Education() {
@@ -67,11 +69,11 @@ public class Education implements Serializable {
 		return beginDate;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
