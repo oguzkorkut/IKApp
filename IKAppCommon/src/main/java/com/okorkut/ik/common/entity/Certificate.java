@@ -1,7 +1,7 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the experience database table.
@@ -25,7 +27,7 @@ public class Certificate implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
@@ -33,19 +35,26 @@ public class Certificate implements Serializable {
 	private boolean active;
 
 	@Column(name = "NAME", length = 50)
-	private String anme;
+	private String name;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "APPLICATION_DATE")
-	private Timestamp applicationDate;
+	private Date applicationDate;
 
 	@Column(name = "POSITION", length = 50)
 	private String position;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
+
+	public Certificate() {
+
+	}
+
+	public Certificate(User user) {
+		this.user = user;
+	}
 
 	public Integer getId() {
 		return id;
@@ -63,19 +72,19 @@ public class Certificate implements Serializable {
 		this.active = active;
 	}
 
-	public String getAnme() {
-		return anme;
+	public String getName() {
+		return name;
 	}
 
-	public void setAnme(String anme) {
-		this.anme = anme;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Timestamp getApplicationDate() {
+	public Date getApplicationDate() {
 		return applicationDate;
 	}
 
-	public void setApplicationDate(Timestamp applicationDate) {
+	public void setApplicationDate(Date applicationDate) {
 		this.applicationDate = applicationDate;
 	}
 
@@ -94,5 +103,13 @@ public class Certificate implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	// public Integer getUserId() {
+	// return userId;
+	// }
+	//
+	// public void setUserId(Integer userId) {
+	// this.userId = userId;
+	// }
 
 }

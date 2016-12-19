@@ -25,42 +25,37 @@ public class RoleGroup implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
 	@Column(name = "ACTIVE")
 	private boolean active;
-	
+
 	@Column(name = "ROLE_ID")
 	private Integer roleId;
 
-	// bi-directional many-to-one association to Role
-	// @OneToOne(fetch=FetchType.LAZY)
-	// @JoinColumn(name="ROLE_ID", nullable=false, insertable=false,
-	// updatable=false)
-	// private Role role;
-	// @OneToOne(mappedBy="roleGroup")
-	// private Role role;
-	// @JoinColumn(name="ROLE_ID", nullable=false, insertable=false,
-	// updatable=false)
-	// @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	// @Fetch(value = FetchMode.SELECT)
-	// private Role role;
+	@Column(name = "USER_ID")
+	private Integer userId;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	// @Fetch(value = FetchMode.SELECT)
-	// @JoinColumn(name = "ROLE_ID", insertable = false, updatable = false)
 	@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private Role role;
 
-	// bi-directional many-to-one association to User
-	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	// @OneToOne(cascade = CascadeType.ALL)
+	// @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
+	// private Role role;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
 	public RoleGroup() {
+	}
+
+	public RoleGroup(Role role, User user) {
+		this.user = user;
+		this.role = role;
 	}
 
 	public Integer getId() {
@@ -102,7 +97,13 @@ public class RoleGroup implements Serializable {
 	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
-	
-	
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
 }

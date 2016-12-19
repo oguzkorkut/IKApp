@@ -4,26 +4,26 @@
 		<div layout="row" >
 			<md-input-container class="md-block" flex-gt-sm="">
 		       <label>Firma</label>
-		       <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
+		       <input type="text" name="experienceCompany" id="experienceCompany" ng-model="experience.company"  maxlength="50" required>
 		    </md-input-container>
 		      
 		     <md-input-container class="md-block" flex-gt-sm="">
 	           <label>Başlangıç</label>
-	           <md-datepicker id="startDate" name="startDate" ng-model="user.startDate" required></md-datepicker>
+	           <md-datepicker id="experienceBeginDate" name="experienceBeginDate" ng-model="experience.beginDate" required></md-datepicker>
 	        </md-input-container>
 		      
 		     <md-input-container class="md-block" flex-gt-sm="">
 	           <label>Bitiş</label>
-	           <md-datepicker id="startDate" name="startDate" ng-model="user.startDate" required></md-datepicker>
+	           <md-datepicker id="experienceEndDate" name="experienceEndDate" ng-model="experience.endDate" required></md-datepicker>
 	        </md-input-container>
 		       
 		   <md-input-container class="md-block" flex-gt-sm="">
-	          <label>Firma</label>
-	      	  <input type="text" name="name" id="name" ng-model="user.name"  maxlength="50" required>
+	          <label>Pozisyon</label>
+	      	  <input type="text" name="experiencePosition" id="experiencePosition" ng-model="experience.position"  maxlength="50" required>
 	       </md-input-container>
 		      
 	       <div layout="column">
-	     		<md-button class="add-tab md-primary md-raised" ng-disabled="!tTitle || !tContent" type="submit" style="margin-right: 0;">Ekle</md-button>
+	     		<md-button class="add-tab md-primary md-raised" ng-click="saveExperience()" style="margin-right: 0;">Ekle</md-button>
 	   	   </div>
 		 </div>
 	</div>

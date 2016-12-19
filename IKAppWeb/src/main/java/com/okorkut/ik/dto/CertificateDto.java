@@ -14,7 +14,7 @@ public class CertificateDto implements Serializable {
 
 	private Integer id;
 	private boolean active;
-	private String anme;
+	private String name;
 	private Date applicationDate;
 	private String position;
 
@@ -34,12 +34,12 @@ public class CertificateDto implements Serializable {
 		this.active = active;
 	}
 
-	public String getAnme() {
-		return anme;
+	public String getName() {
+		return name;
 	}
 
-	public void setAnme(String anme) {
-		this.anme = anme;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Date getApplicationDate() {

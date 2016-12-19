@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
 		if (userDto != null) {
 			BeanUtils.copyProperties(userDto, user);
 
-			user.setApplications(getApplicationByApplicationDto(userDto.getApplicationDtos()));
+			// user.setApplications(getApplicationByApplicationDto(userDto.getApplicationDtos()));
 			user.setCertificates(getCertificateByCertificateDto(userDto.getCertificateDtos()));
 			user.setEducations(getEducationByEducationDto(userDto.getEducationDtos()));
 			user.setExperiences(getExperienceByExperienceDto(userDto.getExperienceDtos()));
@@ -102,6 +102,13 @@ public class UserServiceImpl implements UserService {
 			roleGroup.setRole(role);
 
 			user.addRoleGroup(roleGroup);
+
+			// user.setApplications(null);
+			// user.setCertificates(null);
+			// user.setEducations(null);
+			// user.setExperiences(null);
+			// user.setLanguages(null);
+			// user.setReferences(null);
 
 			Integer id = userDao.save(user);
 

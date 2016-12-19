@@ -19,27 +19,27 @@ public class ContextHandler implements ServletContextListener, HttpSessionListen
 	// LogManager.getLogger(ContextHandler.class.getName());
 
 	@Override
-	public void contextInitialized(final ServletContextEvent event) {
+	public void contextInitialized(ServletContextEvent event) {
 		try {
 			logger.info("ContextHandler initiliaze...");
 			logger.fatal("IK Web Applicaiton Acildi.");
 
-			final InetAddress ip = InetAddress.getLocalHost();
+			InetAddress ip = InetAddress.getLocalHost();
 			IKConstants.serverIP = ip.getHostAddress();
 
-		} catch (final Exception e) {
+		} catch (Exception e) {
 			logger.error(e, e);
 			logger.fatal("Unable to initialize IK. Error : " + e.getMessage());
 		}
 	}
 
 	@Override
-	public void sessionCreated(final HttpSessionEvent event) {
+	public void sessionCreated(HttpSessionEvent event) {
 		String ipStr = "";
 		try {
-			final InetAddress ip = InetAddress.getLocalHost();
+			InetAddress ip = InetAddress.getLocalHost();
 			ipStr = ip.getHostAddress();
-		} catch (final UnknownHostException e) {
+		} catch (UnknownHostException e) {
 			logger.error(e);
 		}
 		logger.debug(event.getSession().getId() + " Session Created: IP:" + ipStr);
@@ -47,11 +47,11 @@ public class ContextHandler implements ServletContextListener, HttpSessionListen
 	}
 
 	@Override
-	public void sessionDestroyed(final HttpSessionEvent event) {
+	public void sessionDestroyed(HttpSessionEvent event) {
 
 		try {
 			// event.getSession().removeAttribute("userDto");
-		} catch (final Exception e) {
+		} catch (Exception e) {
 			logger.error(e, e);
 		}
 
@@ -59,7 +59,7 @@ public class ContextHandler implements ServletContextListener, HttpSessionListen
 	}
 
 	@Override
-	public void contextDestroyed(final ServletContextEvent event) {
+	public void contextDestroyed(ServletContextEvent event) {
 		logger.fatal("IK Web Application Kapatildi.");
 	}
 

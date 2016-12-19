@@ -24,15 +24,12 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
 	@Column(name = "ROLE_NAME", length = 30)
 	private String roleName;
-
-	// @OneToOne(fetch = FetchType.LAZY,mappedBy="role")
-	// private RoleGroup roleGroup;
 
 	@OneToOne(mappedBy = "role")
 	private RoleGroup roleGroup;

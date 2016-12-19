@@ -24,7 +24,7 @@ public class Language implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
@@ -43,13 +43,15 @@ public class Language implements Serializable {
 	@Column(name = "WRITING", length = 10)
 	private int writing;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
 	public Language() {
+	}
+
+	public Language(User user) {
+		this.user = user;
 	}
 
 	public Integer getId() {

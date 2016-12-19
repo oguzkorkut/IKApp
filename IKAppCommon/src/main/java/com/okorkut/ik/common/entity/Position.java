@@ -1,15 +1,19 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the position database table.
@@ -22,18 +26,20 @@ public class Position implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
 	@Column(name = "ACTIVE")
 	private boolean active;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "BEGIN_DATE")
-	private Timestamp beginDate;
+	private Date beginDate;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "END_DATE")
-	private Timestamp endDate;
+	private Date endDate;
 
 	@Column(name = "NAME", length = 50)
 	private String name;
@@ -41,7 +47,14 @@ public class Position implements Serializable {
 	// @OneToOne(mappedBy="position", cascade={CascadeType.ALL})
 	// private Application application;
 
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "position")
+	private Application Application;
+
 	public Position() {
+	}
+
+	public Position(Application Application) {
+		this.Application = Application;
 	}
 
 	public Integer getId() {
@@ -60,19 +73,19 @@ public class Position implements Serializable {
 		this.active = active;
 	}
 
-	public Timestamp getBeginDate() {
+	public Date getBeginDate() {
 		return beginDate;
 	}
 
-	public void setBeginDate(Timestamp beginDate) {
+	public void setBeginDate(Date beginDate) {
 		this.beginDate = beginDate;
 	}
 
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
@@ -83,4 +96,13 @@ public class Position implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Application getApplication() {
+		return Application;
+	}
+
+	public void setApplication(Application application) {
+		Application = application;
+	}
+
 }

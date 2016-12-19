@@ -3,7 +3,7 @@
 		 	 <div layout="row" >
 			 	 <md-input-container class="md-block" flex-gt-sm="80">
 		          <label>Eğitim Seviyesi</label>
-		          <md-select name="educationLevel" ng-model="user.educations.educationLevel" required="">
+		          <md-select name="educationLevel" ng-model="education.educationLevel" required>
 					<md-option value="0">Lise</md-option>
 					<md-option value="1">Lisans</md-option>
 					<md-option value="2">Yüksek Lisans</md-option>
@@ -13,22 +13,22 @@
 		        
 		         <md-input-container class="md-block" flex-gt-sm="80">
 		           <label>Başlangıç</label>
-		           <md-datepicker id="educationBeginDate" name="educationBeginDate" ng-model="user.educations.beginDate" required></md-datepicker>
+		           <md-datepicker id="educationBeginDate" name="educationBeginDate" ng-model="education.beginDate" required></md-datepicker>
 		        </md-input-container>
 		        
 		         <md-input-container class="md-block" flex-gt-sm="80">
 		           <label>Bitiş</label>
-		           <md-datepicker id="educationEndDate" name="educationEndDate" ng-model="user.educations.endDate" required></md-datepicker>
+		           <md-datepicker id="educationEndDate" name="educationEndDate" ng-model="education.endDate" required></md-datepicker>
 		        </md-input-container>
 		        
 		        <md-input-container class="md-block" flex-gt-sm="40">
 		             <label>Diploma Notu</label>
-			         <input type="text" name="educationGrade" id="educationGrade" ng-model="user.educations.grade"  maxlength="50" required>
+			         <input type="text" name="educationGrade" id="educationGrade" ng-model="education.grade"  maxlength="50" required>
 		         </md-input-container>
 		         
 		         <md-input-container class="md-block" flex-gt-sm="10">
 		          <label>Note Sistemi</label>
-		          <md-select name="educationGradeSystem" ng-model="user.educations.gradeSystem" required="">
+		          <md-select name="educationGradeSystem" ng-model="education.gradeSystem" required>
 					<md-option value="4">4</md-option>
 					<md-option value="5">5</md-option>
 					<md-option value="10">10</md-option>
@@ -38,16 +38,16 @@
 		        
 		        <md-input-container class="md-block" flex-gt-sm="80">
 		             <label>Bölüm</label>
-			         <input type="text" name="educationBranch" id="educationBranch" ng-model="user.educations.branch"  maxlength="50" required>
+			         <input type="text" name="educationBranch" id="educationBranch" ng-model="education.branch"  maxlength="50" required>
 		         </md-input-container>
 		         
 		         <md-input-container class="md-block" flex-gt-sm="80">
 		             <label>Okul</label>
-			         <input type="text" name="educationSchoolName" id="educationSchoolName" ng-model="user.educations.schoolName"  maxlength="50" required>
+			         <input type="text" name="educationSchoolName" id="educationSchoolName" ng-model="education.schoolName"  maxlength="50" required>
 		         </md-input-container>
 		         
-		         <div layout="column">
-		        	<md-button class="add-tab md-primary md-raised" ng-disabled="!tTitle || !tContent" type="submit" style="margin-right: 0;">Ekle</md-button>
+		         <div layout="column"> 
+		        	<md-button class="add-tab md-primary md-raised" ng-click="saveEducation()"  style="margin-right: 0;">Ekle</md-button>
 		        </div>
 	        </div>
 	</div>

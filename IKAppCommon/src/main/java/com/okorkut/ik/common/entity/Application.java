@@ -1,10 +1,11 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the application database table.
@@ -25,50 +28,36 @@ public class Application implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
 	@Column(name = "ACTIVE")
 	private boolean active;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "APPLICATION_DATE")
-	private Timestamp applicationDate;
+	private Date applicationDate;
 
 	@Column(name = "RESULT", length = 10)
 	private String result;
 
-	// @ManyToOne(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
-	// @JoinColumn(name="POSITION_ID", nullable=false, insertable=false,
-	// updatable=false)
-	// private Position position;
-
-	@OneToOne
-	// @Fetch(value = FetchMode.SELECT)
-	@JoinColumn(name = "POSITION_ID", insertable = false, updatable = false, nullable = true)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "POSITION_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = false)
 	private Position position;
 
-	// bi-directional many-to-one association to User
-	// @ManyToOne(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
-	// @JoinColumn(name="USER_ID", nullable=false, insertable=false,
-	// updatable=false)
-	// private User user;
-
-	// @ManyToOne(fetch=FetchType.LAZY,targetEntity = User.class)
-	// @JoinColumn(name="USER_ID", insertable=false, updatable=false,
-	// unique=true, nullable=false)
 	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumns({ @JoinColumn(name = "USER_ID", referencedColumnName = "ID",
-	// insertable = false, updatable = false) })
-	// @JoinColumn(name = "USER_ID")
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable =
-	// false, updatable = false, nullable = true)
-	@ManyToOne
+	// @JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
 	public Application() {
+	}
+
+	public Application(Position position, User user) {
+		this.position = position;
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -87,11 +76,11 @@ public class Application implements Serializable {
 		this.active = active;
 	}
 
-	public Timestamp getApplicationDate() {
+	public Date getApplicationDate() {
 		return applicationDate;
 	}
 
-	public void setApplicationDate(Timestamp applicationDate) {
+	public void setApplicationDate(Date applicationDate) {
 		this.applicationDate = applicationDate;
 	}
 

@@ -1,8 +1,8 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,11 +12,14 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.util.CollectionUtils;
 
@@ -36,15 +39,16 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
 
 	@Column(name = "ACTIVE")
 	private boolean active;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "CREATED_AT")
-	private Timestamp createdAt;
+	private Date createdAt;
 
 	@Column(name = "CREATED_BY", length = 50)
 	private String createdBy;
@@ -61,8 +65,9 @@ public class User implements Serializable {
 	@Column(name = "PASSWORD", length = 50)
 	private String password;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "UPDATED_AT")
-	private Timestamp updatedAt;
+	private Date updatedAt;
 
 	@Column(name = "UPDATED_BY", length = 50)
 	private String updatedBy;
@@ -70,9 +75,6 @@ public class User implements Serializable {
 	@Column(name = "USER_NAME", length = 50)
 	private String userName;
 
-	// @OneToMany(mappedBy="user")
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-	// @JoinColumn(name="USER_ID", nullable=false)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Application> applications;
 
@@ -88,7 +90,9 @@ public class User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Language> languages;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+	// @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "PROFILE_ID")
 	private Profile profile;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -98,6 +102,19 @@ public class User implements Serializable {
 	private List<RoleGroup> roleGroups;
 
 	public User() {
+	}
+
+	public User(List<Application> applications, List<Education> educations, List<Experience> experiences,
+			List<Certificate> certificates, List<Language> languages, Profile profile, List<Reference> references,
+			List<RoleGroup> roleGroups) {
+		this.applications = applications;
+		this.educations = educations;
+		this.experiences = experiences;
+		this.certificates = certificates;
+		this.languages = languages;
+		this.profile = profile;
+		this.references = references;
+		this.roleGroups = roleGroups;
 	}
 
 	public int getId() {
@@ -116,11 +133,11 @@ public class User implements Serializable {
 		this.active = active;
 	}
 
-	public Timestamp getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
@@ -164,11 +181,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public Timestamp getUpdatedAt() {
+	public Date getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

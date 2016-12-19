@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.okorkut.ik.common.entity.Role;
 import com.okorkut.ik.common.utils.IKAppLoggerUtils;
 
-@Repository("userDaoImpl")
+@Repository("roleDaoImpl")
 public class RoleDaoImpl extends BaseDao implements RoleDao {
 
 	private static final long serialVersionUID = 1L;

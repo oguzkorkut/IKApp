@@ -12,7 +12,7 @@
 			<list>
 				<value>classpath*:IKSMTPAppender.properties</value>
 				<value>classpath*:IKApp.properties</value>
-				<value>classpath*:TSEDB.properties</value>
+				<value>classpath*:IKAppDB.properties</value>
 				<value>classpath*:version.properties</value>
 			</list>
 		</property>
@@ -23,7 +23,7 @@
             <list>
 				<value>classpath:Configuration/IKSMTPAppender.properties</value>
 				<value>classpath:Configuration/IKApp.properties</value>
-				<value>classpath:Configuration/TSEDB.properties</value>
+				<value>classpath:Configuration/IKAppDB.properties</value>
 				<value>classpath:Configuration/version.properties</value>
             </list>
         </property> 

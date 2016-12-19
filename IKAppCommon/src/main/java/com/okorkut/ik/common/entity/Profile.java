@@ -1,17 +1,17 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the profile database table.
@@ -24,15 +24,16 @@ public class Profile implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
 	@Column(name = "ADDRESS", length = 250)
 	private String address;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "BIRTH_DATE")
-	private Timestamp birthDate;
+	private Date birthDate;
 
 	@Column(name = "BIRTH_PLACE", length = 50)
 	private String birthPlace;
@@ -53,13 +54,15 @@ public class Profile implements Serializable {
 	private String tc;
 
 	// @OneToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	// // (cascade = { CascadeType.ALL })
 	// @JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable =
-	// false, updatable = false, nullable = true)
-	@OneToOne
-	// (cascade = { CascadeType.ALL })
-	@JoinColumn(name = "USER_ID")
-	private User user;
+	// false, updatable = false, nullable = false)
+	// private User user;
+
+	// @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	// @JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable =
+	// false, updatable = false, nullable = false)
+	// private User user;
 
 	public Profile() {
 	}
@@ -80,11 +83,11 @@ public class Profile implements Serializable {
 		this.address = address;
 	}
 
-	public Timestamp getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Timestamp birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -136,12 +139,12 @@ public class Profile implements Serializable {
 		this.tc = tc;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	// public User getUser() {
+	// return user;
+	// }
+	//
+	// public void setUser(User user) {
+	// this.user = user;
+	// }
 
 }

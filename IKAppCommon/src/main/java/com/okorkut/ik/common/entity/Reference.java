@@ -24,7 +24,7 @@ public class Reference implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
@@ -46,12 +46,15 @@ public class Reference implements Serializable {
 	@Column(name = "POSITION", length = 50)
 	private String position;
 
-	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
 	public Reference() {
+	}
+
+	public Reference(User user) {
+		this.user = user;
 	}
 
 	public Integer getId() {

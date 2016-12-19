@@ -4,22 +4,22 @@
 	<div layout="row" >
 			<md-input-container class="md-block" flex-gt-sm="80">
 		       <label>Ad</label>
-		       <input type="text" name="referenceName" id="referenceName" ng-model="user.references.name"  maxlength="50" required>
+		       <input type="text" name="referenceName" id="referenceName" ng-model="reference.name"  maxlength="50" required>
 		    </md-input-container>
 		    
 		    <md-input-container class="md-block" flex-gt-sm="80">
 		       <label>Soyad</label>
-		       <input type="text" name="referenceLastname" id="referenceLastname" ng-model="user.references.lastname"  maxlength="50" required>
+		       <input type="text" name="referenceLastname" id="referenceLastname" ng-model="reference.lastname"  maxlength="50" required>
 		    </md-input-container>
 		      
 		     <md-input-container class="md-block" flex-gt-sm="80">
 		       <label>Pozisyon</label>
-		       <input type="text" name="referencePosition" id="referencePosition" ng-model="user.references.position"  maxlength="50" required>
+		       <input type="text" name="referencePosition" id="referencePosition" ng-model="reference.position"  maxlength="50" required>
 		    </md-input-container>
 		    
 		    <md-input-container class="md-block" flex-gt-sm="80">
 		       <label>Telefon</label>
-		       <input name="referenceMobilePhone"   id="referenceMobilePhone" ng-model="user.references.mobilePhone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/"  required/>
+		       <input name="referenceMobilePhone"   id="referenceMobilePhone" ng-model="reference.mobilePhone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/"  required/>
 		       <div class="hint">(###) ###-####</div>
 	
 	           <div ng-messages="registrationForm.referenceMobilePhone.$error" >
@@ -29,7 +29,7 @@
 		    
 		    <md-input-container class="md-block" flex-gt-sm="80">
 		        <label>E-Posta</label>
-		        <input  type="email" name="referenceEmail"  id="referenceEmail" ng-model="project.clientEmail"  maxlength="50" ng-pattern="/^.+@.+\..+$/" required="">
+		        <input  type="email" name="referenceEmail"  id="referenceEmail" ng-model="reference.email"  maxlength="50" ng-pattern="/^.+@.+\..+$/" required="">
 		
 		        <div ng-messages="registrationForm.referenceEmail.$error" role="alert">
 		          <!-- <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> -->
@@ -41,7 +41,7 @@
 		      
 	       <div layout="column">
 	       		<!-- <md-button ng-disabled="true" class="md-primary">Disabled</md-button> -->
-	     		<md-button class="add-tab md-primary md-raised" ng-disabled="!referenceName || !referenceLastname || !referencePosition || !referenceMobilePhone || !referenceEmail" type="submit" style="margin-right: 0;">Ekle</md-button>
+	     		<md-button class="add-tab md-primary md-raised" ng-click="saveReferance()" type="submit" style="margin-right: 0;">Ekle</md-button>
 	   	   </div>
 		 </div>
 	</div>

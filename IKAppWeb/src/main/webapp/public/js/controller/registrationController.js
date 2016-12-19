@@ -10,15 +10,22 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 	 $scope.gradingSystem = constantService.getGradingSystemList();
 	 
 	 
+	 //formlar
+	 $scope.education ={}
+	 $scope.language ={}
+	 $scope.experience ={}
+	 $scope.certificate ={}
+	 $scope.reference ={}
+	 
 	 $scope.save= function(e){
 		 
 		 var isValid = true;
 		 
 		 if (!$scope.registrationForm.registrationFormPersonal.$valid) {
-			  openDialog(e, 'Kişisel bilgilerde eksik veya hatalı alanlar var.');
+			  openDialog(e, 'Hata','Kişisel bilgilerde eksik veya hatalı alanlar var.');
 			  isValid = false;
 		 }else if (!$scope.registrationForm.registrationFormAddress.$valid) {
-			 openDialog(e, 'İletişim adresini giriniz.');
+			 openDialog(e, 'Hata','İletişim adresini giriniz.');
 			  isValid = false;
 		 }
 		 
@@ -32,38 +39,97 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 				 console.log("error")
 			 });
 		}
-//		 else if (!$scope.registrationForm.registrationFormEducation.$valid) {
-//			 openDialog(e, 'Eğitim bilgilerinizi giriniz.');
-//			  isValid = false;
-//		 }
-//		 else if (!$scope.registrationForm.registrationFormLanguage.$valid) {
-//			 openDialog(e, 'Yabancı dil bilgilerini giriniz');
-//			  isValid = false;
-//		 }
-//		 else if (!$scope.registrationForm.registrationFormExperience.$valid) {
-//			 openDialog(e, 'Kişisel bilgilerde eksik veya hatalı alanlar var.');
-//			  isValid = false;
-//		 }
-//		 else if (!$scope.registrationForm.registrationFormCertificate.$valid) {
-//			 openDialog(e, 'Kişisel bilgilerde eksik veya hatalı alanlar var.');
-//			  isValid = false;
-//		 }
-//		 else if (!$scope.registrationForm.registrationFormReference.$valid) {
-//			 openDialog(e, 'Kişisel bilgilerde eksik veya hatalı alanlar var.');
-//			  isValid = false;
-//		 }
-		 
 	 };
 	 
-	 function openDialog(e,message){
+	 
+	 $scope.saveEducation=function(){
+		 
+		 if ($scope.registrationForm.registrationFormEducation.$valid) {
+			 
+			 if(typeof ($scope.user.educationDtos) == 'undefined'){
+				 $scope.user["educationDtos"]=[];
+			 }
+			 
+			 $scope.user.educationDtos.push($scope.education);
+			 $scope.education = {}
+			 $scope.registrationForm.registrationFormEducation.$setPristine();
+		 }else{
+			 openDialog(this, 'Hata','Eğitim bilgileri eksik. Bilgileri kontrol ediniz.');
+		 }
+		 
+	 }
+	 
+	 $scope.saveLanguage=function(){
+		 
+		 if ($scope.registrationForm.registrationFormLanguage.$valid) {
+			 if(typeof ($scope.user.languageDtos) == 'undefined'){
+				 $scope.user["languageDtos"]=[];
+			 }
+			 
+			 $scope.user.languageDtos.push($scope.language);
+			 $scope.language = {};
+			 $scope.registrationForm.registrationFormLanguage.$setPristine();
+		 }else{
+			 openDialog(this, 'Hata','Dil bilgileri eksik. Bilgileri kontrol ediniz.');
+		 }
+		 
+	 }
+	 
+	 $scope.saveExperience=function(){
+		 
+		 if ($scope.registrationForm.registrationFormExperience.$valid) {
+			 if(typeof ($scope.user.experienceDtos) == 'undefined'){
+				 $scope.user["experienceDtos"]=[];
+			 }
+			 
+			 $scope.user.experienceDtos.push($scope.experience);
+			 $scope.experience = {};
+			 $scope.registrationForm.registrationFormExperience.$setPristine();
+		 }else{
+			 openDialog(this, 'Hata','İş deneyimleri eksik. Bilgileri kontrol ediniz.');
+		 }
+	 }
+	 
+	 $scope.saveCertificate=function(){
+		 
+		 if ($scope.registrationForm.registrationFormCertificate.$valid) {
+			 if(typeof ($scope.user.certificateDtos) == 'undefined'){
+				 $scope.user["certificateDtos"]=[];
+			 }
+			 
+			 $scope.user.certificateDtos.push($scope.certificate);
+			 $scope.certificate = {};
+			 $scope.registrationForm.registrationFormCertificate.$setPristine();
+		 }else{
+			 openDialog(this, 'Hata','Sertifika bilgileri eksik. Bilgileri kontrol ediniz.');
+		 }
+	 }
+	 
+	 $scope.saveReferance=function(){
+		 
+		 if ($scope.registrationForm.registrationFormReference.$valid) {
+			 if(typeof ($scope.user.referenceDtos) == 'undefined'){
+				 $scope.user["referenceDtos"]=[];
+			 }
+			 
+			 $scope.user.referenceDtos.push($scope.reference);
+			 $scope.reference={};
+			 $scope.registrationForm.registrationFormReference.$setPristine();
+		 }else{
+			 openDialog(this, 'Hata','Referans bilgileri eksiktir. Bilgileri kontrol ediniz.');
+		 }
+		 
+	 }
+	 
+	 function openDialog(e,title,message){
 			 $mdDialog
 	          .show($mdDialog
 	            .alert()
-	            .title('Hata')
+	            .title(title)
 	            .textContent(message)
 	            .ariaLabel('More info')
 	            .ok('Kapat')
-	            .targetEvent(e)
+	            
 	          )
 	          .then(function() {
 	        	  

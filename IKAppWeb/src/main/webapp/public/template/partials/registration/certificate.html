@@ -4,16 +4,16 @@
 	 	<div layout="row" >
 			<md-input-container class="md-block" flex-gt-sm="">
 		       <label>Sertifika Adı</label>
-		       <input type="text" name="certificateName" id="certificateName" ng-model="user.certificateDtos.name"  maxlength="50" required>
+		       <input type="text" name="certificateName" id="certificateName" ng-model="certificate.name"  maxlength="50" required>
 		    </md-input-container>
 		      
 		     <md-input-container class="md-block" flex-gt-sm="">
 	           <label>Alınan Tarih</label>
-	           <md-datepicker id="certificateApplicationDate" name="certificateApplicationDate" ng-model="user.certificateDtos.applicationDate" required></md-datepicker>
+	           <md-datepicker id="certificateApplicationDate" name="certificateApplicationDate" ng-model="certificate.applicationDate" required></md-datepicker>
 	        </md-input-container>
 		      
 	       <div layout="column">
-	     		<md-button class="add-tab md-primary md-raised" ng-disabled="!certificateName || !certificateApplicationDate" type="submit" style="margin-right: 0;">Ekle</md-button>
+	     		<md-button class="add-tab md-primary md-raised" ng-click="saveCertificate()"  style="margin-right: 0;">Ekle</md-button>
 	   	   </div>
 		 </div>
 	</div>

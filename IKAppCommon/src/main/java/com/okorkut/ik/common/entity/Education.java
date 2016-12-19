@@ -1,7 +1,7 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the education database table.
@@ -25,18 +27,20 @@ public class Education implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
 	@Column(name = "EDUCATION_LEVEL", length = 20)
 	private String educationLevel;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "BEGIN_DATE")
-	private Timestamp beginDate;
+	private Date beginDate;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "END_DATE")
-	private Timestamp endDate;
+	private Date endDate;
 
 	@Column(name = "BRANCH", length = 50)
 	private String branch;
@@ -57,7 +61,7 @@ public class Education implements Serializable {
 	private boolean active;
 
 	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	// @JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
@@ -65,7 +69,11 @@ public class Education implements Serializable {
 	public Education() {
 	}
 
-	public Timestamp getBeginDate() {
+	public Education(User user) {
+		this.user = user;
+	}
+
+	public Date getBeginDate() {
 		return beginDate;
 	}
 
@@ -77,7 +85,7 @@ public class Education implements Serializable {
 		this.id = id;
 	}
 
-	public void setBeginDate(Timestamp beginDate) {
+	public void setBeginDate(Date beginDate) {
 		this.beginDate = beginDate;
 	}
 
@@ -97,11 +105,11 @@ public class Education implements Serializable {
 		this.educationLevel = educationLevel;
 	}
 
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

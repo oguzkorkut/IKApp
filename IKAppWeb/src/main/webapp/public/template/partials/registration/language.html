@@ -4,12 +4,12 @@
 		<div layout="row" >
 			<md-input-container class="md-block" flex-gt-sm="">
 		       <label>Yabancı Dil</label>
-		       <input type="text" name="languageName" id="languageName" ng-model="user.languages.language"  maxlength="50" required>
+		       <input type="text" name="languageName" id="languageName" ng-model="language.language"  maxlength="50" required>
 		    </md-input-container>
 		      
 		    <md-input-container class="md-block" flex-gt-sm="">
 		        <label>Okuma</label>
-		        <md-select name="languageReading" ng-model="user.languages.reading" required="">
+		        <md-select name="languageReading" ng-model="language.reading" required="">
 					<md-option value="0">Başlangıç</md-option>
 					<md-option value="1">Orta</md-option>
 					<md-option value="2">İyi</md-option>
@@ -18,7 +18,7 @@
 		      
 		    <md-input-container class="md-block" flex-gt-sm="">
 		        <label>Yazma</label>
-		        <md-select name="languageWriting"  ng-model="user.languages.writing" required="">
+		        <md-select name="languageWriting"  ng-model="language.writing" required="">
 					<md-option value="0">Başlangıç</md-option>
 					<md-option value="1">Orta</md-option>
 					<md-option value="2">İyi</md-option>
@@ -27,7 +27,7 @@
 		       
 		      <md-input-container class="md-block" flex-gt-sm="">
 		        <label>Konuşma</label>
-		        <md-select name="languageSpeaking" ng-model="user.languages.speaking" required="">
+		        <md-select name="languageSpeaking" ng-model="language.speaking" required="">
 					<md-option value="0">Başlangıç</md-option>
 					<md-option value="1">Orta</md-option>
 					<md-option value="2">İyi</md-option>
@@ -36,7 +36,7 @@
 		       
 		      
 		      <div layout="column">
-		     		<md-button class="add-tab md-primary md-raised" ng-disabled="!languageName || !languageReading || !languageWriting || !languageSpeaking" type="submit" style="margin-right: 0;">Ekle</md-button>
+		     		<md-button class="add-tab md-primary md-raised" ng-click="saveLanguage()" style="margin-right: 0;">Ekle</md-button>
 		   	  </div>
 		 </div>
 	</div>
