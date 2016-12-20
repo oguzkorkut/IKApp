@@ -6,11 +6,11 @@ public interface UserDao {
 
 	public User getUserByEmailAndPassword(String email, String password) throws Exception;
 
-	public Integer save(User user);
+	public User save(User user) throws Exception;
 
-	public User getUserDtoByEmail(String emial);
+	public User getUserDtoByEmail(String emial) throws Exception;
 
-	public void save2(User userDto);
+	public void save2(User userDto) throws Exception;
 
-	public User getUserDtoByEmail2(String emial);
+	public User getUserDtoByEmail2(String emial) throws Exception;
 }

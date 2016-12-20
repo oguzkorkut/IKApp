@@ -13,4 +13,17 @@
 	<!-- Services -->
 	<bean id="userService" class="com.okorkut.ik.service.UserServiceImpl" autowire="byName"></bean>
 	
+	<bean id="applicationService" class="com.okorkut.ik.service.ApplicationServiceImpl" autowire="byName"></bean>
+	
+	<bean id="certificateService" class="com.okorkut.ik.service.CertificateServiceImpl" autowire="byName"></bean>
+	
+	<bean id="educationService" class="com.okorkut.ik.service.EducationServiceImpl" autowire="byName"></bean>
+	
+	<bean id="experienceService" class="com.okorkut.ik.service.ExperienceServiceImpl" autowire="byName"></bean>
+	
+	<bean id="languageService" class="com.okorkut.ik.service.LanguageServiceImpl" autowire="byName"></bean>
+	
+	<bean id="referenceService" class="com.okorkut.ik.service.ReferenceServiceImpl" autowire="byName"></bean>
+	
+	
 </beans>

@@ -27,12 +27,6 @@ app.factory("userService", function($q,$http) {
 //			deferred.reject(response.statusText);
 //		});
 		
-		var newTask = {
-				"name" : "ss",
-				"lastname" : "aa"
-			}; 
-		
-		
 		$http({
 			method : "POST",
 			url : "http://localhost:8090/appik/services/user",

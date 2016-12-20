@@ -43,6 +43,9 @@ public class Language implements Serializable {
 	@Column(name = "WRITING", length = 10)
 	private int writing;
 
+	@Column(name = "USER_ID")
+	private Integer userId;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
@@ -108,6 +111,14 @@ public class Language implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 }

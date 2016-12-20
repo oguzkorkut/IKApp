@@ -48,6 +48,9 @@ public class Experience implements Serializable {
 	@Column(name = "POSITION", length = 50)
 	private String position;
 
+	@Column(name = "USER_ID")
+	private Integer userId;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
@@ -113,6 +116,14 @@ public class Experience implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 }

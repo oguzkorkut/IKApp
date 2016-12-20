@@ -32,11 +32,11 @@ public class RoleGroup implements Serializable {
 	@Column(name = "ACTIVE")
 	private boolean active;
 
-	@Column(name = "ROLE_ID")
-	private Integer roleId;
+	// @Column(name = "ROLE_ID")
+	// private Integer roleId;
 
-	@Column(name = "USER_ID")
-	private Integer userId;
+	// @Column(name = "USER_ID")
+	// private Integer userId;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
@@ -45,6 +45,9 @@ public class RoleGroup implements Serializable {
 	// @OneToOne(cascade = CascadeType.ALL)
 	// @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	// private Role role;
+
+	@Column(name = "USER_ID")
+	private Integer userId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
@@ -90,14 +93,6 @@ public class RoleGroup implements Serializable {
 		this.user = user;
 	}
 
-	public Integer getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
-	}
-
 	public Integer getUserId() {
 		return userId;
 	}
@@ -105,5 +100,21 @@ public class RoleGroup implements Serializable {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+
+	// public Integer getRoleId() {
+	// return roleId;
+	// }
+	//
+	// public void setRoleId(Integer roleId) {
+	// this.roleId = roleId;
+	// }
+	//
+	// public Integer getUserId() {
+	// return userId;
+	// }
+	//
+	// public void setUserId(Integer userId) {
+	// this.userId = userId;
+	// }
 
 }

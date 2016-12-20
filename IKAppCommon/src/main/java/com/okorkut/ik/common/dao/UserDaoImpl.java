@@ -5,7 +5,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +19,8 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	private static final Logger logger = Logger.getLogger(UserDaoImpl.class);
 
-	private SessionFactory sessionFactory;
+	// @Autowired
+	// private SessionFactory sessionFactory;
 
 	@Autowired
 	private IKAppLoggerUtils appLoggerUtils;
@@ -28,49 +28,37 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	@PersistenceContext
 	private EntityManager manager;
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
 	@Override
 	@Transactional
-	public Integer save(User user) {
+	public User save(User user) throws Exception {
 		logger.info("User save basladi.");
 
 		try {
-
-			// user.setCreatedAt(new Timestamp(new Date().getTime()));
-			// user.setCreatedBy("SYSTEM");
-			// user.setUpdatedAt(new Timestamp(new Date().getTime()));
-			// user.setUpdatedBy("SYSTEM");
-
 			manager.persist(user);
+
 		} catch (Exception e) {
 			logger.error(e, e);
+			throw e;
 		}
 
 		logger.info("User save bitti. ID:" + user.getId());
-		return user.getId();
+		return user;
 	}
 
 	@Override
-	public User getUserDtoByEmail(String emial) {
+	public User getUserDtoByEmail(String emial) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void save2(User userDto) {
+	public void save2(User userDto) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public User getUserDtoByEmail2(String emial) {
+	public User getUserDtoByEmail2(String emial) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -90,10 +78,16 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 		try {
 			em = openTransactionalConnection();
-			user = (User) manager.createNamedQuery("User.findGetUserByEmailAndPassword").setParameter("email", email)
-					.setParameter("password", password).getSingleResult();
+			user = (User) manager.createNamedQuery("User.findGetUserByEmailAndPassword").setParameter("email", email).setParameter("password", password)
+					.getSingleResult();
 
 			// return em.createQuery("SELECT p FROM Product p").getResultList();
+
+			// Query query = em.createQuery("SELECT e FROM User e");
+			// List<User> list = (List<User>) query.getResultList();
+			//
+			// query = em.createQuery("SELECT d FROM User d");
+			// List<User> dList = (List<User>) query.getResultList();
 
 		} catch (NoResultException nre) {
 			logger.info("Sonuc bulunamadi. email:" + email + " Detay Mesaj:" + nre.getMessage());

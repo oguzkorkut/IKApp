@@ -3,9 +3,9 @@ package com.okorkut.ik.common.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +44,10 @@ public class Certificate implements Serializable {
 	@Column(name = "POSITION", length = 50)
 	private String position;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name = "USER_ID")
+	private Integer userId;
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
 
@@ -104,12 +107,12 @@ public class Certificate implements Serializable {
 		this.user = user;
 	}
 
-	// public Integer getUserId() {
-	// return userId;
-	// }
-	//
-	// public void setUserId(Integer userId) {
-	// this.userId = userId;
-	// }
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
 }

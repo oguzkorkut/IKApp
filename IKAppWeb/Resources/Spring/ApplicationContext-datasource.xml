@@ -38,9 +38,9 @@
        <property name="sessionFactory" ref="sessionFactory" />
     </bean> -->
     
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
       <property name="entityManagerFactory" ref="entityManagerFactory" />
-   </bean>
+   </bean> 
     
     
     <!-- JPA EntityManagerFactory -->
@@ -51,8 +51,6 @@
       <property name="jpaVendorAdapter">
          <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
       </property>
-      <!-- <property name="persistenceXmlLocation" value="classpath:META-INF/persistencemo.xml" /> -->
-      <!-- <property name="persistenceUnitName" value="IKAppCommon"/> -->
       <property name="jpaProperties">
          <props>
          	<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
@@ -66,7 +64,7 @@
             	 <prop key="hibernate.show_sql">true</prop>
 				 <prop key="hibernate.default_schema">${db.schema}</prop>
 				 <!-- <prop key="hbm2ddl.auto">create"</prop> -->
-				 <prop key="hibernate.hbm2ddl.auto">create</prop>
+				 <prop key="hibernate.hbm2ddl.auto">update</prop>
 				 <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
                  <!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
             
@@ -81,12 +79,12 @@
     
  
     <!-- Session Factory -->
-   <!-- <bean id="sessionFactory"
+   <!--  <bean id="sessionFactory"
         class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-               <value>com.okorkut.ik.common.entity.Application</value>
+                <value>com.okorkut.ik.common.entity.Application</value>
 				<value>com.okorkut.ik.common.entity.Education</value>
 				<value>com.okorkut.ik.common.entity.Experience</value>
 				<value>com.okorkut.ik.common.entity.Language</value>
@@ -96,18 +94,25 @@
 				<value>com.okorkut.ik.common.entity.Role</value>
 				<value>com.okorkut.ik.common.entity.RoleGroup</value>
 				<value>com.okorkut.ik.common.entity.User</value>
-				<value>com.okorkut.ik.common.entity.Certificate</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.jdbc.wrap_result_sets" >true</prop>
+             	<prop key="hibernate.generate_statistics" >true</prop>
+            	<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.default_schema">${db.schema}</prop>
+				
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				
             </props>
         </property>
     </bean> -->
-    
+    <!-- <prop key="hbm2ddl.auto">create"</prop> -->
+    <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                <!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
     
     <bean id="daoFactory" class="com.okorkut.ik.common.dao.BaseDao"
 		abstract="true">
@@ -124,7 +129,18 @@
 	</bean>
 	
 	<bean id="roleDao" class="com.okorkut.ik.common.dao.RoleDaoImpl" autowire="byName" parent="baseDao">
-		<!-- <property name="sessionFactory" ref="sessionFactory" /> -->
 	</bean>
+	
+	<bean id="certificateDao" class="com.okorkut.ik.common.dao.CertificateDaoImpl" autowire="byName" parent="baseDao">
+	</bean>
+	<bean id="educationDao" class="com.okorkut.ik.common.dao.EducationDaoImpl" autowire="byName" parent="baseDao">
+	</bean>
+	<bean id="experienceDao" class="com.okorkut.ik.common.dao.ExperienceDaoImpl" autowire="byName" parent="baseDao">
+	</bean>
+	<bean id="languageDao" class="com.okorkut.ik.common.dao.LanguageDaoImpl" autowire="byName" parent="baseDao">
+	</bean>
+	<bean id="referenceDao" class="com.okorkut.ik.common.dao.ReferenceDaoImpl" autowire="byName" parent="baseDao">
+	</bean>
+	
 	
 </beans>
