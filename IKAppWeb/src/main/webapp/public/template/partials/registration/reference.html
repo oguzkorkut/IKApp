@@ -44,5 +44,32 @@
 	     		<md-button class="add-tab md-primary md-raised" ng-click="saveReferance()" type="submit" style="margin-right: 0;">Ekle</md-button>
 	   	   </div>
 		 </div>
+		 
+		 <div layout="row" style="margin: 10px 10px 10px 10px">
+	        	<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Ad</th>
+				      <th>Soyad</th>
+				      <th>Pozisyon</th>
+				      <th>Telefon</th>
+				      <th>E-Posta</th>
+				      <th>-</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="item in user.referenceDtos">
+				      <th scope="row"></th>
+				      <td>{{item.name}}</td>
+				      <td>{{item.lastname}}</td>
+				      <td>{{item.position}}</td>
+				      <td>{{item.mobilePhone}}</td>
+				      <td>{{item.email}}</td>
+				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeReference(item)"/></td>
+				    </tr>
+				  </tbody>
+				</table>
+	        </div>
 	</div>
 </ng-form>

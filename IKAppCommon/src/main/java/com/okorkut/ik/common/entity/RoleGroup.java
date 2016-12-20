@@ -32,11 +32,8 @@ public class RoleGroup implements Serializable {
 	@Column(name = "ACTIVE")
 	private boolean active;
 
-	// @Column(name = "ROLE_ID")
-	// private Integer roleId;
-
-	// @Column(name = "USER_ID")
-	// private Integer userId;
+	@Column(name = "ROLE_ID")
+	private Integer roleId;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
@@ -101,13 +98,13 @@ public class RoleGroup implements Serializable {
 		this.userId = userId;
 	}
 
-	// public Integer getRoleId() {
-	// return roleId;
-	// }
-	//
-	// public void setRoleId(Integer roleId) {
-	// this.roleId = roleId;
-	// }
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
 	//
 	// public Integer getUserId() {
 	// return userId;

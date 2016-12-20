@@ -88,6 +88,8 @@
 <script type="text/javascript" src="public/js/service/constantService.js"></script>
 <script type="text/javascript" src="public/js/service/userService.js"></script>
 
+<!-- Filter -->
+<script type="text/javascript" src="public/js/filter/filters.js"></script>
 
 </body>
 </html>

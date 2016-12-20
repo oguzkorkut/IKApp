@@ -97,13 +97,15 @@ public class UserServiceImpl implements UserService {
 			referenceService.saveCollection(user, userDto.getReferenceDtos());
 
 			// Personel role cekiliyor
-			Role role = roleDao.getRoleById(3);
+			// Role role = roleDao.getRoleById(3);
 
 			RoleGroup roleGroup = new RoleGroup();
 
 			roleGroup.setActive(true);
-			roleGroup.setRole(role);
-			roleGroup.setUser(user);
+			// roleGroup.setRole(role);
+			// roleGroup.setUser(user);
+			roleGroup.setUserId(user.getId());
+			roleGroup.setRoleId(3);
 
 			List<RoleGroup> roleGroups = new ArrayList<RoleGroup>();
 			roleGroups.add(roleGroup);

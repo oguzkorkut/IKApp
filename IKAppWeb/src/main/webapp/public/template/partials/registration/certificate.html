@@ -16,5 +16,26 @@
 	     		<md-button class="add-tab md-primary md-raised" ng-click="saveCertificate()"  style="margin-right: 0;">Ekle</md-button>
 	   	   </div>
 		 </div>
+		 
+		  <div layout="row" style="margin: 10px 10px 10px 10px">
+	        	<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Sertifika Adı</th>
+				      <th>Alınma Tarihi</th>
+				      <th>-</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="item in user.certificateDtos">
+				      <th scope="row"></th>
+				      <td>{{item.name}}</td>
+				      <td>{{item.applicationDate | date: 'dd-MM-yyyy'}}</td>
+				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeCertificate(item)"/></td>
+				    </tr>
+				  </tbody>
+				</table>
+	        </div>
 	</div>
 </ng-form>

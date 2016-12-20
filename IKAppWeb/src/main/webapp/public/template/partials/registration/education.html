@@ -21,20 +21,21 @@
 		           <md-datepicker id="educationEndDate" name="educationEndDate" ng-model="education.endDate" required></md-datepicker>
 		        </md-input-container>
 		        
+		         <md-input-container class="md-block" flex-gt-sm="10">
+			          <label>Note Sistemi</label>
+			          <md-select name="educationGradeSystem" ng-model="education.gradeSystem" required>
+						<md-option value="4">4</md-option>
+						<md-option value="5">5</md-option>
+						<md-option value="10">10</md-option>
+						<md-option value="100">100</md-option>	
+			          </md-select>
+		         </md-input-container>
+		        
 		        <md-input-container class="md-block" flex-gt-sm="40">
 		             <label>Diploma Notu</label>
 			         <input type="text" name="educationGrade" id="educationGrade" ng-model="education.grade"  maxlength="50" required>
 		         </md-input-container>
-		         
-		         <md-input-container class="md-block" flex-gt-sm="10">
-		          <label>Note Sistemi</label>
-		          <md-select name="educationGradeSystem" ng-model="education.gradeSystem" required>
-					<md-option value="4">4</md-option>
-					<md-option value="5">5</md-option>
-					<md-option value="10">10</md-option>
-					<md-option value="100">100</md-option>	
-		          </md-select>
-		        </md-input-container>
+		       
 		        
 		        <md-input-container class="md-block" flex-gt-sm="80">
 		             <label>Bölüm</label>
@@ -49,6 +50,39 @@
 		         <div layout="column"> 
 		        	<md-button class="add-tab md-primary md-raised" ng-click="saveEducation()"  style="margin-right: 0;">Ekle</md-button>
 		        </div>
+	        </div>
+	        <div layout="row" style="margin: 10px 10px 10px 10px">
+	        	
+	        	<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Eğitim Seviyesi</th>
+				      <th>Başlangıç</th>
+				      <th>Bitiş</th>
+				      <th>Bölüm</th>
+				      <th>Not Sistemi</th>
+				      <th>Diploma Notu</th>
+				      <th>Okul</th>
+				      <th>-</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="item in user.educationDtos">
+				      <th scope="row"></th>
+				      <td>{{item.educationLevel | EducationLevelFilter}}</td>
+				      <td>{{item.beginDate | date: 'dd-MM-yyyy'}}</td>
+				      <td>{{item.endDate | date: 'dd-MM-yyyy'}}</td>
+				      <td>{{item.gradeSystem | GradeSystemFilter}}</td>
+				      <td>{{item.grade}}</td>
+				      <td>{{item.branch}}</td>
+				      <td>{{item.schoolName}}</td>
+				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeEducation(item)"/></td>
+				      
+				    </tr>
+				  </tbody>
+				</table>
+	        	
 	        </div>
 	</div>
 </ng-form>

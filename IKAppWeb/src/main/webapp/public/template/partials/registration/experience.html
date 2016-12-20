@@ -26,5 +26,30 @@
 	     		<md-button class="add-tab md-primary md-raised" ng-click="saveExperience()" style="margin-right: 0;">Ekle</md-button>
 	   	   </div>
 		 </div>
+		 
+		 <div layout="row" style="margin: 10px 10px 10px 10px">
+	        	<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Firma</th>
+				      <th>Başlangıç</th>
+				      <th>Bitiş</th>
+				      <th>Pozisyon</th>
+				      <th>-</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="item in user.experienceDtos">
+				      <th scope="row"></th>
+				      <td>{{item.company}}</td>
+				      <td>{{item.beginDate | date: 'dd-MM-yyyy'}}</td>
+				      <td>{{item.endDate | date: 'dd-MM-yyyy'}}</td>
+				      <td>{{item.position}}</td>
+				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeExperience(item)"/></td>
+				    </tr>
+				  </tbody>
+				</table>
+	        </div>
 	</div>
 </ng-form>
