@@ -31,8 +31,8 @@
 				    <tr ng-repeat="item in user.certificateDtos">
 				      <th scope="row"></th>
 				      <td>{{item.name}}</td>
-				      <td>{{item.applicationDate | date: 'dd-MM-yyyy'}}</td>
-				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeCertificate(item)"/></td>
+				      <td>{{item.applicationDate | date: 'dd-MM-yyyy'}}</td> 
+				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeCertificate($index,item)"/></td>
 				    </tr>
 				  </tbody>
 				</table>

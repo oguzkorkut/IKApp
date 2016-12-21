@@ -46,7 +46,7 @@
 				      <td>{{item.beginDate | date: 'dd-MM-yyyy'}}</td>
 				      <td>{{item.endDate | date: 'dd-MM-yyyy'}}</td>
 				      <td>{{item.position}}</td>
-				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeExperience(item)"/></td>
+				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeExperience($index,item)"/></td>
 				    </tr>
 				  </tbody>
 				</table>

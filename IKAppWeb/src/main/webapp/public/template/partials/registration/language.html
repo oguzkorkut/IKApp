@@ -59,7 +59,7 @@
 				      <td>{{item.reading | RWSLevelFilter}}</td>
 				      <td>{{item.writing | RWSLevelFilter}}</td>
 				      <td>{{item.speaking | RWSLevelFilter}}</td>
-				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeLanguage(item)"/></td>
+				      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="removeLanguage($index,item)"/></td>
 				    </tr>
 				  </tbody>
 				</table>

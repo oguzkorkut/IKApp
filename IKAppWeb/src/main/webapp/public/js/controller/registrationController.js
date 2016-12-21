@@ -48,12 +48,8 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 
 		 if ($scope.registrationForm.registrationFormEducation.$valid) {
 			 
-			 var id;
 			 if(typeof ($scope.user.educationDtos) == 'undefined'){
 				 $scope.user["educationDtos"]=[];
-				 $scope.education['id'] = -1;
-			 }else{
-				 $scope.education['id'] = $scope.user.educationDtos[$scope.user.educationDtos.length -1 ].id - 1;
 			 }
 			
 			 
@@ -66,9 +62,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 
 	 }
 	 
-	 $scope.removeEducation = function(education){
+	 $scope.removeEducation = function($index,education){
 		 if(typeof ($scope.user.educationDtos) != 'undefined'){
-			 $scope.user.educationDtos.splice(education.id, 1); 
+			 $scope.user.educationDtos.splice($index, 1); 
 		 }
 	 }
 	 
@@ -77,9 +73,6 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 if ($scope.registrationForm.registrationFormLanguage.$valid) {
 			 if(typeof ($scope.user.languageDtos) == 'undefined'){
 				 $scope.user["languageDtos"]=[];
-				 $scope.language['id'] = -1;
-			 }else{
-				 $scope.language['id'] = $scope.user.languageDtos[$scope.user.languageDtos.length -1 ].id - 1;
 			 }
 			 
 			 $scope.user.languageDtos.push($scope.language);
@@ -91,9 +84,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 
 	 }
 	 
-	 $scope.removeLanguage = function(language){
+	 $scope.removeLanguage = function($index,language){
 		 if(typeof ($scope.user.languageDtos) != 'undefined'){
-			 $scope.user.languageDtos.splice(language.id, 1); 
+			 $scope.user.languageDtos.splice($index, 1); 
 		 }
 	 }
 	 
@@ -102,9 +95,6 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 if ($scope.registrationForm.registrationFormExperience.$valid) {
 			 if(typeof ($scope.user.experienceDtos) == 'undefined'){
 				 $scope.user["experienceDtos"]=[];
-				 $scope.experience['id'] = -1;
-			 }else{
-				 $scope.experience['id'] = $scope.user.experienceDtos[$scope.user.experienceDtos.length -1 ].id - 1;
 			 }
 			 
 			 $scope.user.experienceDtos.push($scope.experience);
@@ -115,9 +105,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 }
 	 }
 	 
-	 $scope.removeExperience = function(experience){
+	 $scope.removeExperience = function($index,experience){
 		 if(typeof ($scope.user.experienceDtos) != 'undefined'){
-			 $scope.user.experienceDtos.splice(expidce.id, 1); 
+			 $scope.user.experienceDtos.splice($index, 1); 
 		 }
 	 }
 	 
@@ -126,9 +116,6 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 if ($scope.registrationForm.registrationFormCertificate.$valid) {
 			 if(typeof ($scope.user.certificateDtos) == 'undefined'){
 				 $scope.user["certificateDtos"]=[];
-				 $scope.certificate['id'] = -1;
-			 }else{
-				 $scope.certificate['id'] = $scope.user.certificateDtos[$scope.user.certificateDtos.length -1 ].id - 1;
 			 }
 			 
 			 $scope.user.certificateDtos.push($scope.certificate);
@@ -139,9 +126,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 }
 	 }
 	 
-	 $scope.removeCertificate = function(certificate){
+	 $scope.removeCertificate = function($index,certificate){
 		 if(typeof ($scope.user.certificateDtos) != 'undefined'){
-			 $scope.user.certificateDtos.splice(certificate.id, 1); 
+			 $scope.user.certificateDtos.splice($index, 1); 
 		 }
 	 }
 	 
@@ -150,9 +137,6 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 if ($scope.registrationForm.registrationFormReference.$valid) {
 			 if(typeof ($scope.user.referenceDtos) == 'undefined'){
 				 $scope.user["referenceDtos"]=[];
-				 $scope.reference['id'] = -1;
-			 }else{
-				 $scope.reference['id'] = $scope.user.referenceDtos[$scope.user.referenceDtos.length -1 ].id -1;
 			 }
 			 
 			 $scope.user.referenceDtos.push($scope.reference);
@@ -164,9 +148,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 
 	 }
 	 
-	 $scope.removeReference = function(reference){
+	 $scope.removeReference = function($index,reference){
 		 if(typeof ($scope.user.referenceDtos) != 'undefined'){
-			 $scope.user.referenceDtos.splice(reference.id, 1); 
+			 $scope.user.referenceDtos.splice($index, 1); 
 		 }
 	 }
 	 
