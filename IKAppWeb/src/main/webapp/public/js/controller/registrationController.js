@@ -36,6 +36,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 			 
 			 promise.then(function(data) {
 					console.log("success");
+					openDialog(e, 'Bilgi','Bilgileriniz anımıştır. Süreci login olarak takip edebilirsiniz.');
 			 }, function(message) {
 				 console.log("error")
 			 });
@@ -47,12 +48,12 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 
 		 if ($scope.registrationForm.registrationFormEducation.$valid) {
 			 
-			 var index;
+			 var id;
 			 if(typeof ($scope.user.educationDtos) == 'undefined'){
 				 $scope.user["educationDtos"]=[];
-				 $scope.education['index'] = 0;
+				 $scope.education['id'] = -1;
 			 }else{
-				 $scope.education['index'] = $scope.user.educationDtos[$scope.user.educationDtos.length -1 ].index + 1;
+				 $scope.education['id'] = $scope.user.educationDtos[$scope.user.educationDtos.length -1 ].id - 1;
 			 }
 			
 			 
@@ -67,7 +68,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 	 
 	 $scope.removeEducation = function(education){
 		 if(typeof ($scope.user.educationDtos) != 'undefined'){
-			 $scope.user.educationDtos.splice(education.index, 1); 
+			 $scope.user.educationDtos.splice(education.id, 1); 
 		 }
 	 }
 	 
@@ -76,9 +77,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 if ($scope.registrationForm.registrationFormLanguage.$valid) {
 			 if(typeof ($scope.user.languageDtos) == 'undefined'){
 				 $scope.user["languageDtos"]=[];
-				 $scope.language['index'] = 0;
+				 $scope.language['id'] = -1;
 			 }else{
-				 $scope.language['index'] = $scope.user.languageDtos[$scope.user.languageDtos.length -1 ].index + 1;
+				 $scope.language['id'] = $scope.user.languageDtos[$scope.user.languageDtos.length -1 ].id - 1;
 			 }
 			 
 			 $scope.user.languageDtos.push($scope.language);
@@ -92,7 +93,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 	 
 	 $scope.removeLanguage = function(language){
 		 if(typeof ($scope.user.languageDtos) != 'undefined'){
-			 $scope.user.languageDtos.splice(language.index, 1); 
+			 $scope.user.languageDtos.splice(language.id, 1); 
 		 }
 	 }
 	 
@@ -101,9 +102,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 if ($scope.registrationForm.registrationFormExperience.$valid) {
 			 if(typeof ($scope.user.experienceDtos) == 'undefined'){
 				 $scope.user["experienceDtos"]=[];
-				 $scope.experience['index'] = 0;
+				 $scope.experience['id'] = -1;
 			 }else{
-				 $scope.experience['index'] = $scope.user.experienceDtos[$scope.user.experienceDtos.length -1 ].index + 1;
+				 $scope.experience['id'] = $scope.user.experienceDtos[$scope.user.experienceDtos.length -1 ].id - 1;
 			 }
 			 
 			 $scope.user.experienceDtos.push($scope.experience);
@@ -116,7 +117,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 	 
 	 $scope.removeExperience = function(experience){
 		 if(typeof ($scope.user.experienceDtos) != 'undefined'){
-			 $scope.user.experienceDtos.splice(experience.index, 1); 
+			 $scope.user.experienceDtos.splice(expidce.id, 1); 
 		 }
 	 }
 	 
@@ -125,9 +126,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 if ($scope.registrationForm.registrationFormCertificate.$valid) {
 			 if(typeof ($scope.user.certificateDtos) == 'undefined'){
 				 $scope.user["certificateDtos"]=[];
-				 $scope.certificate['index'] = 0;
+				 $scope.certificate['id'] = -1;
 			 }else{
-				 $scope.certificate['index'] = $scope.user.certificateDtos[$scope.user.certificateDtos.length -1 ].index + 1;
+				 $scope.certificate['id'] = $scope.user.certificateDtos[$scope.user.certificateDtos.length -1 ].id - 1;
 			 }
 			 
 			 $scope.user.certificateDtos.push($scope.certificate);
@@ -140,7 +141,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 	 
 	 $scope.removeCertificate = function(certificate){
 		 if(typeof ($scope.user.certificateDtos) != 'undefined'){
-			 $scope.user.certificateDtos.splice(certificate.index, 1); 
+			 $scope.user.certificateDtos.splice(certificate.id, 1); 
 		 }
 	 }
 	 
@@ -149,9 +150,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 if ($scope.registrationForm.registrationFormReference.$valid) {
 			 if(typeof ($scope.user.referenceDtos) == 'undefined'){
 				 $scope.user["referenceDtos"]=[];
-				 $scope.reference['index'] = 0;
+				 $scope.reference['id'] = -1;
 			 }else{
-				 $scope.reference['index'] = $scope.user.referenceDtos[$scope.user.referenceDtos.length -1 ].index + 1;
+				 $scope.reference['id'] = $scope.user.referenceDtos[$scope.user.referenceDtos.length -1 ].id -1;
 			 }
 			 
 			 $scope.user.referenceDtos.push($scope.reference);
@@ -165,7 +166,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 	 
 	 $scope.removeReference = function(reference){
 		 if(typeof ($scope.user.referenceDtos) != 'undefined'){
-			 $scope.user.referenceDtos.splice(reference.index, 1); 
+			 $scope.user.referenceDtos.splice(reference.id, 1); 
 		 }
 	 }
 	 
