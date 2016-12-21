@@ -35,7 +35,6 @@
 </style>
 </head>
 <body >
-
  <div class="main-dive" style="overflow: auto !important;">
 
 	<!-- header -->
@@ -67,6 +66,8 @@
 
 <script type="text/javascript" src="public/js/lib/bootstrap-3.3.7/bootstrap.js"></script>
 
+<script data-main="public/js/Main" src="public/js/lib/appUtils.js"></script>
+
 <!-- app -->
 <script type="text/javascript" src="public/js/app.js"></script>
 
@@ -87,6 +88,10 @@
 <!-- Service -->
 <script type="text/javascript" src="public/js/service/constantService.js"></script>
 <script type="text/javascript" src="public/js/service/userService.js"></script>
+<script type="text/javascript" src="public/js/service/cacheService.js"></script>
+<script type="text/javascript" src="public/js/service/loginService.js"></script>
+<script type="text/javascript" src="public/js/service/coreService.js"></script>
+<script type="text/javascript" src="public/js/service/model/ikModalFactory.js"></script>
 
 <!-- Filter -->
 <script type="text/javascript" src="public/js/filter/filters.js"></script>

@@ -1,3 +1,4 @@
+'use strict';
 app.factory("constantService", function() {
 	
 	function getEducationLevelList() {

@@ -1,15 +1,11 @@
-app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,constantService,userService) {
+app.controller('RegistrationController', function ($scope,$location, $mdToast, $mdDialog,constantService,userService,toastFactory) {
 
 	 $scope.user = {
 	 };
-//	 $scope.genderList = ('Erkek Kadın').split(' ').map(function(value) {
-//			        return {value: value};
-//			      });
-//	 
+
 	 $scope.educationLevel = constantService.getEducationLevelList();
 	 
 	 $scope.gradingSystem = constantService.getGradingSystemList();
-	 
 	 
 	 //formlar
 	 $scope.education ={}
@@ -23,11 +19,11 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 		 var isValid = true;
 		 
 		 if (!$scope.registrationForm.registrationFormPersonal.$valid) {
-			  openDialog(e, 'Hata','Kişisel bilgilerde eksik veya hatalı alanlar var.');
-			  isValid = false;
+			 toastFactory.openDialog(e, 'Hata','Kişisel bilgilerde eksik veya hatalı alanlar var.');
+			 isValid = false;
 		 }else if (!$scope.registrationForm.registrationFormAddress.$valid) {
-			 openDialog(e, 'Hata','İletişim adresini giriniz.');
-			  isValid = false;
+			 toastFactory.openDialog(e, 'Hata','İletişim adresini giriniz.');
+			 isValid = false;
 		 }
 		 
 		 if (isValid) {
@@ -36,7 +32,9 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 			 
 			 promise.then(function(data) {
 					console.log("success");
-					openDialog(e, 'Bilgi','Bilgileriniz anımıştır. Süreci login olarak takip edebilirsiniz.');
+					toastFactory.openDialog(e, 'Bilgi','Bilgileriniz anımıştır. Süreci login olarak takip edebilirsiniz.');
+//					$location.path('login.jsp');
+					window.location.href = 'login.jsp';
 			 }, function(message) {
 				 console.log("error")
 			 });
@@ -57,7 +55,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 			 $scope.education = {}
 			 $scope.registrationForm.registrationFormEducation.$setPristine();
 		 }else{
-			 openDialog(this, 'Hata','Eğitim bilgileri eksik. Bilgileri kontrol ediniz.');
+			 toastFactory.openDialog(this, 'Hata','Eğitim bilgileri eksik. Bilgileri kontrol ediniz.');
 		 }
 		 
 	 }
@@ -79,7 +77,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 			 $scope.language = {};
 			 $scope.registrationForm.registrationFormLanguage.$setPristine();
 		 }else{
-			 openDialog(this, 'Hata','Dil bilgileri eksik. Bilgileri kontrol ediniz.');
+			 toastFactory.openDialog(this, 'Hata','Dil bilgileri eksik. Bilgileri kontrol ediniz.');
 		 }
 		 
 	 }
@@ -101,7 +99,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 			 $scope.experience = {};
 			 $scope.registrationForm.registrationFormExperience.$setPristine();
 		 }else{
-			 openDialog(this, 'Hata','İş deneyimleri eksik. Bilgileri kontrol ediniz.');
+			 toastFactory.openDialog(this, 'Hata','İş deneyimleri eksik. Bilgileri kontrol ediniz.');
 		 }
 	 }
 	 
@@ -122,7 +120,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 			 $scope.certificate = {};
 			 $scope.registrationForm.registrationFormCertificate.$setPristine();
 		 }else{
-			 openDialog(this, 'Hata','Sertifika bilgileri eksik. Bilgileri kontrol ediniz.');
+			 toastFactory.openDialog(this, 'Hata','Sertifika bilgileri eksik. Bilgileri kontrol ediniz.');
 		 }
 	 }
 	 
@@ -143,7 +141,7 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 			 $scope.reference={};
 			 $scope.registrationForm.registrationFormReference.$setPristine();
 		 }else{
-			 openDialog(this, 'Hata','Referans bilgileri eksiktir. Bilgileri kontrol ediniz.');
+			 toastFactory.openDialog(this, 'Hata','Referans bilgileri eksiktir. Bilgileri kontrol ediniz.');
 		 }
 		 
 	 }
@@ -153,20 +151,5 @@ app.controller('RegistrationController', function ($scope, $mdToast, $mdDialog,c
 			 $scope.user.referenceDtos.splice($index, 1); 
 		 }
 	 }
-	 
-	 function openDialog(e,title,message){
-			 $mdDialog
-	          .show($mdDialog
-	            .alert()
-	            .title(title)
-	            .textContent(message)
-	            .ariaLabel('More info')
-	            .ok('Kapat')
-	            
-	          )
-	          .then(function() {
-	        	  
-	          });
-	 };
 });
 

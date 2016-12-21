@@ -1,6 +1,7 @@
 package com.okorkut.ik.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -40,14 +43,12 @@ public class UserLoginServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	@Override
-	protected void doPost(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 		logger.info("LoginServlet doPost started...");
 
 		final String userIp = IKUtils.getClientIP(request);
@@ -73,8 +74,7 @@ public class UserLoginServlet extends HttpServlet {
 						request.getSession().setAttribute("userDto", userDto);
 						genericValueDto = new GenericValueDto(0, "", "", true);
 					} else {
-						genericValueDto = new GenericValueDto(0, "HataliKullaniciAdiVeyaSifres",
-								"Kullanici adi veya şifre hatali!", false);
+						genericValueDto = new GenericValueDto(0, "HataliKullaniciAdiVeyaSifres", "Kullanici adi veya şifre hatali!", false);
 					}
 
 				} catch (final Exception e) {
@@ -86,32 +86,84 @@ public class UserLoginServlet extends HttpServlet {
 					logger.info("Redirection Page index.jsp...");
 					final String userKey = (String) request.getSession().getAttribute("userEposta");
 					logger.info("User j_security_check :" + userKey);
-					final String url = "j_security_check?j_username=" + userKey + "&j_password="
-							+ URLEncoder.encode(userPasswod);
+					final String url = "j_security_check?j_username=" + userKey + "&j_password=" + URLEncoder.encode(userPasswod);
 					final String redirectUrl = response.encodeRedirectURL(url);
-					response.sendRedirect(redirectUrl);
+					// response.sendRedirect(redirectUrl);
+
+					response.setContentType("application/json");
+					response.setCharacterEncoding("utf-8");
+					PrintWriter pout = response.getWriter();
+					JSONObject json = new JSONObject();
+					try {
+						json.put("isSuccess", true);
+						pout.print(json.toString());
+					} catch (JSONException e) {
+						logger.error(e, e);
+						e.printStackTrace();
+					} finally {
+						pout.close();
+					}
+
 				} else {
-					request.setAttribute("isSuccess", false);
-					request.setAttribute("errorCode", genericValueDto.getCode());
-					request.setAttribute("errorMessage", genericValueDto.getValue());
-					request.getRequestDispatcher("login.jsp").forward(request, response);
-					return;
+
+					response.setContentType("application/json");
+					response.setCharacterEncoding("utf-8");
+					PrintWriter pout = response.getWriter();
+					JSONObject json = new JSONObject();
+					try {
+						json.put("isSuccess", false);
+						json.put("errorCode", genericValueDto.getCode());
+						json.put("errorMessage", genericValueDto.getValue());
+						pout.print(json.toString());
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						logger.error(e, e);
+						e.printStackTrace();
+					} finally {
+						pout.close();
+					}
 				}
 			} else {
 				logger.info("Kullanici adi veya sifre bos");
-				request.setAttribute("errorCode", "HataliKullaniciAdiVeyaSifres");
-				request.setAttribute("errorMessage", "Kullanici adi veya şifre boş!");
-				request.getRequestDispatcher("login.jsp").forward(request, response);
-				return;
+
+				response.setContentType("application/json");
+				response.setCharacterEncoding("utf-8");
+				PrintWriter pout = response.getWriter();
+				JSONObject json = new JSONObject();
+				try {
+					json.put("isSuccess", false);
+					json.put("errorCode", "HataliKullaniciAdiVeyaSifres");
+					json.put("errorMessage", "Kullanici adi veya şifre boş");
+					pout.print(json.toString());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					logger.error(e, e);
+					e.printStackTrace();
+				} finally {
+					pout.close();
+				}
 			}
 
 			logger.info("LoginServlet doPost end...");
 		} else {
 			logger.info("Kullanici adi veya sifre bos. Redirection Page index.jsp...");
-			request.setAttribute("errorCode", "HataliKullaniciAdiVeyaSifres");
-			request.setAttribute("errorMessage", "Kullanici adi veya şifre boş!");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-			return;
+
+			response.setContentType("application/json");
+			response.setCharacterEncoding("utf-8");
+			PrintWriter pout = response.getWriter();
+			JSONObject json = new JSONObject();
+			try {
+				json.put("isSuccess", false);
+				json.put("errorCode", "HataliKullaniciAdiVeyaSifres");
+				json.put("errorMessage", "Kullanici adi veya şifre boş");
+				pout.print(json.toString());
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				logger.error(e, e);
+				e.printStackTrace();
+			} finally {
+				pout.close();
+			}
 		}
 	}
 }
