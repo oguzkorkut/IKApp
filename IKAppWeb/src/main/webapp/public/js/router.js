@@ -8,32 +8,32 @@ app.config(function($stateProvider,$urlRouterProvider){
 		.state('/',{
 			url:'/',
 			templateUrl:'public/template/home.html',
-			controller:'MainController',
-		    	authenticate: false
+			controller:'mainController',
+		    authenticate: false
 		})
 		.state('login',{
 			url:'/login',
 			templateUrl:'public/template/login.html',
-			controller:'RedirectloginController',
-		    	authenticate: false
+			controller:'loginController',
+		    authenticate: false
 		})
-		.state('kayit',{
+		.state('/kayit',{
 			url:'/kayit',
 			templateUrl:'public/template/registration.html',
-			controller:'RegistrationController',
-		    	authenticate: false
+			controller:'registrationController',
+		    authenticate: false
 		})
 		.state('profil',{
 			url:'/profil',
 			templateUrl:'public/template/profile.html',
-			controller:'ProfileController',
-		    	authenticate: true
+			controller:'profileController',
+		    authenticate: true
 		})
 		.state('ayarlar',{
 			url:'/ayarlar',
 			templateUrl:'public/template/settings.html',
-			controller:'SettingsController',
-		    	authenticate: true
+			controller:'settingsController',
+		    authenticate: true
 		});
 		
 	

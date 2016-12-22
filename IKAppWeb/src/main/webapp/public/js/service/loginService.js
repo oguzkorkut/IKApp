@@ -49,8 +49,8 @@ app.factory("loginService", function($q,$http, $location,toastFactory,cacheServi
 			url:"http://localhost:8090/appik/logout"
 		}).then(function success(response) {
 			cacheService.clearUserModelByCookie();
-//			$location.path('#/login');
-			$window.location = "login.jsp"
+			$location.path('/login');
+//			$window.location = "login.jsp"
 		}, function(response) {
 			toastFactory.openDialog(this, "HATA", response.statusText);
 		});

@@ -1,4 +1,4 @@
-app.controller('RegistrationController', function ($scope,$location, $mdToast, $mdDialog,constantService,userService,toastFactory) {
+app.controller('registrationController', function ($scope,$location, $mdToast, $mdDialog,constantService,userService,toastFactory) {
 
 	 $scope.user = {
 	 };
@@ -33,8 +33,8 @@ app.controller('RegistrationController', function ($scope,$location, $mdToast, $
 			 promise.then(function(data) {
 					console.log("success");
 					toastFactory.openDialog(e, 'Bilgi','Bilgileriniz anımıştır. Süreci login olarak takip edebilirsiniz.');
-//					$location.path('login.jsp');
-					window.location.href = 'login.jsp';
+					$location.path('/login');
+//					$window.location.href = 'login.jsp';
 			 }, function(message) {
 				 console.log("error")
 			 });

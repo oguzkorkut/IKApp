@@ -17,8 +17,8 @@ app.run(function($rootScope,$state,$http,loginService){
 		    	 promise.then(function(data) {
 //					 $window.location = "index.jsp";
 				 }, function(message) {
-//					 $state.transitionTo("login");
-					 $window.location = "login.jsp";
+					 $state.transitionTo("login");
+//					 $window.location = "login.jsp";
 					 event.preventDefault();
 				 });
 //		      $state.transitionTo("/");
