@@ -10,22 +10,21 @@
 <link href="public/css/bootstrap-3.3.7/bootstrap-responsive.css" rel="stylesheet" />
 <link href="public/css/bootstrap-3.3.7/bootstrap-theme.css" rel="stylesheet" />
 <link rel="stylesheet" href="public/css/custom.css">
+<link rel="stylesheet" type="text/css" href="public/css/font-awesome/font-awesome-4.2.0.css" />
 
 
 <link rel="stylesheet" href="public/css/angular-material.min.css" />
 
 <link href="public/css/ik.css" rel="stylesheet" />
-
-    
 <style type="text/css">
 .main-dive{
-    	margin: 20px;
+    	/* margin: 20px; */
     }
     html {
             overflow: scroll;
             height: 100%;
              overflow-y: scroll;
-  width: 100%;
+  			width: 100%;
         }
         
        body {
@@ -35,7 +34,7 @@
 </style>
 </head>
 <body >
- <div class="main-dive" style="overflow: auto !important;">
+ <div class="main-dive" >
 
 	<!-- header -->
 	<header-detail></header-detail>
@@ -74,6 +73,7 @@
 <!-- Controller -->
 <script type="text/javascript" src="public/js/controller/controllers.js"></script>
 <script type="text/javascript" src="public/js/controller/registrationController.js"></script>
+<script type="text/javascript" src="public/js/controller/loginController.js"></script>
 
 
 <script type="text/javascript" src="public/js/controller/toast.js"></script>

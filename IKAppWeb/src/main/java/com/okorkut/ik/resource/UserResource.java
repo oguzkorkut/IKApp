@@ -2,6 +2,7 @@ package com.okorkut.ik.resource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -31,7 +32,7 @@ public class UserResource {
 	@Autowired
 	private UserService userService;
 
-	// private static final Logger logger =
+	// private static Logger logger =
 	// LogManager.getLogger(MainResource.class.getName());
 
 	// @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
@@ -75,5 +76,23 @@ public class UserResource {
 		// AppConf.class) {
 		// };
 		return Response.ok(valueDto).build();
+	}
+
+	@GET
+	@Path("/isLogged")
+	// @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	// @Consumes({"application/xml","application/json"})
+	public Response isLogged(@Context HttpServletRequest request) {
+		logger.info("isLogged called");
+
+		GenericValueDto dto = null;
+
+		if (request.getSession().getAttribute("userDto") != null) {
+			dto = new GenericValueDto(0, "", "", true);
+		} else {
+			dto = new GenericValueDto(0, "", "", false);
+		}
+
+		return Response.ok(dto).build();
 	}
 }

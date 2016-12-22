@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div id="custom-bootstrap-menu" class="navbar navbar-default navbar-fixed-top bg-faded ikFooter" role="navigation">
-
+<div id="custom-bootstrap-menu" class="navbar navbar-default navbar-fixed-top bg-faded ikFooter" style="position: inherit;margin-bottom:0px;" role="navigation" >
+	<!-- {{isShowHeader}} -->
+	
     <div class="container-fluid container">
         <div class="navbar-header">
         	<a class="brand" href="#/">

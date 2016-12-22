@@ -49,7 +49,8 @@ app.factory("loginService", function($q,$http, $location,toastFactory,cacheServi
 			url:"http://localhost:8090/appik/logout"
 		}).then(function success(response) {
 			cacheService.clearUserModelByCookie();
-			$location.path('/login');
+//			$location.path('#/login');
+			$window.location = "login.jsp"
 		}, function(response) {
 			toastFactory.openDialog(this, "HATA", response.statusText);
 		});
@@ -57,12 +58,32 @@ app.factory("loginService", function($q,$http, $location,toastFactory,cacheServi
 	};
 	
 	function isLogged() {
-		var userModel = cacheService.getUserModelByCookie();
-
-		if (userModel) {
-			return true;
-		}
-		return false;
+		var deferred=$q.defer();
+			
+		$http({
+			method: "GET",
+			url:"http://localhost:8090/appik/services/user/isLogged"
+		}).then(function success(response) {
+			cacheService.clearUserModelByCookie();
+//				$location.path('login');
+			if (response.data.checked) {
+				deferred.resolve(response.data);
+			}else{
+				cacheService.clearUserModelByCookie();
+				deferred.reject(response.statusText);
+			}
+			
+		}, function(response) {
+			var userModel = cacheService.getUserModelByCookie();
+			
+			if (!userModel) {
+				cacheService.clearUserModelByCookie();	
+			}
+			
+			deferred.reject(response.statusText);
+		});
+			
+		return deferred.promise;
 	};
 	
 	return {

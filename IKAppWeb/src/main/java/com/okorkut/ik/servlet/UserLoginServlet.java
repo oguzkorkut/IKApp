@@ -37,21 +37,21 @@ public class UserLoginServlet extends HttpServlet {
 	private UserService userService;
 
 	@Override
-	public void init(final ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
 	}
 
 	@Override
-	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	@Override
-	protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		logger.info("LoginServlet doPost started...");
 
-		final String userIp = IKUtils.getClientIP(request);
+		String userIp = IKUtils.getClientIP(request);
 		logger.debug("User Login  IP = " + userIp);
 
 		UserDto userDto = null;
@@ -77,17 +77,17 @@ public class UserLoginServlet extends HttpServlet {
 						genericValueDto = new GenericValueDto(0, "HataliKullaniciAdiVeyaSifres", "Kullanici adi veya şifre hatali!", false);
 					}
 
-				} catch (final Exception e) {
+				} catch (Exception e) {
 					logger.error(e, e);
 					logger.fatal("Login sirasinda hata olustu :" + e.getMessage());
 
 				}
 				if (genericValueDto.getChecked()) {
 					logger.info("Redirection Page index.jsp...");
-					final String userKey = (String) request.getSession().getAttribute("userEposta");
+					String userKey = (String) request.getSession().getAttribute("userEposta");
 					logger.info("User j_security_check :" + userKey);
-					final String url = "j_security_check?j_username=" + userKey + "&j_password=" + URLEncoder.encode(userPasswod);
-					final String redirectUrl = response.encodeRedirectURL(url);
+					String url = "j_security_check?j_username=" + userKey + "&j_password=" + URLEncoder.encode(userPasswod);
+					String redirectUrl = response.encodeRedirectURL(url);
 					// response.sendRedirect(redirectUrl);
 
 					response.setContentType("application/json");
