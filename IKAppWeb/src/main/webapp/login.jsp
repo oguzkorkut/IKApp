@@ -16,39 +16,6 @@
 <link rel="stylesheet" href="public/css/angular-material.min.css" />
 
 
-</head>
-<body ng-controller="loginController">
-	<div id="mainContainer">
-		<div class="login-container">
-			<div class="login-card">
-				<div class="login-form">
-					<form name="loginForm"  method="POST"  class="form-horizontal">
-								<div class="alert alert-danger" ng-show="isShowMessage">
-									<p>{{errorMessage}}</p>
-								</div>
-							<div class="input-group input-sm">
-								<label class="input-group-addon" for="j_username"><i class="fa fa-user"></i></label>
-								<input type="text" class="form-control" id="j_username" name="j_username" ng-model="j_username" placeholder="E-Posta" required autocomplete="off"  >
-							</div>
-							<div class="input-group input-sm">
-								<label class="input-group-addon" for="j_password"><i class="fa fa-lock"></i></label> 
-								<input type="password" class="form-control" id="j_password" name="j_password" ng-model="j_password" placeholder="Şifre" required autocomplete="off">
-							</div>
-							<div class="form-actions">
-								<div class="input-group input-sm">
-									<button type="button" id="loginBtn"  class="btn btn-primary login-btn loginBtn" ng-click="login();" >GİRİŞ YAP</button>
-									<button type="button" id="registrationBtn" ng-click="registration();" class="btn btn-primary login-btn ">KAYIT OL</button>
-											&nbsp;<a id='loginForgotPassword' ng-click="forgotPassword();" class="user-link">Şifremi Unuttum</a>
-	                          	</div>
-                          	
-							</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-
 <script type="text/javascript" src="public/js/lib/angular.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-ui-router-0.3.1.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-animate.min.js"></script>
@@ -93,6 +60,41 @@
 
 <!-- Filter -->
 <script type="text/javascript" src="public/js/filter/filters.js"></script>
+
+</head>
+<body ng-controller="loginController">
+	<div id="mainContainer">
+		<div class="login-container">
+			<div class="login-card">
+				<div class="login-form">
+					<form name="loginForm"  method="POST"  class="form-horizontal">
+								<div class="alert alert-danger" ng-show="isShowMessage">
+									<p>{{errorMessage}}</p>
+								</div>
+							<div class="input-group input-sm">
+								<label class="input-group-addon" for="j_username"><i class="fa fa-user"></i></label>
+								<input type="text" class="form-control" id="j_username" name="j_username" ng-model="j_username" placeholder="E-Posta" required autocomplete="off"  >
+							</div>
+							<div class="input-group input-sm">
+								<label class="input-group-addon" for="j_password"><i class="fa fa-lock"></i></label> 
+								<input type="password" class="form-control" id="j_password" name="j_password" ng-model="j_password" placeholder="Şifre" required autocomplete="off">
+							</div>
+							<div class="form-actions">
+								<div class="input-group input-sm">
+									<button type="button" id="loginBtn"  class="btn btn-primary login-btn loginBtn" ng-click="login();" >GİRİŞ YAP</button>
+									<button type="button" id="registrationBtn" ng-click="registration();" class="btn btn-primary login-btn ">KAYIT OL</button>
+											&nbsp;<a id='loginForgotPassword' ng-click="forgotPassword();" class="user-link">Şifremi Unuttum</a>
+	                          	</div>
+                          	
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
 
 </body>
 </html>

@@ -4,3 +4,4 @@ target/*
 .settings/*
 /docs/extdocs/*
 ../.settings/*
+IKApp/**/target/*

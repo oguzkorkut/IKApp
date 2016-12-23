@@ -16,38 +16,8 @@
 <link rel="stylesheet" href="public/css/angular-material.min.css" />
 
 <link href="public/css/ik.css" rel="stylesheet" />
-<style type="text/css">
-.main-dive{
-    	/* margin: 20px; */
-    }
-    html {
-            overflow: scroll;
-            height: 100%;
-             overflow-y: scroll;
-  			width: 100%;
-        }
-        
-       body {
-            overflow: scroll;
-             overflow-y: scroll;
-        }
-</style>
-</head>
-<body >
- <div class="main-dive" >
 
-	<!-- header -->
-	<header-detail></header-detail>
-	<!-- <ng-include src="public/template/header.html"></ng-include> -->
-	
-	<!-- body -->
-	<ui-view></ui-view>
-	
-	<!-- footer -->
-	<!-- <ng-include src="public/template/footer.html"></ng-include> -->
-	<footer-detail></footer-detail>
-</div>
-     
+
 
 <script type="text/javascript" src="public/js/lib/angular.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-ui-router-0.3.1.js"></script>
@@ -95,6 +65,43 @@
 
 <!-- Filter -->
 <script type="text/javascript" src="public/js/filter/filters.js"></script>
+
+
+
+
+<style type="text/css">
+.main-dive{
+    	/* margin: 20px; */
+    }
+    html {
+            overflow: scroll;
+            height: 100%;
+             overflow-y: scroll;
+  			width: 100%;
+        }
+        
+       body {
+            overflow: scroll;
+             overflow-y: scroll;
+        }
+</style>
+</head>
+<body >
+ <div class="main-dive" >
+
+	<!-- header -->
+	<header-detail></header-detail>
+	<!-- <ng-include src="public/template/header.html"></ng-include> -->
+	
+	<!-- body -->
+	<ui-view></ui-view>
+	
+	<!-- footer -->
+	<!-- <ng-include src="public/template/footer.html"></ng-include> -->
+	<footer-detail></footer-detail>
+</div>
+     
+
 
 </body>
 </html>
