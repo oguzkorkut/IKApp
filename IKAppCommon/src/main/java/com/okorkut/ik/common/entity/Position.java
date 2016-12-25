@@ -44,6 +44,9 @@ public class Position implements Serializable {
 	@Column(name = "NAME", length = 50)
 	private String name;
 
+	@Column(name = "DETAIL", length = 100)
+	private String detail;
+
 	// @OneToOne(mappedBy="position", cascade={CascadeType.ALL})
 	// private Application application;
 
@@ -103,6 +106,14 @@ public class Position implements Serializable {
 
 	public void setApplication(Application application) {
 		Application = application;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 }

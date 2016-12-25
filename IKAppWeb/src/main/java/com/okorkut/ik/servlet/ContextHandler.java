@@ -55,7 +55,7 @@ public class ContextHandler implements ServletContextListener, HttpSessionListen
 			logger.error(e, e);
 		}
 
-		logger.debug(event.getSession().getId() + " Session Destroyed. IP" + IKConstants.serverIP);
+		logger.debug(event.getSession().getId() + " Session Destroyed. IP:" + IKConstants.serverIP);
 	}
 
 	@Override

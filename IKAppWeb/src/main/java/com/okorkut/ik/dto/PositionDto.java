@@ -17,6 +17,7 @@ public class PositionDto implements Serializable {
 	private Date beginDate;
 	private Date endDate;
 	private String name;
+	private String detail;
 
 	public PositionDto() {
 	}
@@ -59,6 +60,14 @@ public class PositionDto implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 }

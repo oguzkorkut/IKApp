@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.okorkut.ik.common.dao.PositionDao;
 import com.okorkut.ik.common.dao.RoleDao;
 import com.okorkut.ik.common.dao.UserDao;
+import com.okorkut.ik.common.entity.Position;
 import com.okorkut.ik.common.entity.Profile;
 import com.okorkut.ik.common.entity.Role;
 import com.okorkut.ik.common.entity.RoleGroup;
 import com.okorkut.ik.common.entity.User;
+import com.okorkut.ik.dto.PositionDto;
 import com.okorkut.ik.dto.ProfileDto;
 import com.okorkut.ik.dto.RoleDto;
 import com.okorkut.ik.dto.RoleGroupDto;
@@ -47,6 +50,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private ReferenceService referenceService;
+
+	@Autowired
+	private PositionDao positionDao;
 
 	public UserServiceImpl() {
 	}
@@ -169,6 +175,67 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return groups;
+	}
+
+	@Override
+	public List<PositionDto> getPositions() throws Exception {
+		List<PositionDto> positionDtos = new ArrayList<PositionDto>();
+
+		List<Position> positions = positionDao.getPositions();
+
+		if (CollectionUtils.isEmpty(positions)) {
+			return null;
+		}
+
+		PositionDto positionDto = null;
+
+		for (int i = 0; i < positions.size(); i++) {
+
+			positionDto = new PositionDto();
+
+			BeanUtils.copyProperties(positions.get(i), positionDto);
+
+			positionDtos.add(positionDto);
+
+		}
+
+		return positionDtos;
+	}
+
+	@Override
+	@Transactional
+	public PositionDto addPosition(PositionDto positionDto) throws Exception {
+
+		Position position = new Position();
+
+		BeanUtils.copyProperties(positionDto, position);
+
+		positionDao.add(position);
+
+		PositionDto newPositionDto = new PositionDto();
+
+		BeanUtils.copyProperties(position, newPositionDto);
+		return newPositionDto;
+	}
+
+	@Override
+	@Transactional
+	public boolean updatePosition(PositionDto positionDto) throws Exception {
+
+		Position position = new Position();
+
+		BeanUtils.copyProperties(positionDto, position);
+
+		positionDao.update(position);
+
+		return true;
+	}
+
+	@Override
+	@Transactional
+	public boolean deletePosition(Integer id) throws Exception {
+
+		return positionDao.delete(id);
 	}
 
 }
