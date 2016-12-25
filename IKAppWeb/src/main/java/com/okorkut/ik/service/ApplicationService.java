@@ -13,4 +13,6 @@ public interface ApplicationService {
 
 	public List<Application> getApplicationByApplicationDto(List<ApplicationDto> applicationDtos) throws Exception;
 
+	public void addApplicaiton(Integer userId, Integer positionId) throws Exception;
+
 }

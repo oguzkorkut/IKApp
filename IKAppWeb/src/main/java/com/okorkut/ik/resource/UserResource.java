@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -244,6 +245,57 @@ public class UserResource {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(valueDto).build();
 		}
 
+	}
+
+	@POST
+	@Path("/applyPositionByPositionId/{positionId}")
+	@Transactional
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response applyPositionByPositionId(@Context HttpServletRequest request, @PathParam("positionId") Integer id) {
+		logger.info("applyPositionByPositionId called . ID:" + id);
+
+		GenericValueDto dto = null;
+
+		try {
+
+			if (request.getSession().getAttribute("userDto") != null) {
+
+				UserDto userDto = (UserDto) request.getSession().getAttribute("userDto");
+
+				userService.applyPositionByPositionId(userDto.getId(), id);
+				dto = new GenericValueDto(0, "SUCCESS", "Başvuru alındı", true);
+
+				return Response.ok(dto).build();
+			} else {
+				throw new Exception("UserDto bos oldugundan islem devam ettirilemeiyor.");
+			}
+
+		} catch (Exception e) {
+			String error = "Pozisyona basvuru sirasinda bir hata olustu. Hata:" + e;
+			logger.error(error);
+			logger.fatal(error);
+
+			dto = new GenericValueDto(0, "ERROR", error, false);
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(dto).build();
+		}
+
+	}
+
+	@GET
+	@Path("/getPositionsByUserId")
+	public Response getPositionsById(@Context HttpServletRequest request, @QueryParam("userId") Integer userId) {
+		logger.info("getPositionsByUserId called. User Id:" + userId);
+
+		List<PositionDto> positionDtos;
+		try {
+			positionDtos = userService.getPositionsByUserId(userId);
+		} catch (Exception e) {
+			GenericValueDto dto = new GenericValueDto(0, "ERROR", "Pozisyonlarin cekilmesi sirasinda bir hata olustu. Hata:" + e, false);
+			logger.error(e, e);
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(dto).build();
+		}
+		return Response.ok(positionDtos).build();
 	}
 
 }

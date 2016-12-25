@@ -203,6 +203,31 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public List<PositionDto> getPositionsByUserId(Integer userId) throws Exception {
+		List<PositionDto> positionDtos = new ArrayList<PositionDto>();
+
+		List<Position> positions = positionDao.getPositionsByUserId(userId);
+
+		if (CollectionUtils.isEmpty(positions)) {
+			return null;
+		}
+
+		PositionDto positionDto = null;
+
+		for (int i = 0; i < positions.size(); i++) {
+
+			positionDto = new PositionDto();
+
+			BeanUtils.copyProperties(positions.get(i), positionDto);
+
+			positionDtos.add(positionDto);
+
+		}
+
+		return positionDtos;
+	}
+
+	@Override
 	@Transactional
 	public PositionDto addPosition(PositionDto positionDto) throws Exception {
 
@@ -236,6 +261,12 @@ public class UserServiceImpl implements UserService {
 	public boolean deletePosition(Integer id) throws Exception {
 
 		return positionDao.delete(id);
+	}
+
+	@Override
+	@Transactional
+	public void applyPositionByPositionId(Integer userId, Integer positionId) throws Exception {
+		applicationService.addApplicaiton(userId, positionId);
 	}
 
 }

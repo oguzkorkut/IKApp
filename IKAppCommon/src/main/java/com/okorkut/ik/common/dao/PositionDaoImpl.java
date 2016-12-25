@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import com.okorkut.ik.common.entity.Position;
 import com.okorkut.ik.common.utils.IKAppLoggerUtils;
@@ -84,11 +85,41 @@ public class PositionDaoImpl extends BaseDao implements PositionDao {
 			throw e;
 		}
 
-		if (list != null) {
-			appLoggerUtils.loggerObj(list, list.getClass());
+		if (!CollectionUtils.isEmpty(list)) {
+			appLoggerUtils.loggerObj(list, Position.class);
 		}
 		logger.info("getPositions bitti.");
 		return list;
+	}
+
+	/**
+	 * Kisinin basvuru yapmamis oldugu basvurularin cekilmesi icin
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public List<Position> getPositionsByUserId(Integer userId) throws Exception {
+		logger.info("getPositionsByUserId basladi. User id:" + userId);
+
+		List<Position> positions = null;
+
+		try {
+
+			positions = manager.createNamedQuery("position.findGetPositionsByUserId").setParameter("userId", userId).getResultList();
+
+		} catch (NoResultException nre) {
+			logger.info("Pozisyon bulunamadi.");
+		} catch (Exception e) {
+			logger.error(e, e);
+			throw e;
+		}
+
+		if (!CollectionUtils.isEmpty(positions)) {
+			appLoggerUtils.loggerObj(positions, Position.class);
+		}
+		logger.info("getPositions bitti.");
+		return positions;
 	}
 
 	@Override

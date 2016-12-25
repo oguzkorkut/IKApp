@@ -149,20 +149,46 @@ app.factory("userService", function($q,$http) {
 		return deferred.promise;
 	}
 	
-	function applyPosition(id){
+	function getPositionsByUserId(id){
+		var deferred = $q.defer();
+		
+		var data ={
+				userId : id
+		}
+		$http({
+			method: "GET",
+			url:"http://localhost:8090/appik/services/user/getPositionsByUserId",
+			headers : {
+				'X-FRAME-OPTIONS' : 'SAMEORIGIN',
+				'Content-Type' : 'application/json;charset=UTF-8'
+			},	
+			params : data
+		}).then(function success(response) {
+			deferred.resolve(response.data);
+		}, function(response) {
+			deferred.reject(response.statusText);
+		});
+		
+		return deferred.promise;
+	}
+	
+	function applyPositionByPositionId(id){
 		 var deferred = $q.defer();
 		 
 		 $http({
 			 method: "POST",
-			 url : "http://localhost:8090/appik/services/user/applyPosition/" + id,
+			 url : "http://localhost:8090/appik/services/user/applyPositionByPositionId/" + id,
 				headers : {
 					'X-FRAME-OPTIONS' : 'SAMEORIGIN',
 					'Content-Type' : 'application/json;charset=UTF-8'
 			 }
 			 
-		 })
-		
-		
+		 }).then(function success(response) {
+				deferred.resolve(response.data);
+		}, function(response) {
+			deferred.reject(response.statusText);
+		});
+		return deferred.promise;
 	}
 	return{
 		save:save,
@@ -171,7 +197,8 @@ app.factory("userService", function($q,$http) {
 		addPosition : addPosition,
 		deletePosition: deletePosition,
 		updatePosition:updatePosition,
-		applyPosition : applyPosition
+		applyPositionByPositionId : applyPositionByPositionId,
+		getPositionsByUserId : getPositionsByUserId
 	}
 	
 });

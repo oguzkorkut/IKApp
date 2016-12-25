@@ -143,6 +143,8 @@
 	</bean>
 	<bean id="positionDao" class="com.okorkut.ik.common.dao.PositionDaoImpl" autowire="byName" parent="baseDao">
 	</bean>
+	<bean id="applicationDao" class="com.okorkut.ik.common.dao.ApplicationDaoImpl" autowire="byName" parent="baseDao">
+	</bean>
 	
 	
 </beans>

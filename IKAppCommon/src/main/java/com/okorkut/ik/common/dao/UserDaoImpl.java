@@ -77,7 +77,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		// query.setParameter(1, id);
 
 		try {
-			em = openTransactionalConnection();
+			// em = openTransactionalConnection();
 			user = (User) manager.createNamedQuery("User.findGetUserByEmailAndPassword").setParameter("email", email).setParameter("password", password)
 					.getSingleResult();
 

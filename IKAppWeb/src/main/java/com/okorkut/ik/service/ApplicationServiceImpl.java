@@ -1,19 +1,25 @@
 package com.okorkut.ik.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.okorkut.ik.common.dao.ApplicationDao;
 import com.okorkut.ik.common.entity.Application;
 import com.okorkut.ik.dto.ApplicationDto;
 
 public class ApplicationServiceImpl implements ApplicationService {
 
 	private static final Logger logger = Logger.getLogger(ApplicationServiceImpl.class);
+
+	@Autowired
+	private ApplicationDao applicationDao;
 
 	public ApplicationServiceImpl() {
 	}
@@ -52,6 +58,22 @@ public class ApplicationServiceImpl implements ApplicationService {
 		}
 
 		return applications;
+	}
+
+	@Override
+	@Transactional
+	public void addApplicaiton(Integer userId, Integer positionId) throws Exception {
+
+		Application application = new Application();
+
+		application.setActive(true);
+		application.setApplicationDate(new Date());
+		application.setUserId(userId);
+		application.setPositionId(positionId);
+
+		applicationDao.save(application);
+
+		logger.info("Basvuru alindi. Basvuru Id:" + application.getId());
 	}
 
 }

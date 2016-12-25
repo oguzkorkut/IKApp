@@ -42,6 +42,9 @@ public class Application implements Serializable {
 	@Column(name = "RESULT", length = 10)
 	private String result;
 
+	@Column(name = "POSITION_ID")
+	private Integer positionId;
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "POSITION_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = false)
 	private Position position;
@@ -117,6 +120,14 @@ public class Application implements Serializable {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	public Integer getPositionId() {
+		return positionId;
+	}
+
+	public void setPositionId(Integer positionId) {
+		this.positionId = positionId;
 	}
 
 }

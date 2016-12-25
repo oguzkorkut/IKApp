@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,7 +22,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "position")
-@NamedQuery(name = "Position.findAll", query = "SELECT p FROM Position p")
+
+@NamedQueries({ @NamedQuery(name = "Position.findAll", query = "SELECT p FROM Position p"),
+		@NamedQuery(name = "position.findGetPositionsByUserId", query = "select p from Position p where p.id not in (select app.positionId from Application app where app.userId = :userId)") })
 public class Position implements Serializable {
 	private static final long serialVersionUID = 1L;
 

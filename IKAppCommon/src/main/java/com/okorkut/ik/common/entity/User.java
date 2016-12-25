@@ -34,7 +34,7 @@ import com.okorkut.ik.common.entity.listener.UserListener;
 @EntityListeners(UserListener.class)
 // @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 @NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-		@NamedQuery(name = "User.findGetUserByEmailAndPassword", query = "SELECT u FROM User u where u.email = :email and u.password=:password"), })
+		@NamedQuery(name = "User.findGetUserByEmailAndPassword", query = "SELECT u FROM User u where u.email = :email and u.password=:password") })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -104,9 +104,8 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public User(List<Application> applications, List<Education> educations, List<Experience> experiences,
-			List<Certificate> certificates, List<Language> languages, Profile profile, List<Reference> references,
-			List<RoleGroup> roleGroups) {
+	public User(List<Application> applications, List<Education> educations, List<Experience> experiences, List<Certificate> certificates,
+			List<Language> languages, Profile profile, List<Reference> references, List<RoleGroup> roleGroups) {
 		this.applications = applications;
 		this.educations = educations;
 		this.experiences = experiences;

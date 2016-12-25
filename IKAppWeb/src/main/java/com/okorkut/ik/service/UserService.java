@@ -30,4 +30,8 @@ public interface UserService {
 
 	public boolean deletePosition(Integer id) throws Exception;
 
+	public void applyPositionByPositionId(Integer userId, Integer positionId) throws Exception;
+
+	public List<PositionDto> getPositionsByUserId(Integer userId) throws Exception;
+
 }

@@ -14,4 +14,6 @@ public interface PositionDao {
 
 	public List<Position> getPositions() throws Exception;
 
+	public List<Position> getPositionsByUserId(Integer userId) throws Exception;
+
 }
