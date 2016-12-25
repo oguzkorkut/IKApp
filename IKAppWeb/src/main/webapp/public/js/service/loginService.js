@@ -1,5 +1,5 @@
 'use strict';
-app.factory("loginService", function($q,$http, $location,toastFactory,cacheService) {
+app.factory("loginService", function($q,$http, $location,toastFactory,cacheService,Utils) {
 	
 	function login(userName,password){
 		var deferred=$q.defer();
@@ -26,8 +26,8 @@ app.factory("loginService", function($q,$http, $location,toastFactory,cacheServi
 			data : userModel
 		}).then(function success(response) {
 					console.log(response.data);
-					if (response.data.isSuccess) {
-						cacheService.setCookieByUserModel(response.data);
+					if (response.data.success) {
+						cacheService.setCookieByUserModel(response.data.user);
 						deferred.resolve(response.data);
 					}else{
 						deferred.reject(response.data.errorMessage);
@@ -64,7 +64,6 @@ app.factory("loginService", function($q,$http, $location,toastFactory,cacheServi
 			method: "GET",
 			url:"http://localhost:8090/appik/services/user/isLogged"
 		}).then(function success(response) {
-			cacheService.clearUserModelByCookie();
 //				$location.path('login');
 			if (response.data.checked) {
 				deferred.resolve(response.data);
@@ -86,10 +85,21 @@ app.factory("loginService", function($q,$http, $location,toastFactory,cacheServi
 		return deferred.promise;
 	};
 	
+	function getUser(){
+		var user = cacheService.getUserModelByCookie();
+		
+		if (Utils.isNotBlank(user)) {
+			return user;
+		} else {
+			return null;
+		}
+	}
+	
 	return {
 		login : login,
 		logout : logout,
-		isLogin: isLogged
+		isLogged: isLogged,
+		getUser : getUser
 	}
 	
 })

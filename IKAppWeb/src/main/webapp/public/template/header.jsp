@@ -26,12 +26,32 @@
 				</li>
             </ul> -->
             <!-- <li ng-class="{'active':getClass('/customers')}"><a href="#/ikdetail">Haber Sitesi Ekle</a></li> -->
+            <!-- <div ng-if="isLogged();">
+            	<ul class="nav navbar-nav navbar-right">
+		            <li ng-class="{'active':getClass('/basvuru')}" ><a href="#basvuru">Basvurular</a></li>
+		            <li class="divider"></li>
+		            <li  ng-class="{'active':getClass('/profil')}"><a href="#profil">Profil</a></li>
+            	</ul>
+            </div> -->
             
-           	<ul class="nav navbar-nav navbar-right" >
-	            <li ng-class="{'active':getClass('/kayit')}"><a href="#kayit">Kayıt Ol</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#login">Giriş Yap</a></li>
-             </ul>
+            <div ng-switch="isLogged();">
+            	<div  ng-switch-when="loggedIn">
+	            	<ul class="nav navbar-nav navbar-right">
+	            		<li  ng-class="{'active':getClass('/mesaj')}"><a href="#mesaj">Mesajlar</a></li>
+	            		<li  ng-class="{'active':getClass('/pozisyon')}"><a href="#pozisyon">Pozisyonlar</a></li>
+			            <li ng-class="{'active':getClass('/basvuru')}" ><a href="#basvuru">Basvurular</a></li>
+			            <li  ng-class="{'active':getClass('/profil')}"><a href="#profil">Profil</a></li>
+	            	</ul>
+           		 </div>
+           		 <div ng-switch-default="loggedOut">
+           		 	<ul class="nav navbar-nav navbar-right">
+			            <li ng-class="{'active':getClass('/kayit')}" ><a href="#kayit">Kayıt Ol</a></li>
+			            <li class="divider"></li>
+			            <li><a href="#login">Giriş Yap</a></li>
+	             	</ul>
+           		 </div>
+           		 
+            </div>
              
          	<!-- <ul class="nav navbar-nav navbar-right" ng-show="false">
                <li class="dropdown">

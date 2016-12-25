@@ -4,7 +4,7 @@ app.controller("loginController",function($scope,$location,$window,loginService,
 	$scope.errorMessage = "";
 //	"Kullanıcı adı veya şifre hatalı.";
 	
-	var promise = loginService.isLogin();
+	var promise = loginService.isLogged();
 
 	promise.then(function success(data) {
 		console.log("kullanici login");

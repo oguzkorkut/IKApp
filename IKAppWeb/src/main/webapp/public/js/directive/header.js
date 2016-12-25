@@ -6,13 +6,21 @@ app.directive("headerDetail", function(){
 		controller: function($scope,$location,loginService) {
 			
 			$scope.getClass = function(path){
-				
 				if ($location.path() == path) {
 					return true;
 				}else{
 					return false;
 				}
+			}
+			
+			$scope.isLogged = function(){
 				
+				var user = loginService.getUser();
+		    	if (user == null) {
+		    		 return "loggedOut"
+				}else{
+					return "loggedIn";
+				}
 			}
 			
 //			$scope.isShowHeader = true;

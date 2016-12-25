@@ -1,11 +1,11 @@
 app.factory("cacheService", function($cookies) {
 	
 	function setCookieByUserModel(userModel) {
-		$cookies.put("userModel", userModel);
+		$cookies.putObject("userModel", userModel);
 	}
 	
 	function getUserModelByCookie() {
-		var userModel  = $cookies.get("userModel");
+		var userModel  = $cookies.getObject("userModel");
 		return userModel;
 	}
 	

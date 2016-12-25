@@ -1,5 +1,8 @@
 'use strict';
-app.config(function($stateProvider,$urlRouterProvider){
+app.config(function($stateProvider,$urlRouterProvider,blockUIConfig){
+	
+	
+	blockUIConfig.message = 'Lütfen bekleyin!..';
 	
 	$urlRouterProvider.otherwise('/');
 	
@@ -17,7 +20,7 @@ app.config(function($stateProvider,$urlRouterProvider){
 			controller:'loginController',
 		    authenticate: false
 		})
-		.state('/kayit',{
+		.state('kayit',{
 			url:'/kayit',
 			templateUrl:'public/template/registration.html',
 			controller:'registrationController',
@@ -29,12 +32,35 @@ app.config(function($stateProvider,$urlRouterProvider){
 			controller:'profileController',
 		    authenticate: true
 		})
+		.state('basvuru',{
+			url:'/basvuru',
+			templateUrl:'public/template/application.html',
+			controller:'applicationController',
+		    authenticate: true
+		})
+		.state('pozisyon',{
+			url:'/pozisyon',
+			templateUrl:'public/template/position.html',
+			controller:'positionController',
+		    authenticate: true
+		})
+		.state('mesaj',{
+			url:'/mesaj',
+			templateUrl: 'public/template/message.html',
+			controller : 'messageController',
+			authenticate: true
+		})
 		.state('ayarlar',{
 			url:'/ayarlar',
 			templateUrl:'public/template/settings.html',
 			controller:'settingsController',
 		    authenticate: true
 		});
+	
+	
+	
+	 //false yapıldigi durumlarda servis cagrilarindan once blockUI.start(); ile baslatilip cagri bittikten sonrada blockUI.stop(); ile durdurulmalidir.
+	blockUIConfig.autoBlock = true;
 		
 	
 //	 $urlRouterProvider.otherwise(function($injector,$location) {

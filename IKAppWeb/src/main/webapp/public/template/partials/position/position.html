@@ -1,0 +1,41 @@
+<ng-form name="addPositionFormAddress">
+	<div layout="row" >
+        
+        <md-input-container class="md-block" flex-gt-sm="40">
+            <label>Pozisyon Adı</label>
+         	<input type="text" name="name" id="name" ng-model="position.name"  maxlength="50" required>
+        </md-input-container>
+        
+        <md-input-container class="md-block" flex-gt-sm="40">
+            <label>Pozisyon Detayı</label>
+         	<input type="text" name="detail" id="detail" ng-model="position.detail"  maxlength="100" required>
+        </md-input-container>
+       
+         
+         <div layout="column"> 
+        	<md-button class="add-tab md-primary md-raised" ng-click="save()"  style="margin-right: 0;">Kaydet</md-button>
+         </div>
+         
+       </div>
+       <div layout="row" style="margin: 10px 10px 10px 10px">
+	      <table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>#</th>
+			      <th>Pozisyon Adı</th>
+			      <th>-</th>
+			      <th>-</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr ng-repeat="item in positionDtos">
+			      <th scope="row"></th>
+			      <td>{{item.name}}</td>
+			      <td>{{item.detail}}</td> 
+			      <td><input  type="button" class="btn btn-success" value="Güncelle" ng-click="update($index,item)"/></td>
+			      <td><input  type="button" class="btn btn-danger" value="Sil" ng-click="delete($index,item)"/></td>
+			    </tr>
+			  </tbody>
+			</table>
+       </div>
+</ng-form>

@@ -12,12 +12,14 @@
 <link rel="stylesheet" href="public/css/custom.css">
 <link rel="stylesheet" type="text/css" href="public/css/font-awesome/font-awesome-4.2.0.css" />
 
+<link href="public/css/ui-grid-4.0.0/ui-grid.min.css"  rel="stylesheet" />
+
+<link href="public/css/angular-block-ui/angular-block-ui.min.css" rel="stylesheet" />
+
 
 <link rel="stylesheet" href="public/css/angular-material.min.css" />
 
 <link href="public/css/ik.css" rel="stylesheet" />
-
-
 
 <script type="text/javascript" src="public/js/lib/angular.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-ui-router-0.3.1.js"></script>
@@ -27,11 +29,28 @@
 <script type="text/javascript" src="public/js/lib/angular-aria.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-material.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-messages-1.5.8/angular-messages.min.js"></script>
+<script type="text/javascript" src="public/js/lib/angular-touch-1.5.8/angular-touch.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-resource-1.5.8.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-cookies.js"></script>
 <script type="text/javascript" src="public/js/lib/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="public/js/lib/angular-1.5.8/i18n/angular-locale_tr.js"></script>
+<script type="text/javascript" src="public/js/lib/angular-1.5.8/i18n/angular-locale_en.js"></script>
 <script type="text/javascript" src="public/js/lib/svg-assets-cache-114/svg-assets-cache.js"></script>
+
+
+<!-- <script type="text/javascript" src="public/js/lib/angular-resource-1.5.8/angular-resource-1.5.8.js"></script> -->
+
+<script type="text/javascript" src="public/js/lib/angular-block-ui/angular-block-ui.min.js"></script>
+
+<!-- PDF -->
+<script type="text/javascript" src="public/js/lib/grunt-scripts/csv.js"></script>
+<script type="text/javascript" src="public/js/lib/grunt-scripts/pdfmake.js"></script>
+<script type="text/javascript" src="public/js/lib/grunt-scripts/vfs_fonts.js"></script>
+
+<!-- UI-GRID -->
+<script type="text/javascript" src="public/js/lib/ui-grid-4.0.0/ui-grid.min.js"></script>
+
+<script type="text/javascript" src="public/js/lib/angular-block-ui/angular-block-ui.min.js"></script>
 
 <script type="text/javascript" src="public/js/lib/bootstrap-3.3.7/bootstrap.js"></script>
 
@@ -44,6 +63,11 @@
 <script type="text/javascript" src="public/js/controller/controllers.js"></script>
 <script type="text/javascript" src="public/js/controller/registrationController.js"></script>
 <script type="text/javascript" src="public/js/controller/loginController.js"></script>
+<script type="text/javascript" src="public/js/controller/applicationController.js"></script>
+<script type="text/javascript" src="public/js/controller/messageController.js"></script>
+<script type="text/javascript" src="public/js/controller/profileController.js"></script>
+<script type="text/javascript" src="public/js/controller/positionController.js"></script>
+
 
 
 <script type="text/javascript" src="public/js/controller/toast.js"></script>
@@ -62,11 +86,11 @@
 <script type="text/javascript" src="public/js/service/loginService.js"></script>
 <script type="text/javascript" src="public/js/service/coreService.js"></script>
 <script type="text/javascript" src="public/js/service/model/ikModalFactory.js"></script>
+<script type="text/javascript" src="public/js/service/appUtilService.js"></script>
+<script type="text/javascript" src="public/js/service/appUIGridDefs.js"></script>
 
 <!-- Filter -->
 <script type="text/javascript" src="public/js/filter/filters.js"></script>
-
-
 
 
 <style type="text/css">
