@@ -190,6 +190,29 @@ app.factory("userService", function($q,$http) {
 		});
 		return deferred.promise;
 	}
+	
+	function getUserDetailById(id){
+		var deferred = $q.defer();
+		
+		var data ={
+				userId : id
+		}
+		$http({
+			method: "GET",
+			url:"http://localhost:8090/appik/services/user/getUserDetailById",
+			headers : {
+				'X-FRAME-OPTIONS' : 'SAMEORIGIN',
+				'Content-Type' : 'application/json;charset=UTF-8'
+			},	
+			params : data
+		}).then(function success(response) {
+			deferred.resolve(response.data);
+		}, function(response) {
+			deferred.reject(response.statusText);
+		});
+		
+		return deferred.promise;
+	}
 	return{
 		save:save,
 		getApplications:getApplications,
@@ -198,7 +221,8 @@ app.factory("userService", function($q,$http) {
 		deletePosition: deletePosition,
 		updatePosition:updatePosition,
 		applyPositionByPositionId : applyPositionByPositionId,
-		getPositionsByUserId : getPositionsByUserId
+		getPositionsByUserId : getPositionsByUserId,
+		getUserDetailById : getUserDetailById
 	}
 	
 });

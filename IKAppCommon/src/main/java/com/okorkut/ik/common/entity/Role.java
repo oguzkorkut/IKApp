@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -31,8 +30,8 @@ public class Role implements Serializable {
 	@Column(name = "ROLE_NAME", length = 30)
 	private String roleName;
 
-	@OneToOne(mappedBy = "role")
-	private RoleGroup roleGroup;
+	// @OneToOne(mappedBy = "role")
+	// private RoleGroup roleGroup;
 
 	public Role() {
 	}
@@ -53,12 +52,12 @@ public class Role implements Serializable {
 		this.roleName = roleName;
 	}
 
-	public RoleGroup getRoleGroup() {
-		return roleGroup;
-	}
-
-	public void setRoleGroup(RoleGroup roleGroup) {
-		this.roleGroup = roleGroup;
-	}
+	// public RoleGroup getRoleGroup() {
+	// return roleGroup;
+	// }
+	//
+	// public void setRoleGroup(RoleGroup roleGroup) {
+	// this.roleGroup = roleGroup;
+	// }
 
 }

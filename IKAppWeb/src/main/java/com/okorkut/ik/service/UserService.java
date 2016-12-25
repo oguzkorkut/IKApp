@@ -34,4 +34,6 @@ public interface UserService {
 
 	public List<PositionDto> getPositionsByUserId(Integer userId) throws Exception;
 
+	public UserDto getUserProfileById(Integer id) throws Exception;
+
 }

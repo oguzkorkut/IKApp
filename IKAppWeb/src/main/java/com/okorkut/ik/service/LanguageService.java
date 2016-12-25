@@ -16,4 +16,6 @@ public interface LanguageService {
 
 	public List<Language> getLanguageByLanguageDto(List<LanguageDto> languageDtos) throws Exception;
 
+	public List<LanguageDto> getLanguageDtosByLanguageList(List<Language> languageList) throws Exception;
+
 }

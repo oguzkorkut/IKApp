@@ -5,17 +5,34 @@
 	 	   <div class="form-group col-md-12">
 				<div class="row">
 					<div class="form-group col-md-12">
-						
-						Message
-						
+						 <div layout="row" style="margin: 10px 10px 10px 10px">
+						      <table class="table table-striped">
+								  <thead>
+								    <tr>
+								      <th>#</th>
+								      <th ng-show="false">#</th>
+								      <th>Ad</th>
+								      <th>Soyad</th>
+								      <th>Pozisyon</th>
+								      <th>-</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								    <tr ng-repeat="item in messageDtos">
+								      <th scope="row"></th>
+								      <td ng-show="false">{{item.id}}</td>
+								      <td>{{item.name}}</td>
+								      <td>{{item.lastname}}</td> 
+								      <td>{{item.position}}</td> 
+								      <td><input  type="button" class="btn btn-success" value="CV" ng-click="userCV($index,item)"/></td>
+								      <td><input  type="button" class="btn btn-success" value="Onay" ng-click="apply($index,item)"/></td>
+								      <td><input  type="button" class="btn btn-danger" value="Red" ng-click="reject($index,item)"/></td>
+								    </tr>
+								  </tbody>
+								</table>
+					       </div>
 					</div>
 				</div>
-			</div>
-			<div class="form-group col-md-12">
-			   <div class="col-xs-6"> </div>
-			   <div class="col-xs-6">
-			   		<input type="button" id="addIletisim" ng-click="save(this);"  value="Kaydet" style="width:80px;float:right;" class="btn btn-success" />
-			    </div>
 			</div>
 		</div>
 	</form>

@@ -1,0 +1,52 @@
+ <ng-form name="userDetailFormPersonal">
+	 <div class="panel md-inline-form uib-accordion-group-panel-userDetail" id="personalInf">
+	 
+		<md-content layout-padding="">
+			<div>
+				<div layout-gt-sm="row">
+		          <md-input-container class="md-block" flex-gt-sm="">
+		             <label>Ad</label>
+			         <input type="text" name="personalName" id="personalName" ng-model="user.name"  maxlength="50" disabled="true">
+		          </md-input-container>
+		
+		          <md-input-container class="md-block" flex-gt-sm="">
+		           <label>Soyad</label>
+		            <input  type="text" name="userDetailLastname" id="userDetailLastname" ng-model="user.lastname"  maxlength="50" disabled="true">
+		          </md-input-container>
+		        </div>
+		        
+		        <div layout-gt-sm="row">
+		          <md-input-container class="md-block" flex-gt-sm="">
+		            <label>T.C. Kimlik Numarası</label>
+			 		<input  name="userDetailTCNo" ng-model="user.profileDto.tc" md-maxlength="11"   md-minlength="11" ng-pattern="/^[0-9]{11}$/" maxlength="11" disabled="true">
+		          </md-input-container>
+		
+		          <md-input-container class="md-block" flex-gt-sm="">
+		            <label>Cinsiyet</label>
+		            <md-select ng-model="user.profileDto.gender" disabled="true">
+		              <md-option value="0">Erkek</md-option>
+		              <md-option value="1">Kadın</md-option>
+		            </md-select>
+		          </md-input-container>
+		
+		          <md-input-container class="md-block" flex-gt-sm="">
+		           <label>Doğum Tarihi</label>
+		           <md-datepicker id="userDetailBirthDate" name="userDetailBirthDate" ng-model="user.profileDto.birthDate"  disabled="true"></md-datepicker>
+		          </md-input-container>
+		        </div>
+		        
+		        <div layout-gt-sm="row">
+		          <md-input-container class="md-block" flex-gt-sm="">
+		             <label>E-Posta</label>
+			         <input type="email" name="userDetailEmail" id="userDetailEmial" ng-model="user.email"  maxlength="50" autocomplete="off" disabled="true">
+		          </md-input-container>
+		        </div>
+			</div>
+		</md-content>
+		
+	
+	<!-- <input type="button" id="addKÃ„Â°si" value="Ekle" style="width:80px;float:right" class="btn btn success" /> -->
+	</div>
+	 
+ </ng-form>
+ 

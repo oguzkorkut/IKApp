@@ -1,0 +1,23 @@
+<ng-form name="userDetailFormCertificate">
+	 <div class="panel md-inline-form uib-accordion-group-panel-userDetail">
+	 
+		  <div layout="row" style="margin: 10px 10px 10px 10px">
+	        	<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Sertifika Adı</th>
+				      <th>Alınma Tarihi</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="item in user.certificateDtos">
+				      <th scope="row"></th>
+				      <td>{{item.name}}</td>
+				      <td>{{item.applicationDate | date: 'dd-MM-yyyy'}}</td> 
+				    </tr>
+				  </tbody>
+				</table>
+	        </div>
+	</div>
+</ng-form>

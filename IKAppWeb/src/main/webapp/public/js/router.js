@@ -50,6 +50,12 @@ app.config(function($stateProvider,$urlRouterProvider,blockUIConfig){
 			controller : 'messageController',
 			authenticate: true
 		})
+		.state('kullaniciDetayi',{
+			url:'/kullaniciDetayi/:userId',
+			templateUrl: 'public/template/userDetail.html',
+			controller : 'userDetailController',
+			authenticate: true
+		})
 		.state('ayarlar',{
 			url:'/ayarlar',
 			templateUrl:'public/template/settings.html',

@@ -1,0 +1,28 @@
+ <ng-form name="userDetailFormReference">
+	<div class="panel md-inline-form uib-accordion-group-panel-userDetail">
+		 <div layout="row" style="margin: 10px 10px 10px 10px">
+	        	<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Ad</th>
+				      <th>Soyad</th>
+				      <th>Pozisyon</th>
+				      <th>Telefon</th>
+				      <th>E-Posta</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="item in user.referenceDtos">
+				      <th scope="row"></th>
+				      <td>{{item.name}}</td>
+				      <td>{{item.lastname}}</td>
+				      <td>{{item.position}}</td>
+				      <td>{{item.mobilePhone}}</td>
+				      <td>{{item.email}}</td>
+				    </tr>
+				  </tbody>
+				</table>
+	        </div>
+	</div>
+</ng-form>

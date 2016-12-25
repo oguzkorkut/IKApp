@@ -67,7 +67,7 @@
 <script type="text/javascript" src="public/js/controller/messageController.js"></script>
 <script type="text/javascript" src="public/js/controller/profileController.js"></script>
 <script type="text/javascript" src="public/js/controller/positionController.js"></script>
-
+<script type="text/javascript" src="public/js/controller/userDetailController.js"></script>
 
 
 <script type="text/javascript" src="public/js/controller/toast.js"></script>

@@ -2,6 +2,7 @@ package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,7 +36,9 @@ public class RoleGroup implements Serializable {
 	@Column(name = "ROLE_ID")
 	private Integer roleId;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	// @OneToOne(fetch = FetchType.LAZY)
+	// @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private Role role;
 

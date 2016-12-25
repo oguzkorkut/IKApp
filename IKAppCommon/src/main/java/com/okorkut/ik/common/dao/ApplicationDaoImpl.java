@@ -2,6 +2,7 @@ package com.okorkut.ik.common.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ApplicationDaoImpl extends BaseDao implements ApplicationDao {
 	@Autowired
 	private IKAppLoggerUtils appLoggerUtils;
 
-	@PersistenceContext
+	@PersistenceContext(type = PersistenceContextType.EXTENDED)
 	private EntityManager manager;
 
 	@Override

@@ -73,4 +73,24 @@ public class LanguageServiceImpl implements LanguageService {
 		return languages;
 	}
 
+	@Override
+	public List<LanguageDto> getLanguageDtosByLanguageList(List<Language> languageList) throws Exception {
+
+		if (CollectionUtils.isEmpty(languageList)) {
+			return null;
+		}
+
+		List<LanguageDto> languageDtos = new ArrayList<LanguageDto>();
+
+		LanguageDto languageDto = null;
+
+		for (int i = 0; i < languageList.size(); i++) {
+			languageDto = new LanguageDto();
+			BeanUtils.copyProperties(languageList.get(i), languageDto);
+			languageDtos.add(languageDto);
+		}
+
+		return languageDtos;
+	}
+
 }

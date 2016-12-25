@@ -70,4 +70,23 @@ public class EducationServiceImpl implements EducationService {
 		return educations;
 	}
 
+	@Override
+	public List<EducationDto> getEducationDtosByEducationList(List<Education> educationList) throws Exception {
+
+		if (CollectionUtils.isEmpty(educationList)) {
+			return null;
+		}
+
+		List<EducationDto> educationDtos = new ArrayList<EducationDto>();
+
+		EducationDto educationDto = null;
+		for (int i = 0; i < educationList.size(); i++) {
+			educationDto = new EducationDto();
+			BeanUtils.copyProperties(educationList.get(i), educationDto);
+
+			educationDtos.add(educationDto);
+		}
+
+		return educationDtos;
+	}
 }

@@ -74,4 +74,23 @@ public class CertificateServiceImpl implements CertificateService {
 		return certificates;
 	}
 
+	@Override
+	public List<CertificateDto> getCertificateDtoByCertificateList(List<Certificate> certificateList) throws Exception {
+
+		if (CollectionUtils.isEmpty(certificateList)) {
+			return null;
+		}
+
+		List<CertificateDto> certificateDtos = new ArrayList<CertificateDto>();
+
+		CertificateDto certificateDto = null;
+		for (int i = 0; i < certificateList.size(); i++) {
+			certificateDto = new CertificateDto();
+			BeanUtils.copyProperties(certificateList.get(i), certificateDto);
+
+			certificateDtos.add(certificateDto);
+		}
+		return certificateDtos;
+	}
+
 }

@@ -72,4 +72,23 @@ public class ExperienceServiceImpl implements ExperienceService {
 		return experiences;
 	}
 
+	@Override
+	public List<ExperienceDto> getExperienceDtosByExperienceList(List<Experience> experienceList) throws Exception {
+
+		if (CollectionUtils.isEmpty(experienceList)) {
+			return null;
+		}
+
+		List<ExperienceDto> experienceDtos = new ArrayList<ExperienceDto>();
+
+		ExperienceDto experienceDto = null;
+
+		for (int i = 0; i < experienceList.size(); i++) {
+			experienceDto = new ExperienceDto();
+			BeanUtils.copyProperties(experienceList.get(i), experienceDto);
+			experienceDtos.add(experienceDto);
+		}
+		return experienceDtos;
+	}
+
 }

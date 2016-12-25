@@ -1,0 +1,26 @@
+<ng-form name="userDetailFormLanguage">
+	<div class="panel md-inline-form uib-accordion-group-panel-userDetail" id="languageInf">
+		  <div layout="row" style="margin: 10px 10px 10px 10px">
+	        	<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Dil</th>
+				      <th>Okuma</th>
+				      <th>Yazma</th>
+				      <th>Konuşma</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="item in user.languageDtos">
+				      <th scope="row"></th>
+				      <td>{{item.language}}</td>
+				      <td>{{item.reading | RWSLevelFilter}}</td>
+				      <td>{{item.writing | RWSLevelFilter}}</td>
+				      <td>{{item.speaking | RWSLevelFilter}}</td>
+				    </tr>
+				  </tbody>
+				</table>
+	        </div>
+	</div>
+</ng-form>

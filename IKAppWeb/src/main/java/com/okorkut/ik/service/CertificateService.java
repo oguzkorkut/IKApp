@@ -16,4 +16,6 @@ public interface CertificateService {
 
 	public List<Certificate> getCertificateByCertificateDto(List<CertificateDto> certificateDtos) throws Exception;
 
+	public List<CertificateDto> getCertificateDtoByCertificateList(List<Certificate> certificateList) throws Exception;
+
 }

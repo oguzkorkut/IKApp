@@ -16,4 +16,6 @@ public interface ExperienceService {
 
 	public List<Experience> getExperienceByExperienceDto(List<ExperienceDto> experienceDtos) throws Exception;
 
+	public List<ExperienceDto> getExperienceDtosByExperienceList(List<Experience> experienceList) throws Exception;
+
 }

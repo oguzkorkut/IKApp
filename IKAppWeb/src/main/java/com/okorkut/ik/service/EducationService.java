@@ -16,4 +16,6 @@ public interface EducationService {
 
 	public List<Education> getEducationByEducationDto(List<EducationDto> educationDtos) throws Exception;
 
+	public List<EducationDto> getEducationDtosByEducationList(List<Education> educationList) throws Exception;
+
 }

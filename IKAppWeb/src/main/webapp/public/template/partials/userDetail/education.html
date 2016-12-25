@@ -1,0 +1,33 @@
+<ng-form name="userDetailFormEducation">
+	<div class="panel md-inline-form uib-accordion-group-panel-userDetail" id="educationInf">
+	        <div layout="row" style="margin: 10px 10px 10px 10px">
+	        	<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Eğitim Seviyesi</th>
+				      <th>Başlanğıç</th>
+				      <th>Bitiş</th>
+				      <th>Bölüm</th>
+				      <th>Not Sistemi</th>
+				      <th>Diploma Notu</th>
+				      <th>Okul</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="item in user.educationDtos">
+				      <th scope="row"></th>
+				      <td>{{item.educationLevel | EducationLevelFilter}}</td>
+				      <td>{{item.beginDate | date: 'dd-MM-yyyy'}}</td>
+				      <td>{{item.endDate | date: 'dd-MM-yyyy'}}</td>
+				      <td>{{item.gradeSystem | GradeSystemFilter}}</td>
+				      <td>{{item.grade}}</td>
+				      <td>{{item.branch}}</td>
+				      <td>{{item.schoolName}}</td>
+				    </tr>
+				  </tbody>
+				</table>
+	        	
+	        </div>
+	</div>
+</ng-form>

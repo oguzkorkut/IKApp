@@ -102,7 +102,7 @@ body, #mainContainer, .form-control{
       font-size: 18px !important;
  }
  
- .uib-accordion-group-panel-registration{
+ .uib-accordion-group-panel-registration, .uib-accordion-group-panel-userDetail{
 /*   background: rgba(221, 221, 221, 0) !important;*/
 	border-radius: 20px !important;
     padding: 10px 10px !important;

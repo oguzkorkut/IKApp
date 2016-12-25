@@ -298,4 +298,20 @@ public class UserResource {
 		return Response.ok(positionDtos).build();
 	}
 
+	@GET
+	@Path("/getUserDetailById")
+	public Response getUserDetailById(@Context HttpServletRequest request, @QueryParam("userId") Integer userId) {
+		logger.info("getUserDetailById called. User Id:" + userId);
+
+		UserDto userDto;
+		try {
+			userDto = userService.getUserProfileById(userId);
+		} catch (Exception e) {
+			GenericValueDto dto = new GenericValueDto(0, "ERROR", "Kullanici profilinin cekilmesi sirasinda bir hata olustu. Hata:" + e, false);
+			logger.error(e, e);
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(dto).build();
+		}
+		return Response.ok(userDto).build();
+	}
+
 }

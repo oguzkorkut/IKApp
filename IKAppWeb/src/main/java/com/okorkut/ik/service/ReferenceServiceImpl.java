@@ -73,4 +73,23 @@ public class ReferenceServiceImpl implements ReferenceService {
 		return references;
 	}
 
+	@Override
+	public List<ReferenceDto> getReferenceDtosByReferenceList(List<Reference> referenceList) throws Exception {
+
+		if (CollectionUtils.isEmpty(referenceList)) {
+			return null;
+		}
+
+		List<ReferenceDto> referenceDtos = new ArrayList<ReferenceDto>();
+
+		ReferenceDto referenceDto = null;
+
+		for (int i = 0; i < referenceList.size(); i++) {
+			referenceDto = new ReferenceDto();
+			BeanUtils.copyProperties(referenceList.get(i), referenceDto);
+			referenceDtos.add(referenceDto);
+		}
+
+		return referenceDtos;
+	}
 }

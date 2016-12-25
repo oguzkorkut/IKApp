@@ -13,4 +13,6 @@ public interface UserDao {
 	public void save2(User userDto) throws Exception;
 
 	public User getUserDtoByEmail2(String emial) throws Exception;
+
+	public User getUserById(Integer id) throws Exception;
 }

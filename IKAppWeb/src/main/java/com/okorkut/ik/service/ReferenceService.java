@@ -16,4 +16,6 @@ public interface ReferenceService {
 
 	public List<Reference> getReferenceByReferenceDto(List<ReferenceDto> referenceDtos) throws Exception;
 
+	public List<ReferenceDto> getReferenceDtosByReferenceList(List<Reference> referenceList) throws Exception;
+
 }

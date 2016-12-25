@@ -39,7 +39,8 @@
 	            	<ul class="nav navbar-nav navbar-right">
 	            		<li  ng-class="{'active':getClass('/mesaj')}"><a href="#mesaj">Mesajlar</a></li>
 	            		<li  ng-class="{'active':getClass('/pozisyon')}"><a href="#pozisyon">Pozisyonlar</a></li>
-			            <li ng-class="{'active':getClass('/basvuru')}" ><a href="#basvuru">Basvurular</a></li>
+			            <li ng-class="{'active':getClass('/basvuru')}" ><a href="#basvuru">Başvur</a></li>
+			            <li ng-class="{'active':getClass('/basvurular')}" ><a href="#basvurular">Başvurular</a></li>
 			            <li  ng-class="{'active':getClass('/profil')}"><a href="#profil">Profil</a></li>
 	            	</ul>
            		 </div>

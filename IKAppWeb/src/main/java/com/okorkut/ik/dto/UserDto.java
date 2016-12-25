@@ -33,6 +33,7 @@ public class UserDto implements Serializable {
 	private ProfileDto profileDto;
 	private List<ReferenceDto> referenceDtos;
 	private List<RoleGroupDto> roleGroupDtos;
+	private List<RoleDto> roleDtos;
 
 	public UserDto() {
 	}
@@ -187,6 +188,14 @@ public class UserDto implements Serializable {
 
 	public void setRoleGroupDtos(List<RoleGroupDto> roleGroupDtos) {
 		this.roleGroupDtos = roleGroupDtos;
+	}
+
+	public List<RoleDto> getRoleDtos() {
+		return roleDtos;
+	}
+
+	public void setRoleDtos(List<RoleDto> roleDtos) {
+		this.roleDtos = roleDtos;
 	}
 
 }

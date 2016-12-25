@@ -104,6 +104,29 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		return user;
 	}
 
+	@Override
+	public User getUserById(Integer id) throws Exception {
+		logger.info("getUserById basladi. id:" + id);
+
+		User user = null;
+
+		try {
+			user = (User) manager.createNamedQuery("User.findGetUserById").setParameter("id", id).getSingleResult();
+
+			// Hibernate.initialize(user.getApplications());
+		} catch (NoResultException nre) {
+			logger.info("Sonuc bulunamadi. id:" + id + " Detay Mesaj:" + nre.getMessage());
+		} catch (Exception e) {
+			logger.error(e, e);
+		}
+
+		if (user != null) {
+			appLoggerUtils.loggerObj(user, user.getClass());
+		}
+		logger.info("getUserById bitti.");
+		return user;
+	}
+
 	// @Override
 	// public UserDto save(UserDto userDto) {
 	// EntityManager em = null;

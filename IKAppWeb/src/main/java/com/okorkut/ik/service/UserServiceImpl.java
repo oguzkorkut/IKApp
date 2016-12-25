@@ -158,25 +158,6 @@ public class UserServiceImpl implements UserService {
 		return profile;
 	}
 
-	private List<RoleGroup> getRoleGroupByRoleGroupDto(List<RoleGroupDto> roleGroupDtos) throws Exception {
-
-		List<RoleGroup> groups = new ArrayList<RoleGroup>();
-
-		RoleGroup roleGroup = null;
-
-		if (CollectionUtils.isEmpty(roleGroupDtos)) {
-			return null;
-		} else {
-			for (int i = 0; i < roleGroupDtos.size(); i++) {
-				roleGroup = new RoleGroup();
-				BeanUtils.copyProperties(roleGroupDtos.get(i), roleGroup);
-				groups.add(roleGroup);
-			}
-		}
-
-		return groups;
-	}
-
 	@Override
 	public List<PositionDto> getPositions() throws Exception {
 		List<PositionDto> positionDtos = new ArrayList<PositionDto>();
@@ -267,6 +248,78 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void applyPositionByPositionId(Integer userId, Integer positionId) throws Exception {
 		applicationService.addApplicaiton(userId, positionId);
+	}
+
+	@Override
+	public UserDto getUserProfileById(Integer id) throws Exception {
+		UserDto userDto = new UserDto();
+
+		User user = userDao.getUserById(id);
+
+		if (user != null) {
+			BeanUtils.copyProperties(user, userDto);
+
+			if (user.getProfile() != null) {
+				ProfileDto profileDto = new ProfileDto();
+				BeanUtils.copyProperties(user.getProfile(), profileDto);
+
+				userDto.setProfileDto(profileDto);
+			}
+
+			userDto.setCertificateDtos(certificateService.getCertificateDtoByCertificateList(user.getCertificates()));
+
+			userDto.setEducationDtos(educationService.getEducationDtosByEducationList(user.getEducations()));
+
+			userDto.setExperienceDtos(experienceService.getExperienceDtosByExperienceList(user.getExperiences()));
+
+			userDto.setLanguageDtos(languageService.getLanguageDtosByLanguageList(user.getLanguages()));
+
+			userDto.setReferenceDtos(referenceService.getReferenceDtosByReferenceList(user.getReferences()));
+
+			userDto.setRoleDtos(getRolesByRoleGroupList(user.getRoleGroups()));
+
+		} else {
+			return null;
+		}
+		return userDto;
+	}
+
+	private List<RoleDto> getRolesByRoleGroupList(List<RoleGroup> roleGroupList) throws Exception {
+
+		List<RoleDto> roleDtos = new ArrayList<RoleDto>();
+
+		RoleDto roleDto = null;
+
+		if (CollectionUtils.isEmpty(roleGroupList)) {
+			return null;
+		} else {
+			for (int i = 0; i < roleGroupList.size(); i++) {
+				roleDto = new RoleDto();
+				BeanUtils.copyProperties(roleGroupList.get(i).getRole(), roleDto);
+				roleDtos.add(roleDto);
+			}
+		}
+
+		return roleDtos;
+	}
+
+	private List<RoleGroup> getRoleGroupByRoleGroupDto(List<RoleGroupDto> roleGroupDtos) throws Exception {
+
+		List<RoleGroup> groups = new ArrayList<RoleGroup>();
+
+		RoleGroup roleGroup = null;
+
+		if (CollectionUtils.isEmpty(roleGroupDtos)) {
+			return null;
+		} else {
+			for (int i = 0; i < roleGroupDtos.size(); i++) {
+				roleGroup = new RoleGroup();
+				BeanUtils.copyProperties(roleGroupDtos.get(i), roleGroup);
+				groups.add(roleGroup);
+			}
+		}
+
+		return groups;
 	}
 
 }
