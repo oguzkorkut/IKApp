@@ -15,7 +15,7 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr ng-repeat="item in user.educationDtos">
+				    <tr ng-repeat="item in userDetail.educationDtos">
 				      <th scope="row"></th>
 				      <td>{{item.educationLevel | EducationLevelFilter}}</td>
 				      <td>{{item.beginDate | date: 'dd-MM-yyyy'}}</td>
