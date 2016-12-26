@@ -7,7 +7,7 @@
         <dependent-module archiveName="IKAppCommon-v1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/IKAppCommon/IKAppCommon">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="java-output-path" value="/IKAppWeb/target/classes"/>
         <property name="context-root" value="IKWebApp"/>
+        <property name="java-output-path" value="/IKAppWeb/target/classes"/>
     </wb-module>
 </project-modules>

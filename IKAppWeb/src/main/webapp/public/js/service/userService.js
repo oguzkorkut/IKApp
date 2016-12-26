@@ -12,21 +12,6 @@ app.factory("userService", function($q,$http) {
 	function save(user) {
 		
 		var deferred=$q.defer();
-//
-//		$http({
-//			method : "POST",
-//			url : "http://localhost:8090/appik/services/user/save",
-//			data: user,
-//			headers: {
-//		            'Content-Type': 'application/json'
-//		   }
-//		}).then(function mySucces(response) {
-//			console.log(response.data);
-//			deferred.resolve(response.data);
-//		}, function myError(response) {
-//			console.error(response.statusText);
-//			deferred.reject(response.statusText);
-//		});
 		
 		$http({
 			method : "POST",
@@ -36,24 +21,13 @@ app.factory("userService", function($q,$http) {
 				'Content-Type' : 'application/json;charset=UTF-8'
 			},	
 			data : user
-		}).then(
-				function mySucces(response) {
-					console.log(response.data);
-					deferred.resolve(response.data);
-
-				}, function myError(response) {
-					console.error(response.statusText);
-					deferred.reject(response.statusText);
-				});
-		
-		
-//		$http.post("http://localhost:8090/appik/services/user/save", user,config).then(function(response){
-//			console.log(response.data);
-//			deferred.resolve(response.data);
-//		},function(response){
-//			console.error(response.statusText);
-//			deferred.reject(response.statusText);
-//		});
+		}).then(function mySucces(response) {
+			console.log(response.data);
+			deferred.resolve(response.data);
+		}, function myError(response) {
+			console.error(response.statusText);
+			deferred.reject(response.statusText);
+		});
 		
 		return deferred.promise;
 	}
@@ -100,11 +74,10 @@ app.factory("userService", function($q,$http) {
 				'Content-Type' : 'application/json;charset=UTF-8'
 			},	
 			data : position
-		}).then(
-			function mySucces(response) {
-				deferred.resolve(response.data);
-			}, function myError(response) {
-				deferred.reject(response.statusText);
+		}).then(function mySucces(response) {
+			deferred.resolve(response.data);
+		}, function myError(response) {
+			deferred.reject(response.statusText);
 		});
 		
 		return deferred.promise;
@@ -119,11 +92,10 @@ app.factory("userService", function($q,$http) {
 				'X-FRAME-OPTIONS' : 'SAMEORIGIN',
 				'Content-Type' : 'application/json;charset=UTF-8'
 			}	
-		}).then(
-			function mySucces(response) {
-				deferred.resolve(response.data);
-			}, function myError(response) {
-				deferred.reject(response.statusText);
+		}).then(function mySucces(response) {
+			deferred.resolve(response.data);
+		}, function myError(response) {
+			deferred.reject(response.statusText);
 		});
 		
 		return deferred.promise;
@@ -139,11 +111,10 @@ app.factory("userService", function($q,$http) {
 				'Content-Type' : 'application/json;charset=UTF-8'
 			},	
 			data : position
-		}).then(
-			function mySucces(response) {
-				deferred.resolve(response.data);
-			}, function myError(response) {
-				deferred.reject(response.statusText);
+		}).then(function mySucces(response) {
+			deferred.resolve(response.data);
+		}, function myError(response) {
+			deferred.reject(response.statusText);
 		});
 		
 		return deferred.promise;
@@ -178,16 +149,16 @@ app.factory("userService", function($q,$http) {
 		 $http({
 			 method: "POST",
 			 url : "http://localhost:8090/appik/services/user/applyPositionByPositionId/" + id,
-				headers : {
+			 headers : {
 					'X-FRAME-OPTIONS' : 'SAMEORIGIN',
 					'Content-Type' : 'application/json;charset=UTF-8'
 			 }
-			 
 		 }).then(function success(response) {
-				deferred.resolve(response.data);
-		}, function(response) {
+			deferred.resolve(response.data);
+		 }, function(response) {
 			deferred.reject(response.statusText);
-		});
+		 });
+		 
 		return deferred.promise;
 	}
 	

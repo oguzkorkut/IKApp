@@ -18,27 +18,23 @@ app.factory("loginService", function($q,$http, $location,toastFactory,cacheServi
 			        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
 			        return str.join("&");
 			},
-//			headers : {
-//				'X-FRAME-OPTIONS' : 'SAMEORIGIN',
-//				'Content-Type' : 'application/json;charset=UTF-8'
-//			},
 //			$httpParamSerializerJQLike(userModel)
 			data : userModel
 		}).then(function success(response) {
-					console.log(response.data);
-					if (response.data.success) {
-						cacheService.setCookieByUserModel(response.data.user);
-						deferred.resolve(response.data);
-					}else{
-						deferred.reject(response.data.errorMessage);
-					}
-				}, function error(response) {
-					if (typeof response.data != undefined) {
-						deferred.reject(response.data.errorMessage);
-					}else{
-						deferred.reject(response.statusText);
-					}
-				});
+			console.log(response.data);
+			if (response.data.success) {
+				cacheService.setCookieByUserModel(response.data.user);
+				deferred.resolve(response.data);
+			}else{
+				deferred.reject(response.data.errorMessage);
+			}
+		}, function error(response) {
+			if (typeof response.data != undefined) {
+				deferred.reject(response.data.errorMessage);
+			}else{
+				deferred.reject(response.statusText);
+			}
+		});
 		
 		return deferred.promise;
 	};
@@ -71,14 +67,12 @@ app.factory("loginService", function($q,$http, $location,toastFactory,cacheServi
 				cacheService.clearUserModelByCookie();
 				deferred.reject(response.statusText);
 			}
-			
 		}, function(response) {
 			var userModel = cacheService.getUserModelByCookie();
 			
 			if (!userModel) {
 				cacheService.clearUserModelByCookie();	
 			}
-			
 			deferred.reject(response.statusText);
 		});
 			

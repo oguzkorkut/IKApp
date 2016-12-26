@@ -49,7 +49,6 @@ app.controller('registrationController', function ($scope,$location, $mdToast, $
 			 if(typeof ($scope.user.educationDtos) == 'undefined'){
 				 $scope.user["educationDtos"]=[];
 			 }
-			
 			 
 			 $scope.user.educationDtos.push($scope.education);
 			 $scope.education = {}
