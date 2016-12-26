@@ -15,18 +15,27 @@
 								      <th>Soyad</th>
 								      <th>Pozisyon</th>
 								      <th>-</th>
+								      <th>-</th>
 								    </tr>
 								  </thead>
 								  <tbody>
 								    <tr ng-repeat="item in messageDtos">
 								      <th scope="row"></th>
 								      <td ng-show="false">{{item.id}}</td>
-								      <td>{{item.name}}</td>
-								      <td>{{item.lastname}}</td> 
-								      <td>{{item.position}}</td> 
-								      <td><input  type="button" class="btn btn-success" value="CV" ng-click="userCV($index,item)"/></td>
-								      <td><input  type="button" class="btn btn-success" value="Onay" ng-click="apply($index,item)"/></td>
-								      <td><input  type="button" class="btn btn-danger" value="Red" ng-click="reject($index,item)"/></td>
+								      <td style="padding-top: 40px">{{item.name}}</td>
+								      <td style="padding-top: 40px">{{item.lastname}}</td> 
+								      <td style="padding-top: 40px">{{item.position}}</td>
+								      <td >
+									       <md-input-container class="md-block" flex-gt-sm="">
+									           	<label>Açıklama</label>
+									            <input  type="text" name="userDetailLastname" id="userDetailLastname" ng-model="userDetail.lastname"  maxlength="50" required>
+								            </md-input-container>
+								      </td> 
+								      <td>
+								      	  <input  type="button" class="btn btn-success" value="CV" ng-click="userCV($index,item)"/>
+								      	  <input  type="button" class="btn btn-success" value="Onay" ng-click="apply($index,item)"/>
+								      	  <input  type="button" class="btn btn-danger" value="Red" ng-click="reject($index,item)"/>
+								      </td>
 								    </tr>
 								  </tbody>
 								</table>
