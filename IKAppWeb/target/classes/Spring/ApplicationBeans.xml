@@ -25,5 +25,7 @@
 	
 	<bean id="referenceService" class="com.okorkut.ik.service.ReferenceServiceImpl" autowire="byName"></bean>
 	
+	<bean id="historyService" class="com.okorkut.ik.service.HistoryServiceImpl" autowire="byName"></bean>
+	
 	
 </beans>

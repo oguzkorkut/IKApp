@@ -11,8 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.okorkut.ik.common.dao.ApplicationDao;
+import com.okorkut.ik.common.dao.HistoryDao;
 import com.okorkut.ik.common.entity.Application;
+import com.okorkut.ik.common.entity.History;
 import com.okorkut.ik.dto.ApplicationDto;
+import com.okorkut.ik.enums.ActionEnum;
 
 public class ApplicationServiceImpl implements ApplicationService {
 
@@ -20,6 +23,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 	@Autowired
 	private ApplicationDao applicationDao;
+
+	@Autowired
+	private HistoryDao historyDao;
 
 	public ApplicationServiceImpl() {
 	}
@@ -71,7 +77,20 @@ public class ApplicationServiceImpl implements ApplicationService {
 		application.setUserId(userId);
 		application.setPositionId(positionId);
 
+		// application.getHistories().add(history);
+
 		applicationDao.save(application);
+
+		History history = new History();
+
+		history.setActive(true);
+		// history.setApplicationId(applicationId);
+		history.setTaskAssignDate(new Date());
+		history.setUserAction(ActionEnum.APPLICATION.getValue());
+
+		history.setApplicationId(application.getId());
+
+		historyDao.save(history);
 
 		logger.info("Basvuru alindi. Basvuru Id:" + application.getId());
 	}

@@ -111,7 +111,7 @@ public class UserResource {
 		logger.info("getApplications called");
 
 		GenericValueDto dto = null;
-		// request.getSession().removeAttribute("userDto");
+		request.getSession().removeAttribute("userDto");
 		if (request.getSession().getAttribute("userDto") != null) {
 			dto = new GenericValueDto(0, "", "", true);
 		} else {

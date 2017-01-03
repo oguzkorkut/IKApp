@@ -42,6 +42,7 @@
 			            <li ng-class="{'active':getClass('/basvuru')}" ><a href="#basvuru">Başvur</a></li>
 			            <li ng-class="{'active':getClass('/basvurular')}" ><a href="#basvurular">Başvurular</a></li>
 			            <li  ng-class="{'active':getClass('/profil')}"><a href="#profil">Profil</a></li>
+			            <li  ng-class="{'active':getClass('/logout')}"><a href="#logout">Çıkış</a></li>
 	            	</ul>
            		 </div>
            		 <div ng-switch-default="loggedOut">
@@ -49,6 +50,7 @@
 			            <li ng-class="{'active':getClass('/kayit')}" ><a href="#kayit">Kayıt Ol</a></li>
 			            <li class="divider"></li>
 			            <li><a href="#login">Giriş Yap</a></li>
+			            <!-- <li  ng-class="{'active':getClass('/logout')}"><a href="#logout">Çıkış</a></li> -->
 	             	</ul>
            		 </div>
            		 

@@ -33,7 +33,8 @@ public class UserDto implements Serializable {
 	private ProfileDto profileDto;
 	private List<ReferenceDto> referenceDtos;
 	private List<RoleGroupDto> roleGroupDtos;
-	private List<RoleDto> roleDtos;
+	// private List<RoleDto> roleDtos;
+	private List<String> roleDtos;
 
 	public UserDto() {
 	}
@@ -190,11 +191,11 @@ public class UserDto implements Serializable {
 		this.roleGroupDtos = roleGroupDtos;
 	}
 
-	public List<RoleDto> getRoleDtos() {
+	public List<String> getRoleDtos() {
 		return roleDtos;
 	}
 
-	public void setRoleDtos(List<RoleDto> roleDtos) {
+	public void setRoleDtos(List<String> roleDtos) {
 		this.roleDtos = roleDtos;
 	}
 

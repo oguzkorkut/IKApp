@@ -284,19 +284,20 @@ public class UserServiceImpl implements UserService {
 		return userDto;
 	}
 
-	private List<RoleDto> getRolesByRoleGroupList(List<RoleGroup> roleGroupList) throws Exception {
+	private List<String> getRolesByRoleGroupList(List<RoleGroup> roleGroupList) throws Exception {
 
-		List<RoleDto> roleDtos = new ArrayList<RoleDto>();
+		List<String> roleDtos = new ArrayList<String>();
 
-		RoleDto roleDto = null;
+		// RoleDto roleDto = null;
 
 		if (CollectionUtils.isEmpty(roleGroupList)) {
-			return null;
+			return roleDtos;
 		} else {
 			for (int i = 0; i < roleGroupList.size(); i++) {
-				roleDto = new RoleDto();
-				BeanUtils.copyProperties(roleGroupList.get(i).getRole(), roleDto);
-				roleDtos.add(roleDto);
+				// roleDto = new RoleDto();
+				// BeanUtils.copyProperties(roleGroupList.get(i).getRole(), roleDto);
+				// roleDtos.add(roleDto);
+				roleDtos.add(roleGroupList.get(i).getRole().getRoleName());
 			}
 		}
 

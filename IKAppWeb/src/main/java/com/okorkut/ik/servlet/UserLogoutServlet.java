@@ -53,7 +53,7 @@ public class UserLogoutServlet extends HttpServlet {
 			response.addHeader("Cache-Control", "must-revalidate");
 			response.addHeader("Expires", "Mon, 8 Aug 2000 10:00:00 GMT");
 
-			response.sendRedirect("giris.jsp");
+			response.sendRedirect("login");
 		} catch (Exception e) {
 			logger.error(e, e);
 		}

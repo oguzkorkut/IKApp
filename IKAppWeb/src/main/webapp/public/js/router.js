@@ -61,6 +61,14 @@ app.config(function($stateProvider,$urlRouterProvider,blockUIConfig){
 			templateUrl:'public/template/settings.html',
 			controller:'settingsController',
 		    authenticate: true
+		}).state('logout',{
+			url:'/logout',
+			templateUrl:'public/template/home.html',
+			controller:function($scope,$location,loginService){
+				loginService.logout();
+				$location.path('/login');
+			},
+		    authenticate: true
 		});
 	
 	

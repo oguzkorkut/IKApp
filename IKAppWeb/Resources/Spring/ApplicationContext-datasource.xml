@@ -94,6 +94,7 @@
 				<value>com.okorkut.ik.common.entity.Role</value>
 				<value>com.okorkut.ik.common.entity.RoleGroup</value>
 				<value>com.okorkut.ik.common.entity.User</value>
+				<value>com.okorkut.ik.common.entity.History</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -144,6 +145,8 @@
 	<bean id="positionDao" class="com.okorkut.ik.common.dao.PositionDaoImpl" autowire="byName" parent="baseDao">
 	</bean>
 	<bean id="applicationDao" class="com.okorkut.ik.common.dao.ApplicationDaoImpl" autowire="byName" parent="baseDao">
+	</bean>
+	<bean id="historyDao" class="com.okorkut.ik.common.dao.HistoryDaoImpl" autowire="byName" parent="baseDao">
 	</bean>
 	
 	

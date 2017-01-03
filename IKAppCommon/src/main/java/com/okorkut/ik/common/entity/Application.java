@@ -1,8 +1,11 @@
 package com.okorkut.ik.common.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,10 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.util.CollectionUtils;
 
 /**
  * The persistent class for the application database table.
@@ -57,6 +63,10 @@ public class Application implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", insertable = false, updatable = false, nullable = true)
 	private User user;
+
+	// @Transient
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
+	private List<History> histories;
 
 	public Application() {
 	}
@@ -128,6 +138,17 @@ public class Application implements Serializable {
 
 	public void setPositionId(Integer positionId) {
 		this.positionId = positionId;
+	}
+
+	public List<History> getHistories() {
+		if (CollectionUtils.isEmpty(histories)) {
+			histories = new ArrayList<History>();
+		}
+		return histories;
+	}
+
+	public void setHistories(List<History> histories) {
+		this.histories = histories;
 	}
 
 }
