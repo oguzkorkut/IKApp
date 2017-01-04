@@ -1,5 +1,5 @@
 <div class="generic-container clearfix">
-	<form name="registrationForm" autocomplete="off" novalidate>
+	<form name="messageForm" autocomplete="off" novalidate>
 		<div class="well lead generic-container-panel-heading">Mesajlar</div>
 	 	<div class="center-block">
 	 	   <div class="form-group col-md-12">
@@ -11,31 +11,18 @@
 								    <tr>
 								      <th>#</th>
 								      <th ng-show="false">#</th>
-								      <th>Ad</th>
-								      <th>Soyad</th>
-								      <th>Pozisyon</th>
-								      <th>-</th>
-								      <th>-</th>
+								      <th>Başvuru</th>
+								      <th>Sonuç</th>
+								      <th>Açıklama</th>
 								    </tr>
 								  </thead>
 								  <tbody>
-								    <tr ng-repeat="item in messageDtos">
+								    <tr ng-repeat="message in messageDtos">
 								      <th scope="row"></th>
-								      <td ng-show="false">{{item.id}}</td>
-								      <td style="padding-top: 40px">{{item.name}}</td>
-								      <td style="padding-top: 40px">{{item.lastname}}</td> 
-								      <td style="padding-top: 40px">{{item.position}}</td>
-								      <td >
-									       <md-input-container class="md-block" flex-gt-sm="">
-									           	<label>Açıklama</label>
-									            <input  type="text" name="userDetailLastname" id="userDetailLastname" ng-model="userDetail.lastname"  maxlength="50" required>
-								            </md-input-container>
-								      </td> 
-								      <td>
-								      	  <input  type="button" class="btn btn-success" value="CV" ng-click="userCV($index,item)"/>
-								      	  <input  type="button" class="btn btn-success" value="Onay" ng-click="apply($index,item)"/>
-								      	  <input  type="button" class="btn btn-danger" value="Red" ng-click="reject($index,item)"/>
-								      </td>
+								      <td ng-show="false">{{message.id}}</td>
+								      <td>{{message.application}}</td>
+								      <td>{{message.result}}</td> 
+								      <td >{{message.comment}}</td> 
 								    </tr>
 								  </tbody>
 								</table>
@@ -46,5 +33,3 @@
 		</div>
 	</form>
 </div>
-
-<!-- https://plnkr.co/edit/E2eHZeWh7IhBfLKBphok?p=preview -->

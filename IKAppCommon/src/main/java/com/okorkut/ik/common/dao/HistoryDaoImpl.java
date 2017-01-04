@@ -1,6 +1,9 @@
 package com.okorkut.ik.common.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
@@ -63,6 +66,26 @@ public class HistoryDaoImpl extends BaseDao implements HistoryDao {
 		}
 
 		logger.info("BAsvuru kaydedildi. ID:" + history.getId());
+	}
+
+	@Override
+	public List<History> getTasksByRoles(List<String> roles) throws Exception {
+		logger.info("getTasksByRoleId basladi. roleId:" + roles.toString());
+
+		List<History> histories = null;
+
+		try {
+
+			histories = manager.createNamedQuery("History.findGetTasksByRoleId").setParameter(1, roles).getResultList();
+
+		} catch (NoResultException nre) {
+			logger.info("Task bulunamadi.");
+		} catch (Exception e) {
+			logger.error(e, e);
+			throw e;
+		}
+		logger.info("getTasksByRoleId bitti.");
+		return histories;
 	}
 
 }

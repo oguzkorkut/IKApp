@@ -22,7 +22,6 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "position")
-
 @NamedQueries({ @NamedQuery(name = "Position.findAll", query = "SELECT p FROM Position p"),
 		@NamedQuery(name = "position.findGetPositionsByUserId", query = "select p from Position p where p.id not in (select app.positionId from Application app where app.userId = :userId)") })
 public class Position implements Serializable {

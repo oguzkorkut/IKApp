@@ -103,6 +103,9 @@ public class User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<RoleGroup> roleGroups;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userHistory")
+	private List<History> histories;
+
 	public User() {
 	}
 

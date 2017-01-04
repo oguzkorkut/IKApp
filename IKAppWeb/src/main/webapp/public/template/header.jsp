@@ -35,12 +35,23 @@
             </div> -->
             
             <div ng-switch="isLogged();">
-            	<div  ng-switch-when="loggedIn">
+            	<div  ng-switch-when="loggedInMANAGER">
+	            	<ul class="nav navbar-nav navbar-right">
+	            		<li  ng-class="{'active':getClass('/tasks')}"><a href="#task">Tasks</a></li>
+	            		<li  ng-class="{'active':getClass('/pozisyon')}"><a href="#pozisyon">Pozisyonlar</a></li>
+			            <li  ng-class="{'active':getClass('/logout')}"><a href="#logout">Çıkış</a></li>
+	            	</ul>
+           		 </div>
+           		 <div  ng-switch-when="loggedInIK">
+	            	<ul class="nav navbar-nav navbar-right">
+	            		<li  ng-class="{'active':getClass('/tasks')}"><a href="#tasks">Tasks</a></li>
+			            <li  ng-class="{'active':getClass('/logout')}"><a href="#logout">Çıkış</a></li>
+	            	</ul>
+           		 </div>
+           		  <div  ng-switch-when="loggedInPERSONNEL">
 	            	<ul class="nav navbar-nav navbar-right">
 	            		<li  ng-class="{'active':getClass('/mesaj')}"><a href="#mesaj">Mesajlar</a></li>
-	            		<li  ng-class="{'active':getClass('/pozisyon')}"><a href="#pozisyon">Pozisyonlar</a></li>
 			            <li ng-class="{'active':getClass('/basvuru')}" ><a href="#basvuru">Başvur</a></li>
-			            <li ng-class="{'active':getClass('/basvurular')}" ><a href="#basvurular">Başvurular</a></li>
 			            <li  ng-class="{'active':getClass('/profil')}"><a href="#profil">Profil</a></li>
 			            <li  ng-class="{'active':getClass('/logout')}"><a href="#logout">Çıkış</a></li>
 	            	</ul>

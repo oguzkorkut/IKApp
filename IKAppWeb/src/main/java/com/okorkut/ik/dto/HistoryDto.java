@@ -22,7 +22,10 @@ public class HistoryDto {
 	private String userAction;
 	private String userComment;
 	private Integer userId;
+	private String userName;
+	private String position;
 	private boolean active;
+	private Integer applierId;
 
 	public Integer getId() {
 		return id;
@@ -75,7 +78,28 @@ public class HistoryDto {
 		this.active = active;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
 
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public Integer getApplierId() {
+		return applierId;
+	}
+
+	public void setApplierId(Integer applierId) {
+		this.applierId = applierId;
+	}
 
 }

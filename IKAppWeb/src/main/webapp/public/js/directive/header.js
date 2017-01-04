@@ -18,8 +18,12 @@ app.directive("headerDetail", function(){
 				var user = loginService.getUser();
 		    	if (user == null) {
 		    		 return "loggedOut"
-				}else{
-					return "loggedIn";
+				}else if(user.roleDtos[0] === 'PERSONNEL'){
+					return "loggedInPERSONNEL";
+				}else if(user.roleDtos[0] === 'HR'){
+					return "loggedInIK";
+				}else if(user.roleDtos[0] === 'ADMIN'){
+					return "loggedInMANAGER";
 				}
 			}
 			

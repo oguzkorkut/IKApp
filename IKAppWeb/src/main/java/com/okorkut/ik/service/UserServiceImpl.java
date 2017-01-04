@@ -9,14 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.okorkut.ik.common.dao.HistoryDao;
 import com.okorkut.ik.common.dao.PositionDao;
 import com.okorkut.ik.common.dao.RoleDao;
 import com.okorkut.ik.common.dao.UserDao;
+import com.okorkut.ik.common.entity.History;
 import com.okorkut.ik.common.entity.Position;
 import com.okorkut.ik.common.entity.Profile;
 import com.okorkut.ik.common.entity.Role;
 import com.okorkut.ik.common.entity.RoleGroup;
 import com.okorkut.ik.common.entity.User;
+import com.okorkut.ik.dto.HistoryDto;
 import com.okorkut.ik.dto.PositionDto;
 import com.okorkut.ik.dto.ProfileDto;
 import com.okorkut.ik.dto.RoleDto;
@@ -54,6 +57,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private PositionDao positionDao;
 
+	@Autowired
+	private HistoryDao historyDao;
+
 	public UserServiceImpl() {
 	}
 
@@ -73,6 +79,16 @@ public class UserServiceImpl implements UserService {
 
 		if (user != null) {
 			BeanUtils.copyProperties(user, userDto);
+
+			List<RoleGroup> roleGroups = user.getRoleGroups();
+
+			List<String> roles = new ArrayList<String>();
+			for (int i = 0; i < roleGroups.size(); i++) {
+				roles.add(roleGroups.get(i).getRole().getRoleName());
+			}
+
+			userDto.setRoleDtos(roles);
+
 		} else {
 			return null;
 		}
@@ -321,6 +337,34 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return groups;
+	}
+
+	@Override
+	public List<HistoryDto> getTasksByRoles(List<String> roles) throws Exception {
+
+		List<History> histories = historyDao.getTasksByRoles(roles);
+
+		List<HistoryDto> historyDtos = null;
+
+		if (!CollectionUtils.isEmpty(histories)) {
+			historyDtos = new ArrayList<HistoryDto>();
+
+			HistoryDto historyDto = null;
+
+			for (int i = 0; i < histories.size(); i++) {
+				historyDto = new HistoryDto();
+
+				BeanUtils.copyProperties(histories.get(i), historyDto);
+
+				historyDto.setUserName(histories.get(i).getApplication().getUser().getName() + " " + histories.get(i).getApplication().getUser().getLastname());
+				historyDto.setPosition(histories.get(i).getApplication().getPosition().getName());
+				historyDto.setApplierId(histories.get(i).getApplication().getUser().getId());
+
+				historyDtos.add(historyDto);
+			}
+		}
+
+		return historyDtos;
 	}
 
 }

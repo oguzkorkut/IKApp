@@ -1,4 +1,4 @@
-app.controller('userDetailController',function($scope, $uibModal,ikModalService,Utils,toastFactory,userService,loginService){
+app.controller('userDetailController',function($scope, $uibModal,ikModalService,Utils,toastFactory,userService,loginService,$stateParams){
 	
 	$scope.userDetail = null;
 	
@@ -6,9 +6,10 @@ app.controller('userDetailController',function($scope, $uibModal,ikModalService,
 //		 $scope.userDetail.profileDto.birthDate = new Date(userDetail.profileDto.birthDate)
 //	 });
 	
-	var user = loginService.getUser();
 	
-	var promise = userService.getUserDetailById(user.id);
+	var pathParams = $stateParams;
+	
+	var promise = userService.getUserDetailById(pathParams.userId);
 	
 	promise.then(function success(data) {
 		if (data.profileDto.birthDate || data.profileDto.birthDate) {

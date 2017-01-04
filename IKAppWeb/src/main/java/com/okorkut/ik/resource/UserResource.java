@@ -21,7 +21,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.okorkut.ik.dto.GenericValueDto;
+import com.okorkut.ik.dto.HistoryDto;
+import com.okorkut.ik.dto.MessageDto;
 import com.okorkut.ik.dto.PositionDto;
+import com.okorkut.ik.dto.ResultDto;
 import com.okorkut.ik.dto.UserDto;
 import com.okorkut.ik.service.UserService;
 
@@ -111,7 +114,7 @@ public class UserResource {
 		logger.info("getApplications called");
 
 		GenericValueDto dto = null;
-		request.getSession().removeAttribute("userDto");
+		// request.getSession().removeAttribute("userDto");
 		if (request.getSession().getAttribute("userDto") != null) {
 			dto = new GenericValueDto(0, "", "", true);
 		} else {
@@ -121,6 +124,58 @@ public class UserResource {
 		}
 
 		return Response.ok(dto).build();
+	}
+
+	@GET
+	@Path("/getMessages")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ "application/xml", "application/json" })
+	public Response getMessages(@Context HttpServletRequest request) {
+		logger.info("getMessages called");
+
+		List<MessageDto> messageDtos = null;
+		GenericValueDto dto = null;
+		// request.getSession().removeAttribute("userDto");
+		if (request.getSession().getAttribute("userDto") != null) {
+		} else {
+			logger.error("Yetkisiz kullanıcı istegi");
+			dto = new GenericValueDto(0, "", "", false);
+			return Response.status(Response.Status.UNAUTHORIZED).entity(dto).build();
+		}
+
+		return Response.ok(messageDtos).build();
+	}
+
+	@GET
+	@Path("/getTasks")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ "application/xml", "application/json" })
+	public Response getTasks(@Context HttpServletRequest request) {
+		logger.info("getTasks called");
+
+		GenericValueDto dto = null;
+		List<HistoryDto> historyDtos = null;
+
+		if (request.getSession().getAttribute("userDto") != null) {
+
+			UserDto userDto = (UserDto) request.getSession().getAttribute("userDto");
+
+			dto = new GenericValueDto(0, "", "", true);
+			try {
+				historyDtos = userService.getTasksByRoles(userDto.getRoleDtos());
+			} catch (Exception e) {
+				dto = new GenericValueDto(0, "ERROR", "Taskların çekilmesi sırasında bir hata oluştu. Hata:" + e, false);
+				logger.error(e, e);
+				return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(dto).build();
+			}
+
+		} else {
+			logger.error("Yetkisiz kullanıcı istegi");
+			dto = new GenericValueDto(0, "", "", false);
+			return Response.status(Response.Status.UNAUTHORIZED).entity(dto).build();
+		}
+
+		return Response.ok(historyDtos).build();
 	}
 
 	@GET
@@ -313,5 +368,36 @@ public class UserResource {
 		}
 		return Response.ok(userDto).build();
 	}
+
+	@POST
+	@Path("/decisionService")
+	public Response decisionService(@Context HttpServletRequest request, ResultDto resultDto) {
+		logger.info("decisionService called. ");
+
+		GenericValueDto dto = null;
+
+		if (request.getSession().getAttribute("userDto") != null) {
+
+			UserDto userDto = (UserDto) request.getSession().getAttribute("userDto");
+
+			dto = new GenericValueDto(0, "", "", true);
+			try {
+
+				return Response.ok(dto).build();
+			} catch (Exception e) {
+				dto = new GenericValueDto(0, "ERROR", "Kararın kaydı sırasında bir hata oluştu. Hata:" + e, false);
+				logger.error(e, e);
+				return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(dto).build();
+			}
+
+		} else {
+			logger.error("Yetkisiz kullanıcı istegi");
+			dto = new GenericValueDto(0, "", "", false);
+			return Response.status(Response.Status.UNAUTHORIZED).entity(dto).build();
+		}
+
+	}
+	
+	
 
 }

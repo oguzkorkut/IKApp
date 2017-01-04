@@ -184,6 +184,53 @@ app.factory("userService", function($q,$http) {
 		
 		return deferred.promise;
 	}
+	
+	function getTasks(){
+		var deferred = $q.defer();
+		$http({
+			method: "GET",
+			url:"http://localhost:8090/appik/services/user/getTasks"
+		}).then(function success(response) {
+			deferred.resolve(response.data);
+		}, function(response) {
+			deferred.reject(response.statusText);
+		});
+		
+		return deferred.promise;
+	}
+	function getMessages(){
+		var deferred = $q.defer();
+		$http({
+			method: "GET",
+			url:"http://localhost:8090/appik/services/user/getMessages"
+		}).then(function success(response) {
+			deferred.resolve(response.data);
+		}, function(response) {
+			deferred.reject(response.statusText);
+		});
+		
+		return deferred.promise;
+	}
+	
+	function decisionService(result){
+		 var deferred = $q.defer();
+		 
+		 $http({
+			 method: "POST",
+			 url : "http://localhost:8090/appik/services/user/decisionService",
+			 headers : {
+					'X-FRAME-OPTIONS' : 'SAMEORIGIN',
+					'Content-Type' : 'application/json;charset=UTF-8'
+			 },
+			 data: result
+		 }).then(function success(response) {
+			deferred.resolve(response.data);
+		 }, function(response) {
+			deferred.reject(response.statusText);
+		 });
+		 
+		return deferred.promise;
+	}
 	return{
 		save:save,
 		getApplications:getApplications,
@@ -193,7 +240,10 @@ app.factory("userService", function($q,$http) {
 		updatePosition:updatePosition,
 		applyPositionByPositionId : applyPositionByPositionId,
 		getPositionsByUserId : getPositionsByUserId,
-		getUserDetailById : getUserDetailById
+		getUserDetailById : getUserDetailById,
+		getTasks: getTasks,
+		getMessages:getMessages,
+		decisionService : decisionService
 	}
 	
 });

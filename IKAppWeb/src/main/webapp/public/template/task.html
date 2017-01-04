@@ -1,0 +1,50 @@
+<div class="generic-container clearfix">
+	<form name="registrationForm" autocomplete="off" novalidate>
+		<div class="well lead generic-container-panel-heading">Task</div>
+	 	<div class="center-block">
+	 	   <div class="form-group col-md-12">
+				<div class="row">
+					<div class="form-group col-md-12">
+						 <div layout="row" style="margin: 10px 10px 10px 10px">
+						      <table class="table table-inverse">
+								  <thead>
+								    <tr>
+								      <th>#</th>
+								      <th ng-show="false">#</th>
+								      <th>Başvuru Sahibi</th>
+								      <!-- <th>Soyad</th> -->
+								      <th>Pozisyon</th>
+								      <th>-</th>
+								      <th>-</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								    <tr ng-repeat="task in tasks">
+								      <th scope="row"></th>
+								      <td ng-show="false">{{task.id}}</td>
+								      <td style="padding-top: 20px">{{task.userName}}</td>
+								      <!-- <td style="padding-top: 20px">{{task.lastname}}</td>  -->
+								      <td style="padding-top: 20px">{{task.position}}</td>
+								      <td >
+									       <md-input-container class="md-block" flex-gt-sm="">
+									           	<label>Açıklama</label>
+									            <input  type="text" name="comment" id="comment" ng-model="task.comment"  maxlength="50" required>
+								            </md-input-container>
+								      </td> 
+								      <td>
+								      	  <input  type="button" class="btn btn-success" value="CV" ng-click="userCV($index,task)"/>
+								      	  <input  type="button" class="btn btn-success" value="Onay" ng-click="apply($index,task)"/>
+								      	  <input  type="button" class="btn btn-danger" value="Red" ng-click="reject($index,task)"/>
+								      </td>
+								    </tr>
+								  </tbody>
+								</table>
+					       </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<!-- https://plnkr.co/edit/E2eHZeWh7IhBfLKBphok?p=preview -->
