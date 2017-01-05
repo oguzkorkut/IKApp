@@ -1,5 +1,18 @@
 app.factory("Utils", function() {
 	return{
+		getValue: function(obj){
+			if (!angular.isDefined(obj) || obj == null  || !obj) {
+				return '';
+			}else{
+				return obj
+			}
+		},
+		isNotEmpty : function(objs){ 
+			return angular.isDefined(objs) && objs != null && angular.isArray(objs) && objs.length != 0;
+		},
+		isEmpty : function(objs){
+			return !angular.isDefined(objs) || objs === null || !angular.isArray(objs) || objs.length == 0;
+		},
 		isBlank : function(obj){
 			return  !angular.isDefined(obj) || obj===null;
 		},
