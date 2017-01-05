@@ -1,6 +1,7 @@
 package com.okorkut.ik.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -20,11 +21,14 @@ import com.okorkut.ik.common.entity.Role;
 import com.okorkut.ik.common.entity.RoleGroup;
 import com.okorkut.ik.common.entity.User;
 import com.okorkut.ik.dto.HistoryDto;
+import com.okorkut.ik.dto.MessageDto;
 import com.okorkut.ik.dto.PositionDto;
 import com.okorkut.ik.dto.ProfileDto;
+import com.okorkut.ik.dto.ResultDto;
 import com.okorkut.ik.dto.RoleDto;
 import com.okorkut.ik.dto.RoleGroupDto;
 import com.okorkut.ik.dto.UserDto;
+import com.okorkut.ik.enums.ActionEnum;
 
 public class UserServiceImpl implements UserService {
 
@@ -59,6 +63,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private HistoryDao historyDao;
+
+	@Autowired
+	private HistoryService historyService;
 
 	public UserServiceImpl() {
 	}
@@ -365,6 +372,36 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return historyDtos;
+	}
+
+	@Override
+	public void decision(ResultDto resultDto, Integer approverId) throws Exception {
+		HistoryDto historyDto = historyService.getHistoryById(resultDto.getHistoryId());
+
+		if (resultDto.isResult()) {
+			historyDto.setUserId(approverId);
+			historyDto.setTaskAssignDate(new Date());
+			if (historyDto.getUserAction().equalsIgnoreCase(ActionEnum.APPLICATION.getCode())) {
+				historyDto.setUserAction(ActionEnum.APPROVE_IK.getCode());
+			} else if (historyDto.getUserAction().equalsIgnoreCase(ActionEnum.APPROVE_IK.getCode())) {
+				historyDto.setUserAction(ActionEnum.APPROVE_MANAGER.getCode());
+			} else if (historyDto.getUserAction().equalsIgnoreCase(ActionEnum.APPROVE_MANAGER.getCode())) {
+				historyDto.setUserAction(ActionEnum.APPROVE.getCode());
+			}
+		} else {
+			historyDto.setUserComment(resultDto.getComment());
+			historyDto.setActive(false);
+		}
+
+		historyService.update(historyDto);
+	}
+
+	@Override
+	public List<MessageDto> getMessagesDtosById(Integer id) throws Exception {
+
+		List<MessageDto> messageDtos = historyService.getMessagesDtosById(id);
+
+		return messageDtos;
 	}
 
 }

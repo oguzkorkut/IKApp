@@ -13,6 +13,7 @@ import org.springframework.util.CollectionUtils;
 import com.okorkut.ik.common.dao.HistoryDao;
 import com.okorkut.ik.common.entity.History;
 import com.okorkut.ik.dto.HistoryDto;
+import com.okorkut.ik.dto.MessageDto;
 import com.okorkut.ik.enums.ActionEnum;
 
 public class HistoryServiceImpl implements HistoryService {
@@ -75,6 +76,51 @@ public class HistoryServiceImpl implements HistoryService {
 		historyDao.save(history);
 
 		logger.info("Basvuru alindi. Basvuru Id:" + history.getId());
+	}
+
+	@Override
+	public HistoryDto getHistoryById(Integer id) throws Exception {
+		HistoryDto historyDto = new HistoryDto();
+
+		History history = historyDao.getHistoryById(id);
+
+		BeanUtils.copyProperties(history, historyDto);
+
+		return historyDto;
+	}
+
+	@Override
+	public void update(HistoryDto historyDto) throws Exception {
+		History history = new History();
+
+		BeanUtils.copyProperties(historyDto, history);
+
+		historyDao.update(history);
+	}
+
+	@Override
+	public List<MessageDto> getMessagesDtosById(Integer id) throws Exception {
+
+		List<MessageDto> messageDtos = new ArrayList<MessageDto>();
+
+		List<History> histories = historyDao.getMessagesById(id);
+
+		MessageDto messageDto = null;
+
+		for (int i = 0; i < histories.size(); i++) {
+
+			messageDto = new MessageDto();
+			
+			messageDto.setComment(histories.get(i).getUserComment());
+			messageDto.setResult(ActionEnum.getValueByCode(histories.get(i).getUserAction()));
+			messageDto.setTaskCompletionDate(histories.get(i).getTaskAssignDate());
+			messageDto.setPozisyon(histories.get(i).getApplication().getPosition().getName());
+
+			messageDtos.add(messageDto);
+
+		}
+
+		return messageDtos;
 	}
 
 }

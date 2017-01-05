@@ -86,7 +86,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		history.setActive(true);
 		// history.setApplicationId(applicationId);
 		history.setTaskAssignDate(new Date());
-		history.setUserAction(ActionEnum.APPLICATION.getValue());
+		history.setUserAction(ActionEnum.APPLICATION.getCode());
 		history.setRoleId(2);
 		history.setApplicationId(application.getId());
 

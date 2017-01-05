@@ -135,8 +135,16 @@ public class UserResource {
 
 		List<MessageDto> messageDtos = null;
 		GenericValueDto dto = null;
-		// request.getSession().removeAttribute("userDto");
 		if (request.getSession().getAttribute("userDto") != null) {
+
+			try {
+				UserDto userDto = (UserDto) request.getSession().getAttribute("userDto");
+				messageDtos = userService.getMessagesDtosById(userDto.getId());
+			} catch (Exception e) {
+				dto = new GenericValueDto(0, "ERROR", "Mesajların çekilmesi sırasında bir hata oluştu. Hata:" + e, false);
+				logger.error(e, e);
+				return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(dto).build();
+			}
 		} else {
 			logger.error("Yetkisiz kullanıcı istegi");
 			dto = new GenericValueDto(0, "", "", false);
@@ -380,8 +388,10 @@ public class UserResource {
 
 			UserDto userDto = (UserDto) request.getSession().getAttribute("userDto");
 
-			dto = new GenericValueDto(0, "", "", true);
 			try {
+				userService.decision(resultDto, userDto.getId());
+
+				dto = new GenericValueDto(0, "", "", true);
 
 				return Response.ok(dto).build();
 			} catch (Exception e) {
@@ -397,7 +407,4 @@ public class UserResource {
 		}
 
 	}
-	
-	
-
 }

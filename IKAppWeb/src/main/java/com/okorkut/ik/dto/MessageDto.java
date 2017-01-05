@@ -20,6 +20,8 @@ public class MessageDto {
 	private Date taskCompletionDate;
 	private String result;
 	private String comment;
+	private String pozisyon;
+
 	public Integer getId() {
 		return id;
 	}
@@ -53,6 +55,14 @@ public class MessageDto {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getPozisyon() {
+		return pozisyon;
+	}
+
+	public void setPozisyon(String pozisyon) {
+		this.pozisyon = pozisyon;
 	}
 
 

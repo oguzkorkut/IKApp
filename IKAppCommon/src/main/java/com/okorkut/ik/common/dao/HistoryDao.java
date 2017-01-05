@@ -12,4 +12,8 @@ public interface HistoryDao {
 
 	public List<History> getTasksByRoles(List<String> roles) throws Exception;
 
+	public History getHistoryById(Integer id) throws Exception;
+
+	public List<History> getMessagesById(Integer id) throws Exception;
+
 }

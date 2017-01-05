@@ -3,7 +3,9 @@ package com.okorkut.ik.service;
 import java.util.List;
 
 import com.okorkut.ik.dto.HistoryDto;
+import com.okorkut.ik.dto.MessageDto;
 import com.okorkut.ik.dto.PositionDto;
+import com.okorkut.ik.dto.ResultDto;
 import com.okorkut.ik.dto.RoleDto;
 import com.okorkut.ik.dto.UserDto;
 
@@ -38,5 +40,9 @@ public interface UserService {
 	public UserDto getUserProfileById(Integer id) throws Exception;
 
 	public List<HistoryDto> getTasksByRoles(List<String> roles) throws Exception;
+
+	public void decision(ResultDto resultDto, Integer approverId) throws Exception;
+
+	public List<MessageDto> getMessagesDtosById(Integer id) throws Exception;
 
 }

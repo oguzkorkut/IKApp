@@ -88,4 +88,45 @@ public class HistoryDaoImpl extends BaseDao implements HistoryDao {
 		return histories;
 	}
 
+	@Override
+	public History getHistoryById(Integer id) throws Exception {
+		logger.info("getHistoryById basladi. id:" + id);
+
+		History history = null;
+
+		try {
+			history = (History) manager.createNamedQuery("History.findGetHistoryById").setParameter("id", id).getSingleResult();
+		} catch (NoResultException nre) {
+			logger.info("Sonuc bulunamadi. id:" + id + " Detay Mesaj:" + nre.getMessage());
+		} catch (Exception e) {
+			logger.error(e, e);
+		}
+
+		if (history != null) {
+			appLoggerUtils.loggerObj(history, history.getClass());
+		}
+		logger.info("getHistoryById bitti.");
+		return history;
+	}
+
+	@Override
+	public List<History> getMessagesById(Integer id) throws Exception {
+		logger.info("getMessagesById basladi. id:" + id);
+
+		List<History> histories = null;
+
+		try {
+
+			histories = manager.createNamedQuery("History.findGetMessagesById").setParameter("id", id).getResultList();
+
+		} catch (NoResultException nre) {
+			logger.info("Task bulunamadi.");
+		} catch (Exception e) {
+			logger.error(e, e);
+			throw e;
+		}
+		logger.info("getMessagesById bitti.");
+		return histories;
+	}
+
 }
