@@ -117,7 +117,7 @@ public class HistoryDaoImpl extends BaseDao implements HistoryDao {
 
 		try {
 
-			histories = manager.createNamedQuery("History.findGetMessagesById").setParameter("id", id).getResultList();
+			histories = manager.createNamedQuery("History.findGetMessagesByUserId").setParameter("userId", id).getResultList();
 
 		} catch (NoResultException nre) {
 			logger.info("Task bulunamadi.");

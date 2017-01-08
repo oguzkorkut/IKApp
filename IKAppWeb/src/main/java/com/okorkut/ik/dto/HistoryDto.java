@@ -26,6 +26,7 @@ public class HistoryDto {
 	private String position;
 	private boolean active;
 	private Integer applierId;
+	private Integer roleId;
 
 	public Integer getId() {
 		return id;
@@ -100,6 +101,14 @@ public class HistoryDto {
 
 	public void setApplierId(Integer applierId) {
 		this.applierId = applierId;
+	}
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 
 }

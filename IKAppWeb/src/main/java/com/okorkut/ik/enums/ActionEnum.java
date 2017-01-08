@@ -4,7 +4,7 @@ public enum ActionEnum {
 
 	APPLICATION("APPLICATION", "Başvuru Aşamasında"), APPROVE_IK("APPROVE_IK",
 			"İnsan KAynakları Onayladı"), APPROVE_MANAGER("APPROVE_MANAGER",
-					"Yönetici Onayladı"), APPROVE("APPROVE", "İş Başvurusu Onaylandı"), REJECT("REJECT", "Başvuru Reddedildi");
+					"Yönetici Onayladı"), APPROVE("APPROVE", "Başvuru Onaylandı"), REJECT("REJECT", "Başvuru Reddedildi");
 
 	private String code;
 	private String value;

@@ -383,13 +383,18 @@ public class UserServiceImpl implements UserService {
 			historyDto.setTaskAssignDate(new Date());
 			if (historyDto.getUserAction().equalsIgnoreCase(ActionEnum.APPLICATION.getCode())) {
 				historyDto.setUserAction(ActionEnum.APPROVE_IK.getCode());
+				historyDto.setRoleId(1);
 			} else if (historyDto.getUserAction().equalsIgnoreCase(ActionEnum.APPROVE_IK.getCode())) {
 				historyDto.setUserAction(ActionEnum.APPROVE_MANAGER.getCode());
+				historyDto.setRoleId(3);
 			} else if (historyDto.getUserAction().equalsIgnoreCase(ActionEnum.APPROVE_MANAGER.getCode())) {
 				historyDto.setUserAction(ActionEnum.APPROVE.getCode());
+				historyDto.setRoleId(3);
 			}
 		} else {
+			historyDto.setUserAction(ActionEnum.REJECT.getCode());
 			historyDto.setUserComment(resultDto.getComment());
+			historyDto.setRoleId(3);
 			historyDto.setActive(false);
 		}
 

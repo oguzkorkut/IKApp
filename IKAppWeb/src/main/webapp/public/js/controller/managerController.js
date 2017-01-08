@@ -38,7 +38,7 @@ app.controller('taskController',function($scope,$location,loginService,userServi
 		
 		if (Utils.isNotBlank(task.comment)) {
 			var result = {
-					result : false,
+					result : true,
 					comment : task.comment,
 					historyId:task.id
 				}

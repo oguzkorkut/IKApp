@@ -37,7 +37,7 @@
             <div ng-switch="isLogged();">
             	<div  ng-switch-when="loggedInMANAGER">
 	            	<ul class="nav navbar-nav navbar-right">
-	            		<li  ng-class="{'active':getClass('/tasks')}"><a href="#task">Tasks</a></li>
+	            		<li  ng-class="{'active':getClass('/tasks')}"><a href="#tasks">Tasks</a></li>
 	            		<li  ng-class="{'active':getClass('/pozisyon')}"><a href="#pozisyon">Pozisyonlar</a></li>
 			            <li  ng-class="{'active':getClass('/logout')}"><a href="#logout">Çıkış</a></li>
 	            	</ul>

@@ -25,7 +25,8 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = "History.findGetTasksByRoleId", query = "select h from History h "
 				+ "left join fetch h.role where  h.role.roleName IN  (?1) and h.active = true"),
 		@NamedQuery(name = "History.findGetHistoryById", query = "select h from History h where h.id=:id"),
-		@NamedQuery(name = "History.findGetMessagesById", query = "select h from History h where h.id=:id and h.active = false") })
+		@NamedQuery(name = "History.findGetMessagesByUserId", query = "select h from History h " + "left join fetch h.application "
+				+ "where h.application.userId = :userId and h.active = false") })
 public class History implements Serializable {
 	private static final long serialVersionUID = 1L;
 

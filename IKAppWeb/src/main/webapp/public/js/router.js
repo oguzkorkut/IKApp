@@ -56,6 +56,12 @@ app.config(function($stateProvider,$urlRouterProvider,blockUIConfig){
 			controller : 'taskController',
 			authenticate: true
 		})
+//		.state('manager',{
+//			url:'/tasks',
+//			templateUrl: 'public/template/manager.html',
+//			controller : 'managerController',
+//			authenticate: true
+//		})
 		.state('kullaniciDetayi',{
 			url:'/kullaniciDetayi/:userId',
 			templateUrl: 'public/template/userDetail.html',
